@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NEXUS Weekly Tools Drop</title>
-  <!-- Outfit: modern, geometric, friendly sans-serif -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Outfit:wght@700;900&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -17,6 +16,7 @@
       letter-spacing: 0.01em;
       min-height: 100%;
     }
+    /* --- Hero and playful backgrounds --- */
     .hero-bg {
       position: relative;
       background: #fff0e8;
@@ -58,11 +58,7 @@
       z-index: 1;
       letter-spacing: 0.01em;
     }
-    .hero-emoji {
-      font-size: 2.3em;
-      margin-right: 0.08em;
-      filter: drop-shadow(0 2px 0 #ffb30090);
-    }
+    .hero-emoji { font-size: 2.3em; margin-right: 0.08em; filter: drop-shadow(0 2px 0 #ffb30090);}
     .hero-desc {
       font-size: 1.32rem;
       color: #8b7964;
@@ -106,6 +102,162 @@
       color: #201a15;
       border-color: #ffbe2e;
     }
+    /* --- Layout --- */
+    .main-layout {
+      display: flex;
+      flex-direction: column;
+    }
+    @media (min-width:1000px) {
+      .main-layout {
+        flex-direction: row;
+      }
+      .main-content {width: 69%;}
+      .sidebar {width: 29%;}
+    }
+    .main-content {flex:1;}
+    .sidebar {
+      margin-bottom: 2.5rem;
+    }
+    /* --- Countdown Timer --- */
+    .countdown-box {
+      background: #fffbe0;
+      border-radius: 2.1rem;
+      border: 3px solid #ffd966;
+      box-shadow: 0 2px 12px #ffd9661a;
+      padding: 1.6rem 1.2rem;
+      margin-bottom:2rem;
+      text-align: center;
+    }
+    .countdown-title {
+      font-size: 1.1em;
+      font-weight: 900;
+      color: #e08f06;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+    .timer {
+      display: flex;
+      justify-content: center;
+      gap: 1.8rem;
+      font-family: 'Outfit', 'Montserrat', Arial, sans-serif;
+    }
+    .timer-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .timer-value {
+      font-size: 2.1rem;
+      font-weight: 900;
+      color: #27B1FF;
+      background: #fff;
+      border-radius: 1.15em;
+      padding: 0.1em 0.7em;
+      margin-bottom: 0.1em;
+      box-shadow: 0 1px 3px #27b1ff30;
+    }
+    .timer-label {
+      font-size: 0.9rem;
+      color: #ffbe2e;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+    /* --- Email alerts --- */
+    .email-section {
+      background: #fff;
+      border-radius: 1.7rem;
+      border: 2.7px solid #27B1FF;
+      box-shadow: 0 1px 8px 0 #27b1ff1a;
+      padding: 1.8em 1.3em 1.5em 1.3em;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .email-title {
+      font-size: 1.2em;
+      font-weight: 900;
+      color: #27B1FF;
+      margin-bottom: 0.3em;
+      letter-spacing: 0.01em;
+    }
+    .email-desc {
+      color: #8b7964;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 1em;
+    }
+    .email-input {
+      border-radius: 999px;
+      border: 2px solid #ffd966;
+      padding: 0.7em 1.3em;
+      font-size: 1.07rem;
+      outline: none;
+      width: 80%;
+      max-width: 260px;
+      margin-bottom: 0.9em;
+      transition: border 0.14s;
+    }
+    .email-input:focus {
+      border-color: #27B1FF;
+      background: #e8f7ff;
+    }
+    .email-btn {
+      border-radius: 999px;
+      background: #ffd966;
+      color: #201a15;
+      font-weight: 900;
+      font-size: 1.09rem;
+      border:none;
+      padding: 0.7em 2em;
+      margin-left: 0.6em;
+      transition: background 0.14s;
+      cursor:pointer;
+      box-shadow: 0 2px 6px #ffd96633;
+    }
+    .email-btn:hover, .email-btn:focus {
+      background: #27B1FF;
+      color: #fff;
+    }
+    /* --- Sponsors --- */
+    .sponsors-section {
+      background: #fffbe0;
+      border-radius: 2.1rem;
+      border: 3px solid #ffd966;
+      box-shadow: 0 1px 8px 0 #ffd9661a;
+      padding: 1.3em;
+      margin-bottom: 1.2em;
+    }
+    .sponsors-title {
+      font-family: 'Outfit', 'Montserrat', Arial, sans-serif;
+      font-size: 1.2em;
+      font-weight: 900;
+      color: #e08f06;
+      margin-bottom: 0.3em;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .sponsors-list {
+      display: flex;
+      gap: 1em;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .sponsor-badge {
+      background: #fff;
+      border: 2px solid #27B1FF;
+      border-radius: 1.2em;
+      padding: 0.5em 1.4em;
+      font-weight: 900;
+      color: #27B1FF;
+      font-size: 1.1em;
+      margin: 0.3em 0;
+      display: flex;
+      align-items:center;
+      gap:0.4em;
+      box-shadow:0 1px 4px #27b1ff12;
+    }
+    /* --- Section Underline --- */
     .section-title {
       font-family: 'Outfit', 'Montserrat', Arial, sans-serif;
       font-size: 2.1rem;
@@ -128,170 +280,21 @@
       margin-top: -6px;
       margin-left: 4px;
     }
-    .card-list {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2.7rem;
-      padding-bottom: 1.5rem;
+    /* --- Responsive tweaks --- */
+    @media (max-width: 1000px) {
+      .main-layout {flex-direction: column;}
+      .sidebar {width: 100%;}
+      .main-content {width: 100%;}
     }
-    @media (min-width: 700px) {
-      .card-list {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-    .tool-card {
-      background: #fffdf7;
-      border-radius: 2.7rem;
-      border: 3.5px solid #ffd966;
-      box-shadow: 0 6px 28px 0 #27b1ff14, 0 3px 0 #ffbe2e1b;
-      padding: 2.2rem 2rem 1.7rem 2rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 1.2rem;
-      position: relative;
-      min-height: 180px;
-      transition: box-shadow 0.17s, border-color 0.15s, transform 0.13s;
-    }
-    .tool-card:hover {
-      border-color: #27B1FF;
-      box-shadow: 0 18px 44px 0 #27b1ff45, 0 0 0 7px #ffe9a062;
-      transform: translateY(-4px) scale(1.021) rotate(-1deg);
-    }
-    .tool-icon {
-      width: 72px;
-      height: 72px;
-      border-radius: 2.3rem;
-      background: linear-gradient(135deg, #27B1FF 0%, #FFD966 100%);
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.7rem;
-      font-weight: 900;
-      box-shadow: 0 2px 10px #27b1ff46;
-      flex-shrink: 0;
-      margin-right: 0.5rem;
-      border: 2px solid #fff4b2;
-    }
-    .card-title-row {
-      display: flex;
-      align-items: center;
-      gap: 0.5em;
-      margin-bottom: 0.3em;
-    }
-    .tool-card h3 {
-      font-size: 1.45rem;
-      font-weight: 900;
-      color: #201a15;
-      letter-spacing: 0.01em;
-      text-transform: uppercase;
-      margin: 0;
-    }
-    .tool-badge {
-      font-family: 'Outfit', 'Montserrat', Arial, sans-serif;
-      background: #fff0e8;
-      color: #ffbe2e;
-      border-radius: 1.7em;
-      font-size: 1.03em;
-      font-weight: 900;
-      padding: 0.24em 1.35em;
-      letter-spacing: 0.05em;
-      border: 2px solid #ffd966;
-      margin-left: 0.2em;
-      margin-right: 0.2em;
-      box-shadow: 0 1px 3px #ffd96630;
-      position: relative;
-      top: 1px;
-    }
-    .tool-desc {
-      color: #8b7964;
-      font-size: 1.09rem;
-      font-weight: 600;
-      margin-bottom: 0.3em;
-      margin-top: 0.1em;
-      line-height: 1.5;
-    }
-    .tool-maker {
-      font-size: 1.07rem;
-      color: #27B1FF;
-      font-weight: 900;
-      text-transform: uppercase;
-      margin-top: 0.2em;
-      letter-spacing:0.03em;
-    }
-    .archive-section, .founders-section {
-      margin-top: 4rem;
-    }
-    .archive-card {
-      background: #fffbe0;
-      border-radius: 1.7rem;
-      border: 3.5px solid #ffd966;
-      box-shadow: 0 1px 8px 0 #ffd9661a;
-      padding: 1.7em 1.2em;
-      margin-bottom: 1.2em;
-    }
-    .archive-card strong {
-      color: #e08f06;
-      font-size: 1.14em;
-      font-weight: 900;
-      letter-spacing:0.02em;
-    }
-    .archive-card ul {
-      margin-top: 0.7em;
-      margin-left: 1.2em;
-      color: #27B1FF;
-      font-size: 1.06em;
-      font-weight: 700;
-    }
-    .founder-card {
-      background: #fffdf7;
-      border-radius: 2.2rem;
-      border: 3px solid #27B1FF;
-      padding: 1.4em;
-      display: flex;
-      align-items: center;
-      gap: 1.1em;
-      margin-bottom: 1.1em;
-      box-shadow: 0 3px 14px #27b1ff14;
-      position: relative;
-    }
-    .founder-avatar {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid #ffd966;
-      background: #fff4b2;
-    }
-    .founder-name {
-      font-size: 1.15em;
-      font-weight: 900;
-      letter-spacing: 0.01em;
-      color: #27B1FF;
-      margin-bottom: 0.1em;
-    }
-    .founder-tool {
-      font-size: 1.01em;
-      letter-spacing: 0.01em;
-      color: #ffbe2e;
-      font-weight: 700;
-      text-shadow:0 1px 0 #fff4b2;
-    }
-    .footer {
-      padding: 2.5em 0 2em 0;
-      text-align: center;
-      color: #bdb08f;
-      font-size: 1.09em;
-      font-family: 'Outfit', 'Montserrat', Arial, sans-serif;
-      letter-spacing: 0.04em;
-      background: #fff8f1;
-      margin-top: 3em;
-      border-top: 3px solid #ffd966;
+    @media (max-width: 700px) {
+      .hero-title {font-size:2.1rem;}
+      .section-title {font-size:1.2rem;}
+      .tool-card {padding:1.3em;}
     }
   </style>
 </head>
 <body>
-  <!-- Hero Section -->
+  <!-- HERO -->
   <section class="hero-bg max-w-5xl mx-auto section">
     <div class="hero-blob hero-blob1"></div>
     <div class="hero-blob hero-blob2"></div>
@@ -309,142 +312,204 @@
       <button class="cta-btn secondary">Watch Demo</button>
     </div>
   </section>
-
-  <!-- Directory / Weekly Drop -->
-  <main class="max-w-5xl mx-auto px-4 section">
-    <div class="section-title">
-      <span>🛠️ This Week's Top 5 Tools</span>
-      <span class="section-underline"></span>
-    </div>
-    <div class="card-list">
-      <!-- Tool Card Example -->
-      <div class="tool-card">
-        <div class="tool-icon">⚡</div>
-        <div>
-          <div class="card-title-row">
-            <h3>QUANTUM.AI</h3>
-            <span class="tool-badge">AI Core</span>
+  <!-- MAIN LAYOUT (Sidebar + Content) -->
+  <div class="main-layout max-w-6xl mx-auto px-3 sm:px-8">
+    <!-- SIDEBAR -->
+    <aside class="sidebar flex flex-col gap-4 mb-8">
+      <!-- Countdown Timer -->
+      <div class="countdown-box">
+        <div class="countdown-title">Next Drop In</div>
+        <div class="timer" id="timer">
+          <div class="timer-block">
+            <div class="timer-value" id="days">--</div>
+            <div class="timer-label">Days</div>
           </div>
-          <div class="tool-desc">Next-gen AI processing unit. 10<sup>12</sup> ops/ns. Quantum entanglement capabilities.</div>
-          <div class="tool-maker">By Dr. Zephyr</div>
-        </div>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon">🔮</div>
-        <div>
-          <div class="card-title-row">
-            <h3>NEXUS.VISION</h3>
-            <span class="tool-badge">AR/VR</span>
+          <div class="timer-block">
+            <div class="timer-value" id="hours">--</div>
+            <div class="timer-label">Hrs</div>
           </div>
-          <div class="tool-desc">Holographic interface. Predictive analytics. 4D visualization matrix.</div>
-          <div class="tool-maker">By Sierra Tran</div>
-        </div>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon">🛡️</div>
-        <div>
-          <div class="card-title-row">
-            <h3>CIPHER.SHIELD</h3>
-            <span class="tool-badge">Security</span>
+          <div class="timer-block">
+            <div class="timer-value" id="minutes">--</div>
+            <div class="timer-label">Min</div>
           </div>
-          <div class="tool-desc">Quantum encryption. Military-grade QKD. Unbreakable protocols.</div>
-          <div class="tool-maker">By Ava Gupta</div>
         </div>
       </div>
-      <div class="tool-card">
-        <div class="tool-icon">🚀</div>
-        <div>
-          <div class="card-title-row">
-            <h3>VELOCITY.CORE</h3>
-            <span class="tool-badge">Speed</span>
+      <!-- Email Alerts -->
+      <div class="email-section">
+        <div class="email-title">📬 Get Drop Alerts</div>
+        <div class="email-desc">Be first to discover new tools. Weekly drops, no spam!</div>
+        <form onsubmit="return false;" class="flex flex-col items-center">
+          <input class="email-input" type="email" placeholder="your@email.com" required>
+          <button class="email-btn" type="submit">Subscribe</button>
+        </form>
+      </div>
+      <!-- Sponsors -->
+      <div class="sponsors-section">
+        <div class="sponsors-title">Our Sponsors</div>
+        <div class="sponsors-list">
+          <span class="sponsor-badge">🌟 Acme Inc.</span>
+          <span class="sponsor-badge">🔥 RocketStart</span>
+          <span class="sponsor-badge">👾 PixelSoft</span>
+        </div>
+      </div>
+    </aside>
+    <!-- MAIN CONTENT (Directory, Archive, Founders) -->
+    <div class="main-content">
+      <!-- Directory / Weekly Drop -->
+      <div>
+        <div class="section-title">
+          <span>🛠️ This Week's Top 5 Tools</span>
+          <span class="section-underline"></span>
+        </div>
+        <div class="card-list">
+          <div class="tool-card">
+            <div class="tool-icon">⚡</div>
+            <div>
+              <div class="card-title-row">
+                <h3>QUANTUM.AI</h3>
+                <span class="tool-badge">AI Core</span>
+              </div>
+              <div class="tool-desc">Next-gen AI processing unit. 10<sup>12</sup> ops/ns. Quantum entanglement capabilities.</div>
+              <div class="tool-maker">By Dr. Zephyr</div>
+            </div>
           </div>
-          <div class="tool-desc">Real-time processing. Petabytes, zero latency, hyperspeed protocols.</div>
-          <div class="tool-maker">By Kai Lennox</div>
-        </div>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon">✨</div>
-        <div>
-          <div class="card-title-row">
-            <h3>INFINITY.ENGINE</h3>
-            <span class="tool-badge">Quantum</span>
+          <div class="tool-card">
+            <div class="tool-icon">🔮</div>
+            <div>
+              <div class="card-title-row">
+                <h3>NEXUS.VISION</h3>
+                <span class="tool-badge">AR/VR</span>
+              </div>
+              <div class="tool-desc">Holographic interface. Predictive analytics. 4D visualization matrix.</div>
+              <div class="tool-maker">By Sierra Tran</div>
+            </div>
           </div>
-          <div class="tool-desc">Boundless computation. Quantum superposition. Infinite parallelism.</div>
-          <div class="tool-maker">By Eli Chen</div>
+          <div class="tool-card">
+            <div class="tool-icon">🛡️</div>
+            <div>
+              <div class="card-title-row">
+                <h3>CIPHER.SHIELD</h3>
+                <span class="tool-badge">Security</span>
+              </div>
+              <div class="tool-desc">Quantum encryption. Military-grade QKD. Unbreakable protocols.</div>
+              <div class="tool-maker">By Ava Gupta</div>
+            </div>
+          </div>
+          <div class="tool-card">
+            <div class="tool-icon">🚀</div>
+            <div>
+              <div class="card-title-row">
+                <h3>VELOCITY.CORE</h3>
+                <span class="tool-badge">Speed</span>
+              </div>
+              <div class="tool-desc">Real-time processing. Petabytes, zero latency, hyperspeed protocols.</div>
+              <div class="tool-maker">By Kai Lennox</div>
+            </div>
+          </div>
+          <div class="tool-card">
+            <div class="tool-icon">✨</div>
+            <div>
+              <div class="card-title-row">
+                <h3>INFINITY.ENGINE</h3>
+                <span class="tool-badge">Quantum</span>
+              </div>
+              <div class="tool-desc">Boundless computation. Quantum superposition. Infinite parallelism.</div>
+              <div class="tool-maker">By Eli Chen</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Archive Section -->
+      <div class="archive-section">
+        <div class="section-title" style="color:#e08f06;">
+          <span>📦 Archive: Previous Weeks</span>
+          <span class="section-underline"></span>
+        </div>
+        <div class="archive-card">
+          <strong>Week 28 (July 7 - July 13):</strong>
+          <ul>
+            <li><span class="tool-badge">AI Core</span> <span class="font-bold" style="color:#e08f06">ALPHA.MIND</span> <span class="tool-maker" style="color:#8b7964;">by Jane Roe</span></li>
+            <li><span class="tool-badge">Security</span> <span class="font-bold" style="color:#e08f06">SECURENET</span> <span class="tool-maker" style="color:#8b7964;">by John Doe</span></li>
+          </ul>
+        </div>
+        <div class="archive-card">
+          <strong>Week 27 (June 30 - July 6):</strong>
+          <ul>
+            <li><span class="tool-badge">AR/VR</span> <span class="font-bold" style="color:#e08f06">VISIONARY</span> <span class="tool-maker" style="color:#8b7964;">by Max Lee</span></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Founders Section -->
+      <div class="founders-section">
+        <div class="section-title" style="color:#27B1FF;">
+          <span>🌟 Founders of this Week's Tools</span>
+          <span class="section-underline"></span>
+        </div>
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="founder-card">
+            <img class="founder-avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Dr. Zephyr" />
+            <div>
+              <div class="founder-name">Dr. Zephyr</div>
+              <div class="founder-tool">QUANTUM.AI</div>
+            </div>
+          </div>
+          <div class="founder-card">
+            <img class="founder-avatar" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sierra Tran" />
+            <div>
+              <div class="founder-name">Sierra Tran</div>
+              <div class="founder-tool">NEXUS.VISION</div>
+            </div>
+          </div>
+          <div class="founder-card">
+            <img class="founder-avatar" src="https://randomuser.me/api/portraits/women/65.jpg" alt="Ava Gupta" />
+            <div>
+              <div class="founder-name">Ava Gupta</div>
+              <div class="founder-tool">CIPHER.SHIELD</div>
+            </div>
+          </div>
+          <div class="founder-card">
+            <img class="founder-avatar" src="https://randomuser.me/api/portraits/men/74.jpg" alt="Kai Lennox" />
+            <div>
+              <div class="founder-name">Kai Lennox</div>
+              <div class="founder-tool">VELOCITY.CORE</div>
+            </div>
+          </div>
+          <div class="founder-card">
+            <img class="founder-avatar" src="https://randomuser.me/api/portraits/men/82.jpg" alt="Eli Chen" />
+            <div>
+              <div class="founder-name">Eli Chen</div>
+              <div class="founder-tool">INFINITY.ENGINE</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </main>
-
-  <!-- Archive Section -->
-  <section class="max-w-5xl mx-auto px-4 archive-section">
-    <div class="section-title" style="color:#e08f06;">
-      <span>📦 Archive: Previous Weeks</span>
-      <span class="section-underline"></span>
-    </div>
-    <div class="archive-card">
-      <strong>Week 28 (July 7 - July 13):</strong>
-      <ul>
-        <li><span class="tool-badge">AI Core</span> <span class="font-bold" style="color:#e08f06">ALPHA.MIND</span> <span class="tool-maker" style="color:#8b7964;">by Jane Roe</span></li>
-        <li><span class="tool-badge">Security</span> <span class="font-bold" style="color:#e08f06">SECURENET</span> <span class="tool-maker" style="color:#8b7964;">by John Doe</span></li>
-      </ul>
-    </div>
-    <div class="archive-card">
-      <strong>Week 27 (June 30 - July 6):</strong>
-      <ul>
-        <li><span class="tool-badge">AR/VR</span> <span class="font-bold" style="color:#e08f06">VISIONARY</span> <span class="tool-maker" style="color:#8b7964;">by Max Lee</span></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Founders Section -->
-  <section class="max-w-5xl mx-auto px-4 founders-section">
-    <div class="section-title" style="color:#27B1FF;">
-      <span>🌟 Founders of this Week's Tools</span>
-      <span class="section-underline"></span>
-    </div>
-    <div class="grid md:grid-cols-3 gap-4">
-      <div class="founder-card">
-        <img class="founder-avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Dr. Zephyr" />
-        <div>
-          <div class="founder-name">Dr. Zephyr</div>
-          <div class="founder-tool">QUANTUM.AI</div>
-        </div>
-      </div>
-      <div class="founder-card">
-        <img class="founder-avatar" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sierra Tran" />
-        <div>
-          <div class="founder-name">Sierra Tran</div>
-          <div class="founder-tool">NEXUS.VISION</div>
-        </div>
-      </div>
-      <div class="founder-card">
-        <img class="founder-avatar" src="https://randomuser.me/api/portraits/women/65.jpg" alt="Ava Gupta" />
-        <div>
-          <div class="founder-name">Ava Gupta</div>
-          <div class="founder-tool">CIPHER.SHIELD</div>
-        </div>
-      </div>
-      <div class="founder-card">
-        <img class="founder-avatar" src="https://randomuser.me/api/portraits/men/74.jpg" alt="Kai Lennox" />
-        <div>
-          <div class="founder-name">Kai Lennox</div>
-          <div class="founder-tool">VELOCITY.CORE</div>
-        </div>
-      </div>
-      <div class="founder-card">
-        <img class="founder-avatar" src="https://randomuser.me/api/portraits/men/82.jpg" alt="Eli Chen" />
-        <div>
-          <div class="founder-name">Eli Chen</div>
-          <div class="founder-tool">INFINITY.ENGINE</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
+  </div>
   <!-- Footer -->
   <footer class="footer">
     🚀 Made with fun, by the NEXUS crew • WEEKLY TOOLS DROP • All Rights Reserved
   </footer>
+  <!-- Countdown Timer Script -->
+  <script>
+    // Set the next drop time (YYYY-MM-DDTHH:MM:SSZ)
+    // Example: next Friday at noon UTC
+    const nextDrop = new Date();
+    nextDrop.setDate(nextDrop.getDate() + ((5 - nextDrop.getDay() + 7) % 7 || 7)); // Next Friday
+    nextDrop.setHours(12,0,0,0);
+
+    function updateTimer() {
+      const now = new Date();
+      let diff = nextDrop - now;
+      if (diff < 0) diff = 0;
+      const days = Math.floor(diff / 1000 / 60 / 60 / 24);
+      const hours = Math.floor(diff / 1000 / 60 / 60) % 24;
+      const minutes = Math.floor(diff / 1000 / 60) % 60;
+      document.getElementById('days').textContent = String(days).padStart(2,'0');
+      document.getElementById('hours').textContent = String(hours).padStart(2,'0');
+      document.getElementById('minutes').textContent = String(minutes).padStart(2,'0');
+    }
+    setInterval(updateTimer, 1000);
+    updateTimer();
+  </script>
 </body>
 </html>
