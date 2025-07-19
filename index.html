@@ -3,67 +3,93 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SalesDrops – Weekly Sales Tools Drop</title>
+    <title>SalesDrops — Weekly Sales Tool Drops</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet" />
     <style>
       body {
-        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-family: 'Nunito', sans-serif;
+        background-color: #fdf8f4;
       }
     </style>
   </head>
-  <body class="bg-[#fdfaf5] text-[#1f1f1f]">
-    <header class="text-center py-12">
-      <h1 class="text-5xl md:text-6xl font-bold mb-4">🚀 SalesDrops</h1>
-      <p class="text-xl mb-6 max-w-xl mx-auto">
-        Each week, we feature 5 new tools built to make salespeople better. Like
-        a sneaker drop — for sales tools.
+  <body class="text-gray-800">
+    <!-- Hero Section -->
+    <section class="py-20 px-6 text-center">
+      <h1 class="text-4xl sm:text-6xl font-black mb-4">🚀 SalesDrops</h1>
+      <p class="text-lg sm:text-xl max-w-2xl mx-auto mb-8">
+        5 sales tools dropped every week — fresh, powerful, and handpicked.
       </p>
-      <div class="flex justify-center gap-4">
-        <a
-          href="#"
-          class="bg-blue-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-600 transition"
-          >🎥 Watch Demo</a
-        >
-        <a
-          href="#"
-          class="border border-blue-500 text-blue-500 px-6 py-3 rounded-full font-semibold hover:bg-blue-100 transition"
-          >✨ Get Started Free</a
-        >
+      <div class="flex justify-center gap-4 flex-wrap">
+        <a href="#" class="bg-blue-600 text-white text-lg font-semibold py-3 px-6 rounded-full shadow hover:bg-blue-700 transition">
+          📺 Watch Demo
+        </a>
+        <a href="#" class="bg-white border border-blue-600 text-blue-600 text-lg font-semibold py-3 px-6 rounded-full hover:bg-blue-50 transition">
+          🚀 Get Started Free
+        </a>
       </div>
-    </header>
+    </section>
 
-    <main class="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pb-24">
-      <!-- Tool Card -->
-      <div class="bg-white p-6 rounded-2xl shadow-md">
-        <div class="flex items-center gap-4 mb-4">
-          <img
-            src="https://logo.clearbit.com/coldreach.io"
-            alt="ColdReach"
-            class="w-12 h-12 rounded-full"
-          />
-          <h2 class="text-xl font-bold">ColdReach AI</h2>
+    <!-- Grid of Weekly Drops -->
+    <section class="px-6 py-10">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Tool Card Example -->
+        <div class="bg-white rounded-2xl shadow p-6 flex flex-col gap-4">
+          <img src="https://via.placeholder.com/80x80" alt="Tool Logo" class="w-16 h-16 rounded" />
+          <h2 class="text-2xl font-bold">LeadBlitz</h2>
+          <p class="text-gray-600 text-sm">AI-powered email sequence generator for cold outreach.</p>
+          <div class="flex flex-wrap gap-2 mt-2">
+            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full">Cold Email</span>
+            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full">AI</span>
+          </div>
+          <a href="#" class="mt-auto text-sm text-blue-600 font-semibold hover:underline">View Tool →</a>
         </div>
-        <p class="text-gray-700 mb-4 text-sm">
-          AI-powered cold outreach that helped Sarah Lee go viral post-launch.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-xs">AI</span>
-          <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-xs">Outreach</span>
-          <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-xs">B2B</span>
+
+        <!-- Duplicate this card for the 5 weekly tools -->
+        <div class="bg-white rounded-2xl shadow p-6 flex flex-col gap-4">
+          <img src="https://via.placeholder.com/80x80" alt="Tool Logo" class="w-16 h-16 rounded" />
+          <h2 class="text-2xl font-bold">PipeHawk</h2>
+          <p class="text-gray-600 text-sm">Find top pipeline blockers using smart CRM overlays.</p>
+          <div class="flex flex-wrap gap-2 mt-2">
+            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full">CRM</span>
+            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full">Insights</span>
+          </div>
+          <a href="#" class="mt-auto text-sm text-blue-600 font-semibold hover:underline">View Tool →</a>
         </div>
-        <a
-          href="https://coldreach.io"
-          target="_blank"
-          class="inline-block mt-auto bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-200 transition"
-          >View Tool</a
-        >
+
+        <div class="bg-white rounded-2xl shadow p-6 flex flex-col gap-4">
+          <img src="https://via.placeholder.com/80x80" alt="Tool Logo" class="w-16 h-16 rounded" />
+          <h2 class="text-2xl font-bold">SniperLinks</h2>
+          <p class="text-gray-600 text-sm">Track & personalize outbound links for better conversion.</p>
+          <div class="flex flex-wrap gap-2 mt-2">
+            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full">Outbound</span>
+            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full">Tracking</span>
+          </div>
+          <a href="#" class="mt-auto text-sm text-blue-600 font-semibold hover:underline">View Tool →</a>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow p-6 flex flex-col gap-4">
+          <img src="https://via.placeholder.com/80x80" alt="Tool Logo" class="w-16 h-16 rounded" />
+          <h2 class="text-2xl font-bold">CallStash</h2>
+          <p class="text-gray-600 text-sm">Record and analyze sales calls with AI feedback instantly.</p>
+          <div class="flex flex-wrap gap-2 mt-2">
+            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full">Calls</span>
+            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full">Analytics</span>
+          </div>
+          <a href="#" class="mt-auto text-sm text-blue-600 font-semibold hover:underline">View Tool →</a>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow p-6 flex flex-col gap-4">
+          <img src="https://via.placeholder.com/80x80" alt="Tool Logo" class="w-16 h-16 rounded" />
+          <h2 class="text-2xl font-bold">ConnectBooster</h2>
+          <p class="text-gray-600 text-sm">Automate LinkedIn connection requests with smart filters.</p>
+          <div class="flex flex-wrap gap-2 mt-2">
+            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full">LinkedIn</span>
+            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full">Automation</span>
+          </div>
+          <a href="#" class="mt-auto text-sm text-blue-600 font-semibold hover:underline">View Tool →</a>
+        </div>
       </div>
-
-      <!-- Add more cards here in similar format -->
-    </main>
+    </section>
   </body>
 </html>
