@@ -4,280 +4,324 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NEXUS Weekly Tools Drop</title>
-  <!-- Space Grotesk for geometric, editorial vibe -->
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+  <!-- Outfit: modern, geometric, friendly sans-serif -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Outfit:wght@700;900&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root {
-      --accent: #2563eb;
-      --bg-light: #f8fafc;
-      --bg-dark: #181b23;
-      --text-main: #181b23;
-      --text-accent: #2563eb;
-      --text-muted: #8187a3;
-    }
-    body {
-      font-family: 'Space Grotesk', 'Inter', Arial, sans-serif;
-      background: var(--bg-light);
-      color: var(--text-main);
+    html, body {
+      font-family: 'Outfit', 'Montserrat', Arial, sans-serif;
+      background: #fff8f1;
+      color: #201a15;
       font-size: 18px;
-      line-height: 1.6;
+      line-height: 1.5;
       letter-spacing: 0.01em;
-      margin: 0;
+      min-height: 100%;
     }
-    .container {
-      max-width: 920px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
+    .hero-bg {
+      position: relative;
+      background: #fff0e8;
+      border-radius: 2.5rem;
+      padding: 3.5rem 1.5rem 3rem 1.5rem;
+      margin-bottom: 3.5rem;
+      overflow: hidden;
     }
-    header {
-      background: #fff;
-      border-bottom: 2.5px solid var(--bg-dark);
-      padding: 3.5rem 0 2.5rem 0;
-      margin-bottom: 1.5rem;
+    .hero-blob {
+      position: absolute;
+      z-index: 0;
+      border-radius: 50%;
+      filter: blur(0.5px);
+    }
+    .hero-blob1 {
+      top: -70px; left: -110px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle at 40% 65%, #ffd966 0%, #ffe9a0 100%);
+      opacity: 0.6;
+    }
+    .hero-blob2 {
+      bottom: -50px; right: -100px;
+      width: 230px; height: 230px;
+      background: radial-gradient(circle at 60% 40%, #8ecaff 0%, #e0f4ff 100%);
+      opacity: 0.45;
     }
     .hero-title {
-      font-family: 'Space Grotesk', Arial, sans-serif;
-      font-weight: 700;
-      font-size: 3.2rem;
+      font-family: 'Outfit', 'Montserrat', Arial, sans-serif;
+      font-size: 3.7rem;
+      font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-main);
-      margin-bottom: 0.7em;
-      line-height: 1.05;
+      color: #201a15;
+      margin-bottom: 1.25rem;
+      line-height: 1.02;
+      display: flex;
+      align-items: center;
+      gap: 0.7em;
+      position: relative;
+      z-index: 1;
+      letter-spacing: 0.01em;
+    }
+    .hero-emoji {
+      font-size: 2.3em;
+      margin-right: 0.08em;
+      filter: drop-shadow(0 2px 0 #ffb30090);
     }
     .hero-desc {
-      font-size: 1.19rem;
-      color: var(--text-muted);
-      font-weight: 500;
-      max-width: 460px;
-      margin-bottom: 2.2em;
-    }
-    .cta-row {
-      display: flex;
-      gap: 1.2em;
-      margin-bottom: 0.5em;
+      font-size: 1.32rem;
+      color: #8b7964;
+      max-width: 550px;
+      margin: 0 auto 2.5rem auto;
+      font-weight: 600;
+      position: relative;
+      z-index: 1;
     }
     .cta-btn {
-      appearance: none;
-      border: none;
-      outline: none;
-      background: var(--accent);
+      background: #27B1FF;
       color: #fff;
-      padding: 0.95em 2.2em;
-      border-radius: 32px;
-      font-size: 1.13rem;
-      font-family: 'Space Grotesk', Arial, sans-serif;
-      font-weight: 700;
-      letter-spacing: 0.04em;
+      border: none;
+      border-radius: 999px;
+      font-size: 1.2rem;
+      font-weight: 900;
+      padding: 1em 2.7em;
+      margin-right: 1.1em;
+      margin-bottom: 0.4em;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 22px #27b1ff36;
       text-transform: uppercase;
-      cursor: pointer;
-      transition: background .13s, box-shadow .13s;
-      box-shadow: 0 2px 16px #2563eb28;
+      position: relative;
+      transition: background 0.18s, box-shadow 0.14s, transform 0.12s;
+      outline: 3px solid transparent;
     }
     .cta-btn.secondary {
       background: #fff;
-      color: var(--accent);
-      border: 2px solid var(--accent);
-      box-shadow: none;
+      color: #27B1FF;
+      border: 2.5px solid #27B1FF;
+      box-shadow: 0 2px 8px 0 #8ecaff44;
     }
     .cta-btn:hover, .cta-btn:focus {
-      background: #1e40af;
-      color: #fff;
+      background: #ffbe2e;
+      color: #201a15;
+      box-shadow: 0 8px 30px #ffd96638, 0 0 0 4px #ffbe2e44;
+      transform: scale(1.04) translateY(-2px) rotate(-1deg);
     }
     .cta-btn.secondary:hover, .cta-btn.secondary:focus {
-      background: var(--accent);
-      color: #fff;
+      background: #ffe9a0;
+      color: #201a15;
+      border-color: #ffbe2e;
     }
     .section-title {
-      font-size: 1.22rem;
+      font-family: 'Outfit', 'Montserrat', Arial, sans-serif;
+      font-size: 2.1rem;
+      font-weight: 900;
+      margin: 2.8rem 0 1.5rem 0;
+      color: #27B1FF;
       text-transform: uppercase;
-      font-weight: 700;
-      color: var(--text-main);
       letter-spacing: 0.06em;
-      margin: 2.5rem 0 1.2rem 0;
-      border-bottom: 2px solid var(--accent);
-      display: inline-block;
-      padding-bottom: 0.4em;
+      display: flex;
+      align-items: center;
+      gap: 0.4em;
+      position: relative;
     }
-    .tools-list {
+    .section-underline {
+      display: block;
+      width: 110px;
+      height: 12px;
+      background: url("data:image/svg+xml,%3Csvg width='110' height='12' viewBox='0 0 110 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 7C16.5 2.5 28.5 12.5 42.5 7C56.5 1.5 66.5 13.5 80 7C93.5 0.5 101.5 11.5 110 7' stroke='%23FFD966' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      margin-top: -6px;
+      margin-left: 4px;
+    }
+    .card-list {
       display: grid;
-      gap: 2.3rem;
-      margin: 2.5rem 0;
+      grid-template-columns: 1fr;
+      gap: 2.7rem;
+      padding-bottom: 1.5rem;
     }
     @media (min-width: 700px) {
-      .tools-list {
+      .card-list {
         grid-template-columns: 1fr 1fr;
       }
     }
     .tool-card {
-      background: #fff;
-      border-radius: 1.1rem;
-      border: 1.5px solid #e2e8f0;
-      box-shadow: 0 3px 18px 0 #181b2312;
-      padding: 2rem 1.5rem 1.5rem 1.5rem;
+      background: #fffdf7;
+      border-radius: 2.7rem;
+      border: 3.5px solid #ffd966;
+      box-shadow: 0 6px 28px 0 #27b1ff14, 0 3px 0 #ffbe2e1b;
+      padding: 2.2rem 2rem 1.7rem 2rem;
       display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 1.2rem;
       position: relative;
-      min-height: 186px;
-      transition: box-shadow .14s, border-color .14s;
+      min-height: 180px;
+      transition: box-shadow 0.17s, border-color 0.15s, transform 0.13s;
     }
     .tool-card:hover {
-      border-color: var(--accent);
-      box-shadow: 0 7px 22px #2563eb29;
+      border-color: #27B1FF;
+      box-shadow: 0 18px 44px 0 #27b1ff45, 0 0 0 7px #ffe9a062;
+      transform: translateY(-4px) scale(1.021) rotate(-1deg);
     }
     .tool-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 0.7rem;
-      background: var(--bg-dark);
+      width: 72px;
+      height: 72px;
+      border-radius: 2.3rem;
+      background: linear-gradient(135deg, #27B1FF 0%, #FFD966 100%);
       color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.7rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
+      font-size: 2.7rem;
+      font-weight: 900;
+      box-shadow: 0 2px 10px #27b1ff46;
+      flex-shrink: 0;
+      margin-right: 0.5rem;
+      border: 2px solid #fff4b2;
     }
-    .tool-title-row {
+    .card-title-row {
       display: flex;
       align-items: center;
       gap: 0.5em;
-      margin-bottom: 0.1em;
+      margin-bottom: 0.3em;
     }
     .tool-card h3 {
-      font-size: 1.11rem;
-      font-weight: 700;
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: #201a15;
+      letter-spacing: 0.01em;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
       margin: 0;
-      color: var(--text-main);
     }
     .tool-badge {
-      background: var(--accent);
-      color: #fff;
-      border-radius: 10px;
-      font-size: 0.82em;
-      font-weight: 700;
-      padding: 0.08em 0.8em;
+      font-family: 'Outfit', 'Montserrat', Arial, sans-serif;
+      background: #fff0e8;
+      color: #ffbe2e;
+      border-radius: 1.7em;
+      font-size: 1.03em;
+      font-weight: 900;
+      padding: 0.24em 1.35em;
+      letter-spacing: 0.05em;
+      border: 2px solid #ffd966;
       margin-left: 0.2em;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+      margin-right: 0.2em;
+      box-shadow: 0 1px 3px #ffd96630;
+      position: relative;
+      top: 1px;
     }
     .tool-desc {
-      color: var(--text-muted);
-      font-size: 1em;
-      font-weight: 500;
-      margin-bottom: 0.2em;
-      margin-top: 0.3em;
+      color: #8b7964;
+      font-size: 1.09rem;
+      font-weight: 600;
+      margin-bottom: 0.3em;
+      margin-top: 0.1em;
       line-height: 1.5;
     }
     .tool-maker {
-      font-size: 0.93em;
-      color: var(--accent);
-      font-weight: 700;
+      font-size: 1.07rem;
+      color: #27B1FF;
+      font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 0.03em;
-      margin-top: 0.15em;
+      margin-top: 0.2em;
+      letter-spacing:0.03em;
+    }
+    .archive-section, .founders-section {
+      margin-top: 4rem;
     }
     .archive-card {
-      background: #f1f5f9;
-      border-radius: 0.8rem;
-      border: 1.5px solid #e2e8f0;
-      box-shadow: 0 1px 8px #181b2312;
-      padding: 1.2em 1.2em 0.6em 1.2em;
+      background: #fffbe0;
+      border-radius: 1.7rem;
+      border: 3.5px solid #ffd966;
+      box-shadow: 0 1px 8px 0 #ffd9661a;
+      padding: 1.7em 1.2em;
       margin-bottom: 1.2em;
     }
     .archive-card strong {
-      color: var(--text-main);
-      font-size: 1em;
+      color: #e08f06;
+      font-size: 1.14em;
+      font-weight: 900;
+      letter-spacing:0.02em;
     }
     .archive-card ul {
-      margin-top: 0.6em;
-      margin-left: 1em;
-      color: var(--text-accent);
-    }
-    .founders-grid {
-      display: grid;
-      gap: 1.4em;
-      margin-top: 2.1em;
-    }
-    @media (min-width: 700px) {
-      .founders-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
+      margin-top: 0.7em;
+      margin-left: 1.2em;
+      color: #27B1FF;
+      font-size: 1.06em;
+      font-weight: 700;
     }
     .founder-card {
-      background: #fff;
-      border-radius: 1rem;
-      border: 1.5px solid #e2e8f0;
-      box-shadow: 0 1px 8px #181b2312;
-      padding: 1.1em 1.1em 0.7em 1.1em;
+      background: #fffdf7;
+      border-radius: 2.2rem;
+      border: 3px solid #27B1FF;
+      padding: 1.4em;
       display: flex;
       align-items: center;
       gap: 1.1em;
-      min-width: 0;
+      margin-bottom: 1.1em;
+      box-shadow: 0 3px 14px #27b1ff14;
+      position: relative;
     }
     .founder-avatar {
-      width: 48px;
-      height: 48px;
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid var(--accent);
-      background: #e0e7ff;
+      border: 3px solid #ffd966;
+      background: #fff4b2;
     }
     .founder-name {
-      font-size: 1.08em;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      color: var(--text-main);
-      margin-bottom: 0.07em;
+      font-size: 1.15em;
+      font-weight: 900;
+      letter-spacing: 0.01em;
+      color: #27B1FF;
+      margin-bottom: 0.1em;
     }
     .founder-tool {
-      font-size: 0.92em;
-      color: var(--text-accent);
-      font-weight: 600;
-      text-transform: uppercase;
+      font-size: 1.01em;
+      letter-spacing: 0.01em;
+      color: #ffbe2e;
+      font-weight: 700;
+      text-shadow:0 1px 0 #fff4b2;
     }
     .footer {
-      padding: 2.4em 0 1.5em 0;
+      padding: 2.5em 0 2em 0;
       text-align: center;
-      color: var(--text-muted);
-      font-size: 1.05em;
-      font-family: 'Space Grotesk', Arial, sans-serif;
-      background: var(--bg-light);
+      color: #bdb08f;
+      font-size: 1.09em;
+      font-family: 'Outfit', 'Montserrat', Arial, sans-serif;
+      letter-spacing: 0.04em;
+      background: #fff8f1;
       margin-top: 3em;
-      border-top: 2px solid #e2e8f0;
+      border-top: 3px solid #ffd966;
     }
   </style>
 </head>
 <body>
-
-  <header>
-    <div class="container">
-      <div class="hero-title">
-        NEXUS WEEKLY DROP
-      </div>
-      <div class="hero-desc">
-        The most electrifying tools for digital creators. Curated weekly.<br>
-        Discover game-changers, connect with trailblazers, and stay future-proof.
-      </div>
-      <div class="cta-row">
-        <button class="cta-btn">Get Started Free</button>
-        <button class="cta-btn secondary">Watch Demo</button>
-      </div>
+  <!-- Hero Section -->
+  <section class="hero-bg max-w-5xl mx-auto section">
+    <div class="hero-blob hero-blob1"></div>
+    <div class="hero-blob hero-blob2"></div>
+    <div class="hero-title">
+      <span class="hero-emoji">💥</span>
+      Nexus Weekly Drop
+      <span class="hero-emoji">💡</span>
     </div>
-  </header>
+    <div class="hero-desc">
+      The most electrifying tools for digital creators. Curated weekly.<br>
+      Discover game-changers, connect with trailblazers, and stay future-proof.
+    </div>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-3" style="position:relative;z-index:1;">
+      <button class="cta-btn">Get Started Free</button>
+      <button class="cta-btn secondary">Watch Demo</button>
+    </div>
+  </section>
 
-  <main class="container">
-    <div class="section-title">This Week's Top 5 Tools</div>
-    <div class="tools-list">
+  <!-- Directory / Weekly Drop -->
+  <main class="max-w-5xl mx-auto px-4 section">
+    <div class="section-title">
+      <span>🛠️ This Week's Top 5 Tools</span>
+      <span class="section-underline"></span>
+    </div>
+    <div class="card-list">
       <!-- Tool Card Example -->
       <div class="tool-card">
         <div class="tool-icon">⚡</div>
         <div>
-          <div class="tool-title-row">
+          <div class="card-title-row">
             <h3>QUANTUM.AI</h3>
             <span class="tool-badge">AI Core</span>
           </div>
@@ -288,7 +332,7 @@
       <div class="tool-card">
         <div class="tool-icon">🔮</div>
         <div>
-          <div class="tool-title-row">
+          <div class="card-title-row">
             <h3>NEXUS.VISION</h3>
             <span class="tool-badge">AR/VR</span>
           </div>
@@ -299,7 +343,7 @@
       <div class="tool-card">
         <div class="tool-icon">🛡️</div>
         <div>
-          <div class="tool-title-row">
+          <div class="card-title-row">
             <h3>CIPHER.SHIELD</h3>
             <span class="tool-badge">Security</span>
           </div>
@@ -310,7 +354,7 @@
       <div class="tool-card">
         <div class="tool-icon">🚀</div>
         <div>
-          <div class="tool-title-row">
+          <div class="card-title-row">
             <h3>VELOCITY.CORE</h3>
             <span class="tool-badge">Speed</span>
           </div>
@@ -321,7 +365,7 @@
       <div class="tool-card">
         <div class="tool-icon">✨</div>
         <div>
-          <div class="tool-title-row">
+          <div class="card-title-row">
             <h3>INFINITY.ENGINE</h3>
             <span class="tool-badge">Quantum</span>
           </div>
@@ -330,24 +374,36 @@
         </div>
       </div>
     </div>
+  </main>
 
-    <div class="section-title" style="margin-top:4rem;">Archive: Previous Weeks</div>
+  <!-- Archive Section -->
+  <section class="max-w-5xl mx-auto px-4 archive-section">
+    <div class="section-title" style="color:#e08f06;">
+      <span>📦 Archive: Previous Weeks</span>
+      <span class="section-underline"></span>
+    </div>
     <div class="archive-card">
       <strong>Week 28 (July 7 - July 13):</strong>
       <ul>
-        <li><span class="tool-badge">AI Core</span> <span class="font-bold" style="color:var(--text-main)">ALPHA.MIND</span> <span class="tool-maker" style="color:var(--text-accent)">by Jane Roe</span></li>
-        <li><span class="tool-badge">Security</span> <span class="font-bold" style="color:var(--text-main)">SECURENET</span> <span class="tool-maker" style="color:var(--text-accent)">by John Doe</span></li>
+        <li><span class="tool-badge">AI Core</span> <span class="font-bold" style="color:#e08f06">ALPHA.MIND</span> <span class="tool-maker" style="color:#8b7964;">by Jane Roe</span></li>
+        <li><span class="tool-badge">Security</span> <span class="font-bold" style="color:#e08f06">SECURENET</span> <span class="tool-maker" style="color:#8b7964;">by John Doe</span></li>
       </ul>
     </div>
     <div class="archive-card">
       <strong>Week 27 (June 30 - July 6):</strong>
       <ul>
-        <li><span class="tool-badge">AR/VR</span> <span class="font-bold" style="color:var(--text-main)">VISIONARY</span> <span class="tool-maker" style="color:var(--text-accent)">by Max Lee</span></li>
+        <li><span class="tool-badge">AR/VR</span> <span class="font-bold" style="color:#e08f06">VISIONARY</span> <span class="tool-maker" style="color:#8b7964;">by Max Lee</span></li>
       </ul>
     </div>
+  </section>
 
-    <div class="section-title" style="margin-top:4rem;">Founders of this Week's Tools</div>
-    <div class="founders-grid">
+  <!-- Founders Section -->
+  <section class="max-w-5xl mx-auto px-4 founders-section">
+    <div class="section-title" style="color:#27B1FF;">
+      <span>🌟 Founders of this Week's Tools</span>
+      <span class="section-underline"></span>
+    </div>
+    <div class="grid md:grid-cols-3 gap-4">
       <div class="founder-card">
         <img class="founder-avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Dr. Zephyr" />
         <div>
@@ -384,10 +440,11 @@
         </div>
       </div>
     </div>
-  </main>
+  </section>
 
+  <!-- Footer -->
   <footer class="footer">
-    © 2077 NEXUS CORP • WEEKLY TOOLS DROP • ALL RIGHTS RESERVED
+    🚀 Made with fun, by the NEXUS crew • WEEKLY TOOLS DROP • All Rights Reserved
   </footer>
 </body>
 </html>
