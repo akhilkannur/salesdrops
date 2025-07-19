@@ -1,99 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weekly Sales Tool Drops</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <title>Tool Drop Weekly</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      body {
-        background-color: #fdfaf6;
-        font-family: 'Helvetica Neue', sans-serif;
+      html {
+        font-family: 'Inter', sans-serif;
       }
     </style>
   </head>
-  <body class="text-gray-800">
-    <!-- Hero Section -->
-    <section class="text-center py-20 px-4 max-w-4xl mx-auto">
-      <h1 class="text-5xl md:text-6xl font-extrabold mb-6 leading-tight tracking-tight">
-        The Freshest Sales Tools, Every Week
-      </h1>
-      <p class="text-xl md:text-2xl mb-8 text-gray-600">
-        Handpicked sales tools that just dropped. No clutter, just high-signal gear.
-      </p>
-      <div class="flex flex-col sm:flex-row justify-center gap-4">
-        <a href="#" class="bg-blue-600 text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-blue-700 transition">Get Started Free</a>
-        <a href="#" class="border border-gray-300 text-gray-800 px-6 py-3 rounded-full text-lg font-semibold hover:bg-gray-100 transition">Watch Demo</a>
+  <body class="bg-[#fefaf6] text-[#1e1e1e]">
+    <!-- Hero -->
+    <section class="py-20 px-6 lg:px-20 bg-[#fefaf6]">
+      <div class="max-w-5xl mx-auto text-center">
+        <h1 class="text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
+          🔥 This Week's Tool Drop
+        </h1>
+        <p class="text-xl text-gray-700 mb-10">
+          Curated tools dropping every Friday. Fresh picks only. No fluff.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a
+            href="#drop"
+            class="px-6 py-3 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
+            >Browse Tools</a
+          >
+          <a
+            href="#demo"
+            class="px-6 py-3 rounded-full border border-blue-600 text-blue-600 font-semibold hover:bg-blue-50 transition"
+            >Watch Demo</a
+          >
+        </div>
       </div>
     </section>
 
-    <!-- Weekly Drop Grid -->
-    <section class="px-4 py-12 max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold mb-10">🔥 This Week’s Drop</h2>
-      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        <!-- Tool Card -->
-        <div class="bg-white rounded-3xl shadow-md p-6 hover:shadow-lg transition">
-          <img src="https://via.placeholder.com/80" alt="Tool logo" class="mb-4 rounded-xl" />
-          <h3 class="text-xl font-semibold mb-2">CloseAI</h3>
-          <p class="text-gray-600 mb-4">AI email assistant that writes replies and follow-ups that convert.</p>
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">AI</span>
-            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Email</span>
+    <!-- Drop List -->
+    <section id="drop" class="py-16 px-6 lg:px-20 bg-[#fffdf8]">
+      <div class="max-w-6xl mx-auto grid gap-10 md:grid-cols-2">
+        <!-- Card -->
+        <div class="bg-white rounded-3xl shadow-xl p-6 hover:scale-[1.01] transition-all border border-gray-100">
+          <div class="flex items-center gap-4 mb-4">
+            <img src="https://logo.clearbit.com/notion.so" alt="logo" class="w-12 h-12 rounded-xl bg-gray-100" />
+            <div>
+              <h3 class="text-2xl font-bold">Notion</h3>
+              <p class="text-sm text-gray-500">Workspace for docs, tasks & wikis</p>
+            </div>
           </div>
-          <a href="#" class="text-blue-600 font-medium hover:underline">View Tool →</a>
+          <p class="text-gray-700 mb-4">
+            All-in-one tool to write, plan, and organize. Now with AI baked in.
+          </p>
+          <div class="flex gap-2 mb-4 flex-wrap">
+            <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">Productivity</span>
+            <span class="px-3 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full">Team Tools</span>
+          </div>
+          <a href="#" class="inline-block mt-auto text-blue-600 font-medium hover:underline">View Profile →</a>
         </div>
 
-        <!-- Repeat Tool Card -->
-        <div class="bg-white rounded-3xl shadow-md p-6 hover:shadow-lg transition">
-          <img src="https://via.placeholder.com/80" alt="Tool logo" class="mb-4 rounded-xl" />
-          <h3 class="text-xl font-semibold mb-2">PitchFlow</h3>
-          <p class="text-gray-600 mb-4">Create personalized pitches at scale in seconds.</p>
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Outbound</span>
-            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Automation</span>
+        <!-- Repeat Cards -->
+        <div class="bg-white rounded-3xl shadow-xl p-6 hover:scale-[1.01] transition-all border border-gray-100">
+          <div class="flex items-center gap-4 mb-4">
+            <img src="https://logo.clearbit.com/linear.app" alt="logo" class="w-12 h-12 rounded-xl bg-gray-100" />
+            <div>
+              <h3 class="text-2xl font-bold">Linear</h3>
+              <p class="text-sm text-gray-500">Issue tracking for modern teams</p>
+            </div>
           </div>
-          <a href="#" class="text-blue-600 font-medium hover:underline">View Tool →</a>
+          <p class="text-gray-700 mb-4">
+            Ultra-fast, beautiful issue tracking with keyboard-driven workflows.
+          </p>
+          <div class="flex gap-2 mb-4 flex-wrap">
+            <span class="px-3 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">Dev Tools</span>
+            <span class="px-3 py-1 bg-pink-100 text-pink-800 text-xs rounded-full">Project Mgmt</span>
+          </div>
+          <a href="#" class="inline-block mt-auto text-blue-600 font-medium hover:underline">View Profile →</a>
         </div>
 
-        <div class="bg-white rounded-3xl shadow-md p-6 hover:shadow-lg transition">
-          <img src="https://via.placeholder.com/80" alt="Tool logo" class="mb-4 rounded-xl" />
-          <h3 class="text-xl font-semibold mb-2">LeadsLayer</h3>
-          <p class="text-gray-600 mb-4">Find hidden leads using public data and enrichment magic.</p>
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Prospecting</span>
-            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Data</span>
-          </div>
-          <a href="#" class="text-blue-600 font-medium hover:underline">View Tool →</a>
-        </div>
-
-        <!-- Add 2 more dummy cards -->
-        <div class="bg-white rounded-3xl shadow-md p-6 hover:shadow-lg transition">
-          <img src="https://via.placeholder.com/80" alt="Tool logo" class="mb-4 rounded-xl" />
-          <h3 class="text-xl font-semibold mb-2">DripDeck</h3>
-          <p class="text-gray-600 mb-4">Send automated sequences with killer visuals and CTAs.</p>
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Cold Outreach</span>
-            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Campaigns</span>
-          </div>
-          <a href="#" class="text-blue-600 font-medium hover:underline">View Tool →</a>
-        </div>
-
-        <div class="bg-white rounded-3xl shadow-md p-6 hover:shadow-lg transition">
-          <img src="https://via.placeholder.com/80" alt="Tool logo" class="mb-4 rounded-xl" />
-          <h3 class="text-xl font-semibold mb-2">SignalStack</h3>
-          <p class="text-gray-600 mb-4">Sync your CRM with live buyer intent signals.</p>
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Intent</span>
-            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Sync</span>
-          </div>
-          <a href="#" class="text-blue-600 font-medium hover:underline">View Tool →</a>
-        </div>
+        <!-- Add 3 more tools here with same structure -->
       </div>
     </section>
 
     <!-- Footer -->
-    <footer class="text-center text-sm text-gray-500 py-10">
-      © 2025 Weekly Sales Tools Drop. All rights reserved.
+    <footer class="py-10 px-6 lg:px-20 bg-[#fefaf6] border-t border-gray-200 mt-10">
+      <div class="max-w-5xl mx-auto text-center text-sm text-gray-500">
+        © 2025 Tool Drop Weekly · Updated every Friday
+      </div>
     </footer>
   </body>
 </html>
