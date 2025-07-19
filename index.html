@@ -7,140 +7,71 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Outfit:wght@700;900&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    html, body {
+    body {
       font-family: 'Outfit', 'Montserrat', Arial, sans-serif;
       background: #fff8f1;
       color: #201a15;
       font-size: 18px;
-      line-height: 1.5;
-      letter-spacing: 0.01em;
-      min-height: 100%;
+      min-height: 100vh;
     }
-    /* --- Hero and playful backgrounds --- */
-    .hero-bg {
-      position: relative;
-      background: #fff0e8;
-      border-radius: 2.5rem;
-      padding: 3.5rem 1.5rem 3rem 1.5rem;
-      margin-bottom: 3.5rem;
-      overflow: hidden;
-    }
-    .hero-blob {
-      position: absolute;
-      z-index: 0;
-      border-radius: 50%;
-      filter: blur(0.5px);
-    }
-    .hero-blob1 {
-      top: -70px; left: -110px;
-      width: 300px; height: 300px;
-      background: radial-gradient(circle at 40% 65%, #ffd966 0%, #ffe9a0 100%);
-      opacity: 0.6;
-    }
-    .hero-blob2 {
-      bottom: -50px; right: -100px;
-      width: 230px; height: 230px;
-      background: radial-gradient(circle at 60% 40%, #8ecaff 0%, #e0f4ff 100%);
-      opacity: 0.45;
-    }
-    .hero-title {
-      font-family: 'Outfit', 'Montserrat', Arial, sans-serif;
-      font-size: 3.7rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      color: #201a15;
-      margin-bottom: 1.25rem;
-      line-height: 1.02;
-      display: flex;
-      align-items: center;
-      gap: 0.7em;
-      position: relative;
-      z-index: 1;
-      letter-spacing: 0.01em;
-    }
-    .hero-emoji { font-size: 2.3em; margin-right: 0.08em; filter: drop-shadow(0 2px 0 #ffb30090);}
-    .hero-desc {
-      font-size: 1.32rem;
-      color: #8b7964;
-      max-width: 550px;
-      margin: 0 auto 2.5rem auto;
-      font-weight: 600;
-      position: relative;
-      z-index: 1;
-    }
-    .cta-btn {
-      background: #27B1FF;
-      color: #fff;
-      border: none;
-      border-radius: 999px;
-      font-size: 1.2rem;
-      font-weight: 900;
-      padding: 1em 2.7em;
-      margin-right: 1.1em;
-      margin-bottom: 0.4em;
-      letter-spacing: 0.05em;
-      box-shadow: 0 4px 22px #27b1ff36;
-      text-transform: uppercase;
-      position: relative;
-      transition: background 0.18s, box-shadow 0.14s, transform 0.12s;
-      outline: 3px solid transparent;
-    }
-    .cta-btn.secondary {
-      background: #fff;
-      color: #27B1FF;
-      border: 2.5px solid #27B1FF;
-      box-shadow: 0 2px 8px 0 #8ecaff44;
-    }
-    .cta-btn:hover, .cta-btn:focus {
-      background: #ffbe2e;
-      color: #201a15;
-      box-shadow: 0 8px 30px #ffd96638, 0 0 0 4px #ffbe2e44;
-      transform: scale(1.04) translateY(-2px) rotate(-1deg);
-    }
-    .cta-btn.secondary:hover, .cta-btn.secondary:focus {
-      background: #ffe9a0;
-      color: #201a15;
-      border-color: #ffbe2e;
-    }
-    /* --- Layout --- */
-    .main-layout {
+    /* Layout */
+    .layout {
       display: flex;
       flex-direction: column;
+      gap: 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
     }
-    @media (min-width:1000px) {
-      .main-layout {
+    @media (min-width: 1100px) {
+      .layout {
         flex-direction: row;
+        align-items: flex-start;
+        gap: 3.5rem;
       }
-      .main-content {width: 69%;}
-      .sidebar {width: 29%;}
+      .sidebar {
+        flex: 0 0 340px;
+        max-width: 360px;
+        min-width: 320px;
+      }
+      .main-content {
+        flex: 1;
+        min-width: 0;
+      }
     }
-    .main-content {flex:1;}
     .sidebar {
-      margin-bottom: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-bottom: 2rem;
     }
-    /* --- Countdown Timer --- */
-    .countdown-box {
+    .main-content > section {
+      margin-bottom: 3rem;
+    }
+
+    /* Sidebar cards */
+    .sidebar-card {
       background: #fffbe0;
-      border-radius: 2.1rem;
+      border-radius: 1.8rem;
       border: 3px solid #ffd966;
-      box-shadow: 0 2px 12px #ffd9661a;
-      padding: 1.6rem 1.2rem;
-      margin-bottom:2rem;
+      box-shadow: 0 1px 8px #ffd96620;
+      padding: 1.6rem 1.3rem 1.3rem 1.3rem;
+      margin-bottom: 0;
       text-align: center;
     }
+    /* Countdown */
     .countdown-title {
-      font-size: 1.1em;
+      font-size: 1.08em;
       font-weight: 900;
       color: #e08f06;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
       text-transform: uppercase;
-      letter-spacing: 0.07em;
+      letter-spacing: 0.08em;
     }
     .timer {
       display: flex;
       justify-content: center;
-      gap: 1.8rem;
-      font-family: 'Outfit', 'Montserrat', Arial, sans-serif;
+      gap: 1.3rem;
     }
     .timer-block {
       display: flex;
@@ -152,29 +83,21 @@
       font-weight: 900;
       color: #27B1FF;
       background: #fff;
-      border-radius: 1.15em;
+      border-radius: 1.2em;
       padding: 0.1em 0.7em;
       margin-bottom: 0.1em;
-      box-shadow: 0 1px 3px #27b1ff30;
+      min-width: 46px;
+      box-shadow: 0 1px 3px #27b1ff1c;
     }
     .timer-label {
-      font-size: 0.9rem;
+      font-size: 0.93rem;
       color: #ffbe2e;
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: 0.08em;
     }
-    /* --- Email alerts --- */
-    .email-section {
-      background: #fff;
-      border-radius: 1.7rem;
-      border: 2.7px solid #27B1FF;
-      box-shadow: 0 1px 8px 0 #27b1ff1a;
-      padding: 1.8em 1.3em 1.5em 1.3em;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
+    /* Email */
     .email-title {
-      font-size: 1.2em;
+      font-size: 1.14em;
       font-weight: 900;
       color: #27B1FF;
       margin-bottom: 0.3em;
@@ -193,8 +116,8 @@
       font-size: 1.07rem;
       outline: none;
       width: 80%;
-      max-width: 260px;
-      margin-bottom: 0.9em;
+      max-width: 220px;
+      margin-bottom: 0.7em;
       transition: border 0.14s;
     }
     .email-input:focus {
@@ -209,7 +132,7 @@
       font-size: 1.09rem;
       border:none;
       padding: 0.7em 2em;
-      margin-left: 0.6em;
+      margin-left: 0.4em;
       transition: background 0.14s;
       cursor:pointer;
       box-shadow: 0 2px 6px #ffd96633;
@@ -218,27 +141,18 @@
       background: #27B1FF;
       color: #fff;
     }
-    /* --- Sponsors --- */
-    .sponsors-section {
-      background: #fffbe0;
-      border-radius: 2.1rem;
-      border: 3px solid #ffd966;
-      box-shadow: 0 1px 8px 0 #ffd9661a;
-      padding: 1.3em;
-      margin-bottom: 1.2em;
-    }
+    /* Sponsors */
     .sponsors-title {
-      font-family: 'Outfit', 'Montserrat', Arial, sans-serif;
-      font-size: 1.2em;
+      font-size: 1.07em;
       font-weight: 900;
       color: #e08f06;
-      margin-bottom: 0.3em;
+      margin-bottom: 0.48em;
       letter-spacing: 0.02em;
       text-transform: uppercase;
     }
     .sponsors-list {
       display: flex;
-      gap: 1em;
+      gap: 0.7em;
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
@@ -246,18 +160,42 @@
     .sponsor-badge {
       background: #fff;
       border: 2px solid #27B1FF;
-      border-radius: 1.2em;
-      padding: 0.5em 1.4em;
+      border-radius: 1.5em;
+      padding: 0.5em 1.5em;
       font-weight: 900;
       color: #27B1FF;
-      font-size: 1.1em;
-      margin: 0.3em 0;
+      font-size: 1.09em;
+      margin: 0.25em 0;
       display: flex;
       align-items:center;
       gap:0.4em;
       box-shadow:0 1px 4px #27b1ff12;
     }
-    /* --- Section Underline --- */
+    /* Stats */
+    .stats-title {
+      font-size: 1em;
+      font-weight: 900;
+      color: #27B1FF;
+      margin-bottom: 0.7em;
+      letter-spacing: 0.01em;
+    }
+    .stats-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.47em;
+      font-size: 1.01em;
+      color: #e08f06;
+      font-weight: 700;
+      margin-bottom: 0;
+      margin-top: 0.7em;
+    }
+    .stats-label {
+      color: #8b7964;
+      font-weight: 700;
+      margin-right: 0.3em;
+    }
+
+    /* Main content section titles */
     .section-title {
       font-family: 'Outfit', 'Montserrat', Arial, sans-serif;
       font-size: 2.1rem;
@@ -280,22 +218,172 @@
       margin-top: -6px;
       margin-left: 4px;
     }
-    /* --- Responsive tweaks --- */
-    @media (max-width: 1000px) {
-      .main-layout {flex-direction: column;}
-      .sidebar {width: 100%;}
-      .main-content {width: 100%;}
+    /* Cards */
+    .card-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.3rem;
+      padding-bottom: 1.5rem;
     }
-    @media (max-width: 700px) {
-      .hero-title {font-size:2.1rem;}
-      .section-title {font-size:1.2rem;}
-      .tool-card {padding:1.3em;}
+    @media (min-width: 700px) {
+      .card-list {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .tool-card {
+      background: #fffdf7;
+      border-radius: 2.7rem;
+      border: 3.5px solid #ffd966;
+      box-shadow: 0 6px 28px 0 #27b1ff14, 0 3px 0 #ffbe2e1b;
+      padding: 2.2rem 2rem 1.7rem 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      position: relative;
+      min-height: 180px;
+      transition: box-shadow 0.17s, border-color 0.15s, transform 0.13s;
+    }
+    .tool-card:hover {
+      border-color: #27B1FF;
+      box-shadow: 0 18px 44px 0 #27b1ff45, 0 0 0 7px #ffe9a062;
+      transform: translateY(-4px) scale(1.021) rotate(-1deg);
+    }
+    .tool-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 2.3rem;
+      background: linear-gradient(135deg, #27B1FF 0%, #FFD966 100%);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.7rem;
+      font-weight: 900;
+      box-shadow: 0 2px 10px #27b1ff46;
+      flex-shrink: 0;
+      margin-right: 0.5rem;
+      border: 2px solid #fff4b2;
+    }
+    .card-title-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      margin-bottom: 0.3em;
+    }
+    .tool-card h3 {
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: #201a15;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      margin: 0;
+    }
+    .tool-badge {
+      font-family: 'Outfit', 'Montserrat', Arial, sans-serif;
+      background: #fff0e8;
+      color: #ffbe2e;
+      border-radius: 1.7em;
+      font-size: 1.03em;
+      font-weight: 900;
+      padding: 0.24em 1.35em;
+      letter-spacing: 0.05em;
+      border: 2px solid #ffd966;
+      margin-left: 0.2em;
+      margin-right: 0.2em;
+      box-shadow: 0 1px 3px #ffd96630;
+      position: relative;
+      top: 1px;
+    }
+    .tool-desc {
+      color: #8b7964;
+      font-size: 1.09rem;
+      font-weight: 600;
+      margin-bottom: 0.3em;
+      margin-top: 0.1em;
+      line-height: 1.5;
+    }
+    .tool-maker {
+      font-size: 1.07rem;
+      color: #27B1FF;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-top: 0.2em;
+      letter-spacing:0.03em;
+    }
+    .archive-section, .founders-section {
+      margin-top: 4rem;
+    }
+    .archive-card {
+      background: #fffbe0;
+      border-radius: 1.7rem;
+      border: 3.5px solid #ffd966;
+      box-shadow: 0 1px 8px 0 #ffd9661a;
+      padding: 1.7em 1.2em;
+      margin-bottom: 1.2em;
+    }
+    .archive-card strong {
+      color: #e08f06;
+      font-size: 1.14em;
+      font-weight: 900;
+      letter-spacing:0.02em;
+    }
+    .archive-card ul {
+      margin-top: 0.7em;
+      margin-left: 1.2em;
+      color: #27B1FF;
+      font-size: 1.06em;
+      font-weight: 700;
+    }
+    .founder-card {
+      background: #fffdf7;
+      border-radius: 2.2rem;
+      border: 3px solid #27B1FF;
+      padding: 1.4em;
+      display: flex;
+      align-items: center;
+      gap: 1.1em;
+      margin-bottom: 1.1em;
+      box-shadow: 0 3px 14px #27b1ff14;
+      position: relative;
+    }
+    .founder-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #ffd966;
+      background: #fff4b2;
+    }
+    .founder-name {
+      font-size: 1.15em;
+      font-weight: 900;
+      letter-spacing: 0.01em;
+      color: #27B1FF;
+      margin-bottom: 0.1em;
+    }
+    .founder-tool {
+      font-size: 1.01em;
+      letter-spacing: 0.01em;
+      color: #ffbe2e;
+      font-weight: 700;
+      text-shadow:0 1px 0 #fff4b2;
+    }
+    .footer {
+      padding: 2.5em 0 2em 0;
+      text-align: center;
+      color: #bdb08f;
+      font-size: 1.09em;
+      font-family: 'Outfit', 'Montserrat', Arial, sans-serif;
+      letter-spacing: 0.04em;
+      background: #fff8f1;
+      margin-top: 3em;
+      border-top: 3px solid #ffd966;
     }
   </style>
 </head>
 <body>
   <!-- HERO -->
-  <section class="hero-bg max-w-5xl mx-auto section">
+  <section class="hero-bg max-w-5xl mx-auto" style="margin-bottom:3rem;">
     <div class="hero-blob hero-blob1"></div>
     <div class="hero-blob hero-blob2"></div>
     <div class="hero-title">
@@ -312,12 +400,12 @@
       <button class="cta-btn secondary">Watch Demo</button>
     </div>
   </section>
-  <!-- MAIN LAYOUT (Sidebar + Content) -->
-  <div class="main-layout max-w-6xl mx-auto px-3 sm:px-8">
+  <!-- MAIN LAYOUT -->
+  <div class="layout">
     <!-- SIDEBAR -->
-    <aside class="sidebar flex flex-col gap-4 mb-8">
+    <aside class="sidebar">
       <!-- Countdown Timer -->
-      <div class="countdown-box">
+      <div class="sidebar-card">
         <div class="countdown-title">Next Drop In</div>
         <div class="timer" id="timer">
           <div class="timer-block">
@@ -335,16 +423,16 @@
         </div>
       </div>
       <!-- Email Alerts -->
-      <div class="email-section">
+      <div class="sidebar-card">
         <div class="email-title">📬 Get Drop Alerts</div>
-        <div class="email-desc">Be first to discover new tools. Weekly drops, no spam!</div>
+        <div class="email-desc">Be first to discover new tools.<br>Weekly drops, no spam!</div>
         <form onsubmit="return false;" class="flex flex-col items-center">
           <input class="email-input" type="email" placeholder="your@email.com" required>
           <button class="email-btn" type="submit">Subscribe</button>
         </form>
       </div>
       <!-- Sponsors -->
-      <div class="sponsors-section">
+      <div class="sidebar-card">
         <div class="sponsors-title">Our Sponsors</div>
         <div class="sponsors-list">
           <span class="sponsor-badge">🌟 Acme Inc.</span>
@@ -352,11 +440,21 @@
           <span class="sponsor-badge">👾 PixelSoft</span>
         </div>
       </div>
+      <!-- Platform Stats -->
+      <div class="sidebar-card">
+        <div class="stats-title">Platform Stats</div>
+        <div class="stats-list">
+          <div><span class="stats-label">🛠️ Tools:</span> 5</div>
+          <div><span class="stats-label">👤 Makers:</span> 5</div>
+          <div><span class="stats-label">👀 Views:</span> 2,431</div>
+          <div><span class="stats-label">📦 Drops:</span> 3</div>
+        </div>
+      </div>
     </aside>
-    <!-- MAIN CONTENT (Directory, Archive, Founders) -->
+    <!-- MAIN CONTENT -->
     <div class="main-content">
       <!-- Directory / Weekly Drop -->
-      <div>
+      <section>
         <div class="section-title">
           <span>🛠️ This Week's Top 5 Tools</span>
           <span class="section-underline"></span>
@@ -418,9 +516,9 @@
             </div>
           </div>
         </div>
-      </div>
+      </section>
       <!-- Archive Section -->
-      <div class="archive-section">
+      <section class="archive-section">
         <div class="section-title" style="color:#e08f06;">
           <span>📦 Archive: Previous Weeks</span>
           <span class="section-underline"></span>
@@ -438,9 +536,9 @@
             <li><span class="tool-badge">AR/VR</span> <span class="font-bold" style="color:#e08f06">VISIONARY</span> <span class="tool-maker" style="color:#8b7964;">by Max Lee</span></li>
           </ul>
         </div>
-      </div>
+      </section>
       <!-- Founders Section -->
-      <div class="founders-section">
+      <section class="founders-section">
         <div class="section-title" style="color:#27B1FF;">
           <span>🌟 Founders of this Week's Tools</span>
           <span class="section-underline"></span>
@@ -482,7 +580,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   </div>
   <!-- Footer -->
@@ -491,10 +589,9 @@
   </footer>
   <!-- Countdown Timer Script -->
   <script>
-    // Set the next drop time (YYYY-MM-DDTHH:MM:SSZ)
-    // Example: next Friday at noon UTC
+    // Set the next drop (example: next Friday at noon UTC)
     const nextDrop = new Date();
-    nextDrop.setDate(nextDrop.getDate() + ((5 - nextDrop.getDay() + 7) % 7 || 7)); // Next Friday
+    nextDrop.setDate(nextDrop.getDate() + ((5 - nextDrop.getDay() + 7) % 7 || 7));
     nextDrop.setHours(12,0,0,0);
 
     function updateTimer() {
