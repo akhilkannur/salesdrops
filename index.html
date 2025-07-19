@@ -1,16 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SalesDrops</title>
-</head>
-<body>
-  <h1>🚀 SalesDrops</h1>
-  <div id="tool-list"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SalesDrops – Weekly Sales Tools Drop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-[#fdfaf5] text-[#1f1f1f]">
+    <header class="text-center py-12">
+      <h1 class="text-5xl md:text-6xl font-bold mb-4">🚀 SalesDrops</h1>
+      <p class="text-xl mb-6 max-w-xl mx-auto">
+        Each week, we feature 5 new tools built to make salespeople better. Like
+        a sneaker drop — for sales tools.
+      </p>
+      <div class="flex justify-center gap-4">
+        <a
+          href="#"
+          class="bg-blue-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-600 transition"
+          >🎥 Watch Demo</a
+        >
+        <a
+          href="#"
+          class="border border-blue-500 text-blue-500 px-6 py-3 rounded-full font-semibold hover:bg-blue-100 transition"
+          >✨ Get Started Free</a
+        >
+      </div>
+    </header>
 
-  <!-- Link your scripts -->
-  <script type="module" src="supabase.js"></script>
-  <script type="module" src="index.js"></script>
-</body>
+    <main class="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pb-24">
+      <!-- Tool Card -->
+      <div class="bg-white p-6 rounded-2xl shadow-md">
+        <div class="flex items-center gap-4 mb-4">
+          <img
+            src="https://logo.clearbit.com/coldreach.io"
+            alt="ColdReach"
+            class="w-12 h-12 rounded-full"
+          />
+          <h2 class="text-xl font-bold">ColdReach AI</h2>
+        </div>
+        <p class="text-gray-700 mb-4 text-sm">
+          AI-powered cold outreach that helped Sarah Lee go viral post-launch.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-xs">AI</span>
+          <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-xs">Outreach</span>
+          <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-xs">B2B</span>
+        </div>
+        <a
+          href="https://coldreach.io"
+          target="_blank"
+          class="inline-block mt-auto bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-200 transition"
+          >View Tool</a
+        >
+      </div>
+
+      <!-- Add more cards here in similar format -->
+    </main>
+  </body>
 </html>
