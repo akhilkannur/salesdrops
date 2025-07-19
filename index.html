@@ -1,79 +1,51 @@
 <!DOCTYPE html>
-<html lang="en" class="bg-[#fdfaf5] text-[#2a2a2a]">
+<html lang="en" class="bg-[#fdf6f0] text-gray-800 font-sans">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SalesDrops – Weekly Sales Tools Showcase</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700&display=swap" rel="stylesheet" />
+    <title>SalesDrops — Discover Fresh Sales Tools Weekly</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
     <style>
-      body { font-family: 'Rubik', sans-serif; }
+      body { font-family: 'Nunito', sans-serif; }
     </style>
   </head>
-  <body class="min-h-screen px-4 sm:px-10 py-8">
-
-    <!-- Hero Section -->
-    <section class="text-center space-y-4 mb-12">
-      <h1 class="text-4xl sm:text-6xl font-bold text-[#222] leading-tight">
-        🧰 SalesDrops
+  <body class="p-6 sm:p-10">
+    <!-- Hero -->
+    <section class="text-center max-w-3xl mx-auto my-16">
+      <h1 class="text-4xl sm:text-6xl font-bold mb-4 leading-tight">
+        🔥 SalesDrops<br />
+        <span class="text-blue-600">5 Fresh Sales Tools</span> Every Week
       </h1>
-      <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
-        Discover 5 cool new sales tools every week – curated, fresh, and founder-friendly.
+      <p class="text-lg sm:text-xl text-gray-600 mb-6">
+        Soft, handpicked, no fluff. Tools for sales, discovery, and closing.
       </p>
-      <div class="mt-6 flex justify-center space-x-4">
-        <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-full font-semibold transition">
-          🚀 Get Started Free
-        </a>
-        <a href="#" class="border border-gray-300 hover:border-gray-500 text-gray-700 px-6 py-2 rounded-full transition">
-          🎥 Watch Demo
-        </a>
+      <div class="flex justify-center gap-4">
+        <a href="#" class="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition">Get Started Free</a>
+        <a href="#" class="border border-blue-600 text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-blue-50 transition">Watch Demo</a>
       </div>
     </section>
 
     <!-- Directory Grid -->
-    <section class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Card Example -->
-      <div class="bg-white rounded-2xl shadow-md p-5 flex flex-col space-y-3 transition hover:shadow-lg">
-        <div class="flex items-center space-x-3">
-          <img src="https://logo.clearbit.com/coldreach.io" class="w-10 h-10 rounded" />
-          <h3 class="text-xl font-semibold">ColdReach AI</h3>
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <!-- Sample Card -->
+      <div class="bg-white rounded-2xl shadow-md p-6 flex flex-col justify-between">
+        <div>
+          <img src="https://logo.clearbit.com/coldreach.io" alt="ColdReach logo" class="w-14 h-14 mb-4 rounded-xl" />
+          <h3 class="text-xl font-bold mb-1">ColdReach AI</h3>
+          <p class="text-sm text-gray-600 mb-3">Generate high-converting cold emails in seconds using AI.</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full">AI</span>
+            <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-3 py-1 rounded-full">Email</span>
+            <span class="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">Outbound</span>
+          </div>
         </div>
-        <p class="text-sm text-gray-600">
-          AI-powered cold outreach generator – went viral on launch!
-        </p>
-        <div class="flex space-x-2">
-          <span class="text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full">AI</span>
-          <span class="text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded-full">Outreach</span>
-        </div>
-        <a href="https://coldreach.io" target="_blank" class="mt-auto text-blue-600 font-medium hover:underline">
-          🔗 View Tool
-        </a>
+        <a href="https://coldreach.io" target="_blank" class="mt-auto inline-block text-sm font-semibold text-blue-600 hover:underline">🔗 View Profile</a>
       </div>
 
-      <!-- Add 4 More Cards Below -->
-      <!-- Example Placeholder -->
-      <div class="bg-white rounded-2xl shadow-md p-5 flex flex-col space-y-3">
-        <div class="flex items-center space-x-3">
-          <div class="w-10 h-10 bg-gray-200 rounded"></div>
-          <h3 class="text-xl font-semibold">Tool Name</h3>
-        </div>
-        <p class="text-sm text-gray-600">
-          Short one-liner about the tool and what makes it cool.
-        </p>
-        <div class="flex space-x-2">
-          <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-full">CRM</span>
-        </div>
-        <a href="#" target="_blank" class="mt-auto text-blue-600 font-medium hover:underline">
-          🔗 View Tool
-        </a>
-      </div>
+      <!-- Duplicate that card for now or add real tools later -->
+      <!-- Example: Copy and update logo, name, desc, tags, and link -->
 
-      <!-- Repeat up to 5 total -->
     </section>
-
-    <!-- Footer -->
-    <footer class="mt-16 text-center text-sm text-gray-400">
-      Built with ❤️ by Akhil · Updated weekly · ✉️ Submit a tool
-    </footer>
   </body>
 </html>
