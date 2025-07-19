@@ -1,0 +1,1 @@
+console.log('SalesDrops frontend ready for Supabase');
