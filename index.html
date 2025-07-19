@@ -1,51 +1,99 @@
 <!DOCTYPE html>
-<html lang="en" class="bg-[#fdf6f0] text-gray-800 font-sans">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SalesDrops — Discover Fresh Sales Tools Weekly</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
+    <title>Weekly Sales Tool Drops</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
     <style>
-      body { font-family: 'Nunito', sans-serif; }
+      body {
+        background-color: #fdfaf6;
+        font-family: 'Helvetica Neue', sans-serif;
+      }
     </style>
   </head>
-  <body class="p-6 sm:p-10">
-    <!-- Hero -->
-    <section class="text-center max-w-3xl mx-auto my-16">
-      <h1 class="text-4xl sm:text-6xl font-bold mb-4 leading-tight">
-        🔥 SalesDrops<br />
-        <span class="text-blue-600">5 Fresh Sales Tools</span> Every Week
+  <body class="text-gray-800">
+    <!-- Hero Section -->
+    <section class="text-center py-20 px-4 max-w-4xl mx-auto">
+      <h1 class="text-5xl md:text-6xl font-extrabold mb-6 leading-tight tracking-tight">
+        The Freshest Sales Tools, Every Week
       </h1>
-      <p class="text-lg sm:text-xl text-gray-600 mb-6">
-        Soft, handpicked, no fluff. Tools for sales, discovery, and closing.
+      <p class="text-xl md:text-2xl mb-8 text-gray-600">
+        Handpicked sales tools that just dropped. No clutter, just high-signal gear.
       </p>
-      <div class="flex justify-center gap-4">
-        <a href="#" class="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition">Get Started Free</a>
-        <a href="#" class="border border-blue-600 text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-blue-50 transition">Watch Demo</a>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="#" class="bg-blue-600 text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-blue-700 transition">Get Started Free</a>
+        <a href="#" class="border border-gray-300 text-gray-800 px-6 py-3 rounded-full text-lg font-semibold hover:bg-gray-100 transition">Watch Demo</a>
       </div>
     </section>
 
-    <!-- Directory Grid -->
-    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-      <!-- Sample Card -->
-      <div class="bg-white rounded-2xl shadow-md p-6 flex flex-col justify-between">
-        <div>
-          <img src="https://logo.clearbit.com/coldreach.io" alt="ColdReach logo" class="w-14 h-14 mb-4 rounded-xl" />
-          <h3 class="text-xl font-bold mb-1">ColdReach AI</h3>
-          <p class="text-sm text-gray-600 mb-3">Generate high-converting cold emails in seconds using AI.</p>
+    <!-- Weekly Drop Grid -->
+    <section class="px-4 py-12 max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold mb-10">🔥 This Week’s Drop</h2>
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <!-- Tool Card -->
+        <div class="bg-white rounded-3xl shadow-md p-6 hover:shadow-lg transition">
+          <img src="https://via.placeholder.com/80" alt="Tool logo" class="mb-4 rounded-xl" />
+          <h3 class="text-xl font-semibold mb-2">CloseAI</h3>
+          <p class="text-gray-600 mb-4">AI email assistant that writes replies and follow-ups that convert.</p>
           <div class="flex flex-wrap gap-2 mb-4">
-            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full">AI</span>
-            <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-3 py-1 rounded-full">Email</span>
-            <span class="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">Outbound</span>
+            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">AI</span>
+            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Email</span>
           </div>
+          <a href="#" class="text-blue-600 font-medium hover:underline">View Tool →</a>
         </div>
-        <a href="https://coldreach.io" target="_blank" class="mt-auto inline-block text-sm font-semibold text-blue-600 hover:underline">🔗 View Profile</a>
+
+        <!-- Repeat Tool Card -->
+        <div class="bg-white rounded-3xl shadow-md p-6 hover:shadow-lg transition">
+          <img src="https://via.placeholder.com/80" alt="Tool logo" class="mb-4 rounded-xl" />
+          <h3 class="text-xl font-semibold mb-2">PitchFlow</h3>
+          <p class="text-gray-600 mb-4">Create personalized pitches at scale in seconds.</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Outbound</span>
+            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Automation</span>
+          </div>
+          <a href="#" class="text-blue-600 font-medium hover:underline">View Tool →</a>
+        </div>
+
+        <div class="bg-white rounded-3xl shadow-md p-6 hover:shadow-lg transition">
+          <img src="https://via.placeholder.com/80" alt="Tool logo" class="mb-4 rounded-xl" />
+          <h3 class="text-xl font-semibold mb-2">LeadsLayer</h3>
+          <p class="text-gray-600 mb-4">Find hidden leads using public data and enrichment magic.</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Prospecting</span>
+            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Data</span>
+          </div>
+          <a href="#" class="text-blue-600 font-medium hover:underline">View Tool →</a>
+        </div>
+
+        <!-- Add 2 more dummy cards -->
+        <div class="bg-white rounded-3xl shadow-md p-6 hover:shadow-lg transition">
+          <img src="https://via.placeholder.com/80" alt="Tool logo" class="mb-4 rounded-xl" />
+          <h3 class="text-xl font-semibold mb-2">DripDeck</h3>
+          <p class="text-gray-600 mb-4">Send automated sequences with killer visuals and CTAs.</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Cold Outreach</span>
+            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Campaigns</span>
+          </div>
+          <a href="#" class="text-blue-600 font-medium hover:underline">View Tool →</a>
+        </div>
+
+        <div class="bg-white rounded-3xl shadow-md p-6 hover:shadow-lg transition">
+          <img src="https://via.placeholder.com/80" alt="Tool logo" class="mb-4 rounded-xl" />
+          <h3 class="text-xl font-semibold mb-2">SignalStack</h3>
+          <p class="text-gray-600 mb-4">Sync your CRM with live buyer intent signals.</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Intent</span>
+            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Sync</span>
+          </div>
+          <a href="#" class="text-blue-600 font-medium hover:underline">View Tool →</a>
+        </div>
       </div>
-
-      <!-- Duplicate that card for now or add real tools later -->
-      <!-- Example: Copy and update logo, name, desc, tags, and link -->
-
     </section>
+
+    <!-- Footer -->
+    <footer class="text-center text-sm text-gray-500 py-10">
+      © 2025 Weekly Sales Tools Drop. All rights reserved.
+    </footer>
   </body>
 </html>
