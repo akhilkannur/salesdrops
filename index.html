@@ -4,274 +4,191 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SalesDrops – Weekly Tool Directory</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;600;700;900&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <!-- GT Walsheim alternative for demo: Nunito Sans (Google Fonts) -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@900;800;700;400&display=swap" rel="stylesheet">
   <style>
     :root {
-      --accent: #fe6a19;
-      --accent2: #ffb992;
-      --accent3: #ffe6d1;
-      --bg: #f8f6f3;
-      --bg-soft: #fff6f1;
-      --text: #18181b;
-      --muted: #7c7c7c;
-      --headline: 'Playfair Display', serif;
-      --sans: 'Inter', Arial, sans-serif;
-      --caps: 'Montserrat', Arial, sans-serif;
-      --modal-bg: rgba(24,24,27,0.28);
+      --spotify-black: #191414;
+      --spotify-green: #1ed760;
+      --spotify-dark-green: #158a44;
+      --spotify-gray: #282828;
+      --spotify-soft: #232323;
+      --spotify-card: #232323;
+      --spotify-card-dark: #1e1e1e;
+      --bg-gradient: radial-gradient(ellipse at 70% 0%, #222b1d 0%, #191414 100%);
+      --spotify-gray2: #b3b3b3;
+      --spotify-highlight: #25f08a;
+      --spotify-link: #1ed760;
+      --border-radius: 20px;
+      --shadow: 0 4px 32px 0 #121212cc;
     }
     html, body {
-      margin: 0;
-      background: var(--bg);
-      font-family: var(--sans);
-      color: var(--text);
+      background: var(--bg-gradient);
+      margin: 0; padding: 0;
+      font-family: 'Nunito Sans', Arial, sans-serif;
+      color: #fff;
       font-size: 18px;
+      line-height: 1.7;
       min-height: 100vh;
     }
-    body {
-      background:
-        radial-gradient(ellipse 90% 40% at 50% -8%, var(--accent2) 0%, var(--bg) 80%),
-        radial-gradient(ellipse 90% 40% at 50% 108%, var(--accent3) 0%, var(--bg) 80%);
-      background-repeat: no-repeat;
-    }
+    ::selection { background: var(--spotify-green); color: #191414;}
     .container {
-      max-width: 620px;
+      max-width: 700px;
       margin: 0 auto;
-      position: relative;
-      z-index: 1;
-      padding: 0 1.5rem;
+      padding: 0 1.2rem;
     }
     header {
-      text-align: center;
-      padding-top: 4.3rem;
+      padding-top: 2.7rem;
       padding-bottom: 2.2rem;
-      position: relative;
+      text-align: center;
     }
     .headline {
-      font-family: var(--headline);
-      font-size: clamp(2.1rem, 6vw, 3.3rem);
+      font-family: 'Nunito Sans', Arial, sans-serif;
       font-weight: 900;
-      margin-bottom: 0.6em;
+      font-size: clamp(2.5rem, 7vw, 3.7rem);
+      color: #fff;
       letter-spacing: -0.01em;
-      line-height: 1.07;
-      color: #18181b;
-      text-shadow: 0 2px 24px #ffb99222;
-      position: relative;
+      border-radius: 32px;
+      background: none;
+      margin-bottom: 0.3em;
+      line-height: 1.12;
+      display: inline-block;
+      text-shadow: 0 3px 32px #12121290;
     }
-    .headline strong {
-      color: var(--accent);
-      font-weight: 900;
-      letter-spacing: -0.02em;
+    .headline .emoji {
+      font-size: 1.12em;
+      vertical-align: -0.17em;
+      margin-right: 0.13em;
     }
     .desc {
-      font-size: clamp(1.03rem, 3vw, 1.27rem);
-      color: var(--muted);
-      font-family: var(--sans);
-      font-weight: 500;
+      font-size: 1.13rem;
+      color: var(--spotify-gray2);
       margin-bottom: 2.1em;
-      line-height: 1.6;
-      max-width: 420px;
+      margin-top: 0.2em;
+      max-width: 470px;
       margin-left: auto;
       margin-right: auto;
-    }
-    .signup-row {
-      display: flex;
-      justify-content: center;
-      gap: 0.7em;
-      margin-bottom: 1.5em;
-      flex-wrap: wrap;
-    }
-    .email-input {
-      font-size: 1.13rem;
-      padding: 0.85em 1.1em;
-      border: none;
-      border-bottom: 2px solid #ffe6d1;
-      background: transparent;
-      border-radius: 0;
-      outline: none;
-      color: var(--text);
-      font-family: var(--sans);
-      transition: border 0.12s;
-      letter-spacing: 0.01em;
-      min-width: 180px;
-      width: 52vw;
-      max-width: 320px;
-    }
-    .email-input:focus {
-      border-bottom: 2px solid var(--accent);
-      background: #fffdf8;
-    }
-    .signup-btn {
-      background: linear-gradient(92deg, var(--accent) 70%, var(--accent2) 100%);
-      color: #fff;
-      font-family: var(--caps);
-      border: none;
-      border-radius: 22px;
-      font-weight: 900;
-      padding: 0.85em 2.1em;
-      font-size: 1.11rem;
-      letter-spacing: 0.14em;
-      cursor: pointer;
-      text-transform: uppercase;
-      transition: background 0.15s, box-shadow 0.15s;
-      box-shadow: 0 2px 14px #ffb99238;
-      margin-top: 0.1em;
-    }
-    .signup-btn:hover {
-      background: linear-gradient(92deg, #d84a00 60%, var(--accent2) 100%);
-      box-shadow: 0 4px 20px #fe6a1933;
-    }
-    .countdown {
-      display: flex;
-      justify-content: center;
-      gap: 2.1em;
-      font-family: var(--caps);
-      font-size: 1.12rem;
-      margin-bottom: 2.9em;
-      color: var(--accent);
-      letter-spacing: 0.14em;
-    }
-    .countdown span {
-      display: block;
-      font-size: clamp(1.45rem, 6vw, 2.1rem);
-      font-family: var(--headline);
-      font-weight: 900;
-      color: #18181b;
-      letter-spacing: 0.01em;
-      line-height: 1.08;
-      background: linear-gradient(90deg,var(--accent2) 20%,#fff6f1 100%);
-      box-shadow: 0 2px 12px #fe6a1914;
-      border-radius: 12px;
-      padding: 0.1em 0.45em;
-      min-width: 38px;
-      margin-bottom: 0.2em;
-    }
-    /* Drops List */
-    .drops-section {
-      margin-top: 2.1rem;
-      margin-bottom: 3.2rem;
-      text-align: center;
+      font-weight: 600;
     }
     .section-title {
-      font-family: var(--caps);
-      font-size: clamp(1.03rem,2vw,1.23rem);
+      font-family: 'Nunito Sans', Arial, sans-serif;
       font-weight: 900;
-      letter-spacing: 0.13em;
-      margin-bottom: 2.1em;
-      color: #18181b;
-      text-transform: uppercase;
-      line-height: 1.18;
+      font-size: 1.32rem;
+      margin: 2.7em 0 1.25em 0;
+      color: var(--spotify-green);
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 0.4em;
+      text-shadow: 0 2px 24px #0d3d1c77;
     }
+    .section-title .emoji {
+      font-size: 1.16em;
+    }
+    /* Drop Cards */
     .drop-list {
       display: flex;
       flex-direction: column;
-      gap: 1.2em;
+      gap: 1.4em;
       align-items: stretch;
+      margin-bottom: 2.7em;
     }
     .drop-card {
-      background: linear-gradient(135deg,#fff 70%,#fff6f1 100%);
-      border-radius: 22px;
-      padding: 2em 1.2em 1.3em 1.2em;
-      text-align: left;
-      margin: 0 auto;
-      box-shadow: 0 2px 24px #ffb99230;
-      max-width: 100%;
-      transition: transform 0.11s, box-shadow 0.13s;
-      border: 1.5px solid #ffe6d1;
+      border-radius: var(--border-radius);
+      background: linear-gradient(110deg,#232323 80%, #1ed7600f 100%);
+      box-shadow: var(--shadow);
+      padding: 2.1em 1.6em 1.4em 1.6em;
+      display: flex;
+      flex-direction: column;
       cursor: pointer;
+      border: none;
+      transition: box-shadow 0.18s, transform 0.15s, background 0.2s;
       position: relative;
-      overflow: hidden;
-      min-width:0;
+      min-width: 0;
+      outline: none;
+      will-change: transform;
+      margin-bottom: 0.2em;
     }
-    .drop-card:before {
-      content: '';
-      position: absolute;
-      top: -25px; right: -30px;
-      width: 96px; height: 64px;
-      background: radial-gradient(ellipse 50% 80% at 60% 20%, var(--accent2) 0%, transparent 80%);
-      opacity: 0.55;
-      z-index: 0;
-      pointer-events: none;
-    }
-    .drop-card:hover {
-      transform: translateY(-2px) scale(1.012);
-      box-shadow: 0 8px 32px #fe6a1950;
-      border-color: var(--accent2);
+    .drop-card:hover, .drop-card:focus {
+      box-shadow: 0 14px 48px #1ed76050;
+      background: linear-gradient(110deg,#232323 50%, #1ed76033 100%);
+      transform: translateY(-2px) scale(1.021);
     }
     .drop-head {
       display: flex;
       align-items: center;
       gap: 0.7em;
       margin-bottom: 0.4em;
-      position: relative;
-      z-index: 1;
     }
     .drop-icon {
-      font-size: 2em;
-      border-radius: 13px;
-      background: #fff6f1;
-      padding: 0.13em 0.38em;
-      color: var(--accent);
+      font-size: 2.1em;
+      border-radius: 17px;
+      background: #191414;
+      padding: 0.15em 0.38em;
+      color: var(--spotify-green);
       font-weight: 900;
-      box-shadow: 0 1px 8px #ffb99211;
       margin-right: 0.1em;
+      flex-shrink: 0;
+      box-shadow: 0 1px 6px #1ed76011;
     }
     .drop-title {
-      font-size: 1.13em;
+      font-size: 1.23em;
       font-weight: 900;
-      color: #18181b;
-      font-family: var(--headline);
+      color: #fff;
       letter-spacing: 0.01em;
-      margin-right: 0.4em;
-      flex:1;
-      min-width:0;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      white-space:nowrap;
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
     .drop-tag {
-      background: var(--accent2);
-      color: #fff;
-      font-size: 0.91em;
+      background: var(--spotify-green);
+      color: #191414;
+      font-size: 0.97em;
       font-weight: 900;
       border-radius: 11px;
       padding: 0.13em 1em;
       margin-left: 0.3em;
-      font-family: var(--caps);
+      font-family: inherit;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      box-shadow: 0 1px 6px #ffb99218;
-      flex-shrink:0;
+      box-shadow: 0 1px 6px #1ed76025;
+      flex-shrink: 0;
     }
     .drop-desc {
-      color: var(--muted);
-      font-size: 1.03em;
+      color: #e7ffe4;
+      font-size: 1.10em;
       margin-bottom: 0.2em;
       margin-top: 0.1em;
       line-height: 1.5;
-      font-family: var(--sans);
     }
     .drop-maker {
-      color: var(--accent);
-      font-size: 0.97em;
-      font-family: var(--caps);
+      color: var(--spotify-green);
+      font-size: 1em;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 0.03em;
       margin-top: 0.5em;
     }
-    /* Archive */
+    /* Archive Section */
     .archive-section {
-      margin: 3.1em 0 2em 0;
+      margin: 2.5em 0 2em 0;
     }
     .archive-title {
-      font-family: var(--caps);
-      font-size: 1.07rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      color: var(--text);
-      margin-bottom: 2.0em;
+      font-family: 'Nunito Sans', Arial, sans-serif;
+      font-weight: 900;
+      font-size: 1.16rem;
+      letter-spacing: 0.08em;
+      color: var(--spotify-green);
+      margin-bottom: 1.5em;
       text-transform: uppercase;
       text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3em;
+      text-shadow: 0 2px 24px #0d3d1c65;
     }
     .archive-list {
       display: flex;
@@ -280,48 +197,94 @@
       align-items: stretch;
     }
     .archive-week-card {
-      background: linear-gradient(135deg,#fff 80%,#fff6f1 100%);
-      border-radius: 19px;
-      box-shadow: 0 2px 22px #ffb99211;
-      padding: 1.3em 1.1em 1.2em 1.1em;
-      margin: 0 auto;
-      max-width: 100%;
-      border: 1.5px solid #ffe6d1;
-      overflow: hidden;
+      background: linear-gradient(120deg,#232323 85%, #1ed7601a 100%);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      padding: 1.3em 1.1em 1.1em 1.1em;
+      margin: 0 auto 0.5em auto;
+      border: none;
+      outline: none;
+      transition: box-shadow 0.2s;
+      position: relative;
+    }
+    .archive-week-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      user-select: none;
     }
     .archive-week-title {
-      font-family: var(--caps);
-      color: var(--accent);
-      font-size: 1.06em;
+      font-family: 'Nunito Sans', Arial, sans-serif;
+      color: var(--spotify-green);
+      font-size: 1.08em;
       font-weight: 900;
       letter-spacing: 0.09em;
-      margin-bottom: 1.1em;
       text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+    }
+    .archive-week-toggle {
+      font-size: 1.55em;
+      color: var(--spotify-green);
+      border: none;
+      background: none;
+      cursor: pointer;
+      margin-left: 0.2em;
+      transition: transform 0.18s;
+      display: flex;
+      align-items: center;
+    }
+    .archive-week-toggle[aria-expanded="true"] {
+      transform: rotate(90deg);
     }
     .archive-drops {
       display: flex;
       flex-direction: column;
       gap: 0.7em;
+      margin-top: 1.1em;
+      transition: max-height 0.3s cubic-bezier(.4,0,.2,1);
+      overflow: hidden;
+    }
+    .archive-drops.collapsed {
+      max-height: 0 !important;
+      padding: 0 !important;
+      margin-top: 0 !important;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .archive-drops.expanded {
+      max-height: 900px;
+      opacity: 1;
+      pointer-events: auto;
     }
     .archive-drop {
       cursor: pointer;
       padding: 0.6em 0.6em;
       border-radius: 13px;
-      transition: background 0.11s;
-      margin-left: -0.3em;
-      margin-right: -0.3em;
+      transition: background 0.12s;
       position: relative;
       border: none;
       background: transparent;
+      display: flex;
+      align-items: center;
+      gap: 0.7em;
     }
     .archive-drop:hover {
-      background: #fff6f1;
+      background: #232323;
     }
-    .archive-drop .drop-head {margin-bottom:0;}
-    /* Sponsors as cards */
+    .archive-drop .drop-head {
+      margin-bottom: 0;
+      gap: 0.6em;
+    }
+    .archive-drop .drop-title {
+      font-size: 1.03em;
+    }
+    /* Sponsors Cards */
     .sponsors-section {
-      background: radial-gradient(ellipse 70% 40% at 50% 30%, #ffb99233 0%, #fff0e3 80%);
-      border-radius: 18px;
+      background: linear-gradient(110deg,#232323 80%, #1ed76022 100%);
+      border-radius: var(--border-radius);
       padding: 2em 1.2em;
       margin: 0 auto 2.2em auto;
       text-align: center;
@@ -330,57 +293,135 @@
       flex-direction: column;
       align-items: center;
       gap: 1.1em;
+      box-shadow: var(--shadow);
     }
     .sponsors-title {
-      font-family: var(--caps);
-      font-size: 1.04em;
+      font-family: 'Nunito Sans', Arial, sans-serif;
+      font-size: 1.12em;
       font-weight: 900;
       letter-spacing: 0.08em;
-      color: var(--accent);
+      color: var(--spotify-green);
       margin-bottom: 1em;
       text-transform: uppercase;
+      text-shadow: 0 2px 24px #1ed76085;
     }
     .sponsor-cards {
       display: flex;
-      gap: 0.8em;
+      gap: 0.85em;
       flex-wrap: wrap;
       justify-content: center;
       width: 100%;
     }
     .sponsor-card {
-      background: linear-gradient(90deg,#fff6f1 0%,#fff 90%);
+      background: #191414;
       border-radius: 14px;
-      padding: 0.7em 1.1em;
-      min-width: 92px;
+      padding: 0.8em 1.2em;
+      min-width: 94px;
       min-height: 48px;
-      box-shadow: 0 2px 12px #ffb99214;
+      box-shadow: 0 2px 12px #19141422;
       display: flex;
       flex-direction: column;
       align-items: center;
-      border: 1.5px solid #ffe6d1;
-      font-family: var(--caps);
-      color: #fd7d32;
+      border: 1.5px solid #232323;
+      font-family: 'Nunito Sans', Arial, sans-serif;
+      color: var(--spotify-green);
       font-weight: 900;
       letter-spacing: 0.07em;
       font-size: 1em;
-      gap: 0.25em;
+      gap: 0.28em;
     }
     .sponsor-logo {
       width: 28px;
       height: 28px;
       margin-bottom: 0.1em;
       object-fit: contain;
-      border-radius: 6px;
-      background: #fff6f1;
-      border: 1px solid #ffe6d1;
-      box-shadow: 0 1px 5px #ffb99208;
+      border-radius: 50%;
+      background: #121212;
+      border: 1px solid #1ed760;
+      box-shadow: 0 1px 7px #1ed76020;
+    }
+    /* Founders Section */
+    .founders-section {
+      margin: 3.3em 0 2.7em 0;
+      background: linear-gradient(110deg,#232323 90%, #1ed7600f 100%);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      padding: 2em 1.3em 1.2em 1.3em;
+    }
+    .founders-title {
+      font-family: 'Nunito Sans', Arial, sans-serif;
+      font-weight: 900;
+      font-size: 1.25rem;
+      margin-bottom: 1.2em;
+      color: var(--spotify-green);
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      letter-spacing: 0.04em;
+      text-shadow: 0 2px 24px #1ed76033;
+    }
+    .founder-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+    }
+    .founder-card {
+      background: #191414;
+      border-radius: 15px;
+      padding: 1em 1.2em;
+      display: flex;
+      align-items: center;
+      gap: 1.1em;
+      box-shadow: 0 2px 10px #1ed76018;
+      position: relative;
+    }
+    .founder-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #232323;
+      border: 2.5px solid var(--spotify-green);
+    }
+    .founder-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .founder-name {
+      font-size: 1.09em;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 0.10em;
+      display: flex;
+      align-items: center;
+      gap: 0.6em;
+    }
+    .founder-link {
+      color: var(--spotify-green);
+      font-size: 1.16em;
+      vertical-align: middle;
+      display: inline-block;
+      margin-left: 0.22em;
+      text-decoration: none;
+      transition: color 0.18s;
+    }
+    .founder-link:hover {
+      color: #fff;
+    }
+    .founder-desc {
+      font-size: 0.97em;
+      color: var(--spotify-gray2);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 250px;
     }
     /* Modal styles */
     .modal-bg {
       display: none;
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: var(--modal-bg);
+      background: rgba(25,20,20,0.72);
       z-index: 999;
       align-items: center;
       justify-content: center;
@@ -394,10 +435,10 @@
       to {opacity: 1;}
     }
     .modal-card {
-      background: #fff;
-      border-radius: 24px;
-      padding: 2.2em 1.2em 1.5em 1.2em;
-      box-shadow: 0 8px 44px #ffb99277, 0 0 0 8px #fff6f1;
+      background: linear-gradient(120deg,#232323 90%, #1ed7601a 100%);
+      border-radius: 22px;
+      padding: 2em 1.2em 1.5em 1.2em;
+      box-shadow: 0 8px 44px #1ed76065, 0 0 0 8px #191414;
       max-width: 420px;
       width: 95vw;
       position: relative;
@@ -416,54 +457,58 @@
       font-size: 1.6em;
       background: none;
       border: none;
-      color: var(--muted);
+      color: #fff;
       cursor: pointer;
-      font-family: var(--caps);
+      font-family: inherit;
       font-weight: 900;
+      opacity: 0.7;
+      transition: opacity 0.13s;
+    }
+    .modal-close:hover {
+      opacity: 1;
     }
     .modal-img {
       width: 100%;
       max-width: 340px;
       border-radius: 18px;
       margin-bottom: 1.1em;
-      background: #fff6f1;
-      box-shadow: 0 4px 32px #ffb99230;
+      background: #191414;
+      box-shadow: 0 4px 32px #1ed76030;
       display: block;
       margin-left: auto;
       margin-right: auto;
     }
     .modal-title {
-      font-family: var(--headline);
-      font-size: 1.42em;
+      font-family: 'Nunito Sans', Arial, sans-serif;
+      font-size: 1.28em;
       font-weight: 900;
       margin-bottom: 0.12em;
-      color: #18181b;
+      color: #fff;
       letter-spacing: 0.01em;
     }
     .modal-tag {
-      background: #ffb992;
-      color: #fff;
+      background: var(--spotify-green);
+      color: #191414;
       font-size: 0.98em;
       font-weight: 900;
       border-radius: 11px;
       padding: 0.13em 1em;
       margin-left: 0.3em;
-      font-family: var(--caps);
+      font-family: inherit;
       letter-spacing: 0.06em;
       text-transform: uppercase;
     }
     .modal-desc {
-      color: var(--muted);
+      color: #e7ffe4;
       font-size: 1.09em;
       margin-bottom: 0.5em;
       margin-top: 0.4em;
       line-height: 1.55;
-      font-family: var(--sans);
+      font-family: inherit;
     }
     .modal-maker {
-      color: var(--accent);
+      color: var(--spotify-green);
       font-size: 1em;
-      font-family: var(--caps);
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 0.03em;
@@ -471,10 +516,10 @@
       margin-bottom: 0.6em;
     }
     .modal-extra {
-      color: #18181b;
+      color: #fff;
       font-size: 1.08em;
       margin-top: 1.2em;
-      border-top: 1.5px solid #ffe6d1;
+      border-top: 1.5px solid #232323;
       padding-top: 1.1em;
     }
     .modal-screenshots {
@@ -488,88 +533,62 @@
       height: 60px;
       border-radius: 10px;
       object-fit: cover;
-      background: #fff6f1;
-      border: 1px solid #ffe6d1;
-      box-shadow: 0 2px 6px #ffb99222;
+      background: #232323;
+      border: 1px solid #1ed760;
+      box-shadow: 0 2px 6px #1ed76022;
       cursor: pointer;
-      opacity: 0.9;
+      opacity: 0.88;
       transition: opacity 0.13s, border 0.13s;
     }
     .modal-screenshot-thumb.active, .modal-screenshot-thumb:hover {
       opacity: 1;
-      border: 2.5px solid var(--accent);
+      border: 2.5px solid var(--spotify-green);
     }
     .footer {
       margin-top: 3.5em;
       padding: 2.1em 0 2em 0;
       text-align: center;
-      color: #b3b3b3;
-      font-size: 1.03em;
+      color: #a4a4a4;
+      font-size: 1.08em;
       background: transparent;
-      font-family: var(--sans);
+      font-family: inherit;
       letter-spacing: 0.05em;
-    }
-    /* Section Dividers */
-    .divider {
-      width: 62%;
-      margin: 2.5em auto;
-      height: 9px;
-      border-radius: 5px;
-      background: linear-gradient(90deg,#ffb992 10%,#fff6f1 100%);
-      opacity: 0.34;
-      border: none;
     }
     /* Mobile styles */
     @media (max-width: 700px) {
       .container {max-width: 100%;padding:0 0.3rem;}
-      header {padding-top:2.2rem;}
-      .headline {font-size:2.1rem;}
-      .desc {font-size:1.03rem;}
-      .drop-card,.archive-week-card {padding:1.2em 0.5em;}
+      header {padding-top:1.7rem;}
+      .headline {font-size:2.2rem;}
+      .desc {font-size:1.05rem;}
+      .drop-card,.archive-week-card {padding:1.2em 0.6em;}
       .modal-card {padding:0.8em 0.2em;}
-      .modal-title {font-size:1.1em;}
+      .modal-title {font-size:1.05em;}
       .modal-img {max-width:100%; border-radius:12px;}
       .sponsor-cards {gap:0.3em;}
       .sponsor-card {padding:0.4em 0.7em;}
+      .founders-section {padding:1.1em 0.5em;}
     }
     @media (max-width: 440px) {
       .modal-card {max-width:100vw;}
       .sponsor-card {min-width:70px;}
       .modal-img {border-radius:8px;}
+      .founder-desc {max-width:120px;}
     }
   </style>
 </head>
 <body>
   <main class="container">
     <header>
-      <div class="headline">Discover this week’s<br><strong>Sales Tool Drops</strong></div>
+      <div class="headline"><span class="emoji">🎵</span> Sales Tool Drops</div>
       <div class="desc">
-        Curated, editorial, friction-free. The best tools for sales pros—delivered weekly.
-      </div>
-      <form class="signup-row" onsubmit="return false;">
-        <input class="email-input" type="email" placeholder="your@email.com" required>
-        <button class="signup-btn" type="submit">Sign Up Free</button>
-      </form>
-      <div class="countdown" id="countdown">
-        <div>
-          <span id="days">--</span>
-          <div style="font-size:0.85em;">DAYS</div>
-        </div>
-        <div>
-          <span id="hours">--</span>
-          <div style="font-size:0.85em;">HRS</div>
-        </div>
-        <div>
-          <span id="minutes">--</span>
-          <div style="font-size:0.85em;">MIN</div>
-        </div>
+        Weekly, friendly, creative. The most playful directory of sales tools, bright ideas, and the minds behind them.
       </div>
     </header>
 
     <section class="drops-section">
-      <div class="section-title">This Week’s Top Drops</div>
+      <div class="section-title"><span class="emoji">🌈</span> This Week’s Top Drops</div>
       <div class="drop-list">
-        <div class="drop-card" data-drop="0">
+        <div class="drop-card" data-drop="0" tabindex="0">
           <div class="drop-head">
             <span class="drop-icon">⚡</span>
             <span class="drop-title">QUANTUM.AI</span>
@@ -578,7 +597,7 @@
           <div class="drop-desc">Next-gen AI processing unit. 10<sup>12</sup> ops/ns. Quantum entanglement capabilities.</div>
           <div class="drop-maker">By Dr. Zephyr</div>
         </div>
-        <div class="drop-card" data-drop="1">
+        <div class="drop-card" data-drop="1" tabindex="0">
           <div class="drop-head">
             <span class="drop-icon">🔮</span>
             <span class="drop-title">NEXUS.VISION</span>
@@ -587,7 +606,7 @@
           <div class="drop-desc">Holographic interface. Predictive analytics. 4D visualization matrix.</div>
           <div class="drop-maker">By Sierra Tran</div>
         </div>
-        <div class="drop-card" data-drop="2">
+        <div class="drop-card" data-drop="2" tabindex="0">
           <div class="drop-head">
             <span class="drop-icon">🛡️</span>
             <span class="drop-title">CIPHER.SHIELD</span>
@@ -596,7 +615,7 @@
           <div class="drop-desc">Quantum encryption. Military-grade QKD. Unbreakable protocols.</div>
           <div class="drop-maker">By Ava Gupta</div>
         </div>
-        <div class="drop-card" data-drop="3">
+        <div class="drop-card" data-drop="3" tabindex="0">
           <div class="drop-head">
             <span class="drop-icon">🚀</span>
             <span class="drop-title">VELOCITY.CORE</span>
@@ -605,7 +624,7 @@
           <div class="drop-desc">Real-time processing. Petabytes, zero latency, hyperspeed protocols.</div>
           <div class="drop-maker">By Kai Lennox</div>
         </div>
-        <div class="drop-card" data-drop="4">
+        <div class="drop-card" data-drop="4" tabindex="0">
           <div class="drop-head">
             <span class="drop-icon">✨</span>
             <span class="drop-title">INFINITY.ENGINE</span>
@@ -617,14 +636,15 @@
       </div>
     </section>
 
-    <hr class="divider">
-
     <section class="archive-section">
-      <div class="archive-title">Archive: Previous Drops</div>
+      <div class="archive-title"><span class="emoji">📚</span> Archive</div>
       <div class="archive-list">
         <div class="archive-week-card">
-          <div class="archive-week-title">Week 28 (July 7 - July 13)</div>
-          <div class="archive-drops">
+          <div class="archive-week-header" tabindex="0" aria-expanded="false">
+            <span class="archive-week-title">Week 28 (July 7 - July 13)</span>
+            <span class="archive-week-toggle" aria-expanded="false">&#8250;</span>
+          </div>
+          <div class="archive-drops collapsed" id="archive-drops-0">
             <div class="archive-drop" data-archive="0-0">
               <div class="drop-head">
                 <span class="drop-icon">🤖</span>
@@ -644,8 +664,11 @@
           </div>
         </div>
         <div class="archive-week-card">
-          <div class="archive-week-title">Week 27 (June 30 - July 6)</div>
-          <div class="archive-drops">
+          <div class="archive-week-header" tabindex="0" aria-expanded="false">
+            <span class="archive-week-title">Week 27 (June 30 - July 6)</span>
+            <span class="archive-week-toggle" aria-expanded="false">&#8250;</span>
+          </div>
+          <div class="archive-drops collapsed" id="archive-drops-1">
             <div class="archive-drop" data-archive="1-0">
               <div class="drop-head">
                 <span class="drop-icon">👁️</span>
@@ -659,21 +682,85 @@
       </div>
     </section>
 
-    <hr class="divider">
+    <section class="founders-section">
+      <div class="founders-title"><span class="emoji">🧑‍🎤</span> Featured Founders</div>
+      <div class="founder-list">
+        <div class="founder-card">
+          <img class="founder-avatar" src="https://api.dicebear.com/8.x/notionists-neutral/svg?seed=Jaisal" alt="Jaisal Rathee"/>
+          <div class="founder-info">
+            <div class="founder-name">
+              Jaisal Rathee
+              <a class="founder-link" href="https://twitter.com/jaisalrathee" target="_blank" title="Visit profile">
+                <svg width="1.15em" height="1.15em" viewBox="0 0 20 20" fill="none"><path d="M7 13L13 7M13 7H8M13 7V12" stroke="#1ed760" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+            <div class="founder-desc">10x exits. Building a portfolio of tiny startups. Helping founders launch…</div>
+          </div>
+        </div>
+        <div class="founder-card">
+          <img class="founder-avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Anthony Castrio"/>
+          <div class="founder-info">
+            <div class="founder-name">
+              Anthony Castrio
+              <a class="founder-link" href="https://applyall.com/" target="_blank" title="Visit profile">
+                <svg width="1.15em" height="1.15em" viewBox="0 0 20 20" fill="none"><path d="M7 13L13 7M13 7H8M13 7V12" stroke="#1ed760" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+            <div class="founder-desc">Co-founder @ ApplyAll.com | Growing vegetables @ Fractal Garden</div>
+          </div>
+        </div>
+        <div class="founder-card">
+          <img class="founder-avatar" src="https://randomuser.me/api/portraits/men/44.jpg" alt="Matt Farley"/>
+          <div class="founder-info">
+            <div class="founder-name">
+              Matt Farley
+              <a class="founder-link" href="https://twitter.com/mattfarley" target="_blank" title="Visit profile">
+                <svg width="1.15em" height="1.15em" viewBox="0 0 20 20" fill="none"><path d="M7 13L13 7M13 7H8M13 7V12" stroke="#1ed760" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+            <div class="founder-desc">Self-taught product designer with 14 years of web experience. Bootstrapped…</div>
+          </div>
+        </div>
+        <div class="founder-card">
+          <img class="founder-avatar" src="https://randomuser.me/api/portraits/men/46.jpg" alt="Dobrian Dobrev"/>
+          <div class="founder-info">
+            <div class="founder-name">
+              Dobrian Dobrev
+              <a class="founder-link" href="https://toddlr.com/" target="_blank" title="Visit profile">
+                <svg width="1.15em" height="1.15em" viewBox="0 0 20 20" fill="none"><path d="M7 13L13 7M13 7H8M13 7V12" stroke="#1ed760" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+            <div class="founder-desc">Founder of Toddlr | Award-winning UX Designer | Ex-Coca-Cola/VMware…</div>
+          </div>
+        </div>
+        <div class="founder-card">
+          <img class="founder-avatar" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Martina Sartor"/>
+          <div class="founder-info">
+            <div class="founder-name">
+              Martina Sartor
+              <a class="founder-link" href="https://linkedin.com/in/martinasartor" target="_blank" title="Visit profile">
+                <svg width="1.15em" height="1.15em" viewBox="0 0 20 20" fill="none"><path d="M7 13L13 7M13 7H8M13 7V12" stroke="#1ed760" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+            <div class="founder-desc">Startup growth strategist, indie founder, community builder…</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section class="sponsors-section">
       <div class="sponsors-title">Our Sponsors</div>
       <div class="sponsor-cards">
         <div class="sponsor-card">
-          <img class="sponsor-logo" src="https://placehold.co/32x32/orange/white?text=A" alt="Acme Inc."/>
+          <img class="sponsor-logo" src="https://placehold.co/32x32/1ed760/191414?text=A" alt="Acme Inc."/>
           <div>Acme Inc.</div>
         </div>
         <div class="sponsor-card">
-          <img class="sponsor-logo" src="https://placehold.co/32x32/ffb992/fff?text=R" alt="RocketStart"/>
+          <img class="sponsor-logo" src="https://placehold.co/32x32/232323/1ed760?text=R" alt="RocketStart"/>
           <div>RocketStart</div>
         </div>
         <div class="sponsor-card">
-          <img class="sponsor-logo" src="https://placehold.co/32x32/fff6f1/fe6a19?text=P" alt="PixelSoft"/>
+          <img class="sponsor-logo" src="https://placehold.co/32x32/121212/1ed760?text=P" alt="PixelSoft"/>
           <div>PixelSoft</div>
         </div>
       </div>
@@ -698,9 +785,8 @@
       </div>
     </div>
   </div>
-
   <script>
-    // DATA for current drops and archive drops
+    // Drop and archive data
     const drops = [
       {
         title: "QUANTUM.AI",
@@ -708,10 +794,10 @@
         icon: "⚡",
         desc: "Next-gen AI processing unit. 10<sup>12</sup> ops/ns. Quantum entanglement capabilities.",
         maker: "By Dr. Zephyr",
-        img: "https://placehold.co/340x180/18181b/fff?text=QUANTUM.AI",
+        img: "https://placehold.co/340x180/191414/1ed760?text=QUANTUM.AI",
         screenshots: [
-          "https://placehold.co/160x100/fe6a19/fff?text=Screen1",
-          "https://placehold.co/160x100/18181b/fff?text=Screen2"
+          "https://placehold.co/160x100/1ed760/191414?text=Screen1",
+          "https://placehold.co/160x100/191414/1ed760?text=Screen2"
         ]
       },
       {
@@ -720,9 +806,9 @@
         icon: "🔮",
         desc: "Holographic interface. Predictive analytics. 4D visualization matrix.",
         maker: "By Sierra Tran",
-        img: "https://placehold.co/340x180/fe6a19/fff?text=NEXUS.VISION",
+        img: "https://placehold.co/340x180/1ed760/191414?text=NEXUS.VISION",
         screenshots: [
-          "https://placehold.co/160x100/ffb992/fff?text=Screen1"
+          "https://placehold.co/160x100/232323/1ed760?text=Screen1"
         ]
       },
       {
@@ -731,7 +817,7 @@
         icon: "🛡️",
         desc: "Quantum encryption. Military-grade QKD. Unbreakable protocols.",
         maker: "By Ava Gupta",
-        img: "https://placehold.co/340x180/fff6f1/fe6a19?text=CIPHER.SHIELD",
+        img: "https://placehold.co/340x180/232323/1ed760?text=CIPHER.SHIELD",
         screenshots: []
       },
       {
@@ -740,11 +826,11 @@
         icon: "🚀",
         desc: "Real-time processing. Petabytes, zero latency, hyperspeed protocols.",
         maker: "By Kai Lennox",
-        img: "https://placehold.co/340x180/ffb992/18181b?text=VELOCITY.CORE",
+        img: "https://placehold.co/340x180/121212/1ed760?text=VELOCITY.CORE",
         screenshots: [
-          "https://placehold.co/160x100/fe6a19/fff?text=Screen1",
-          "https://placehold.co/160x100/fff6f1/fe6a19?text=Screen2",
-          "https://placehold.co/160x100/18181b/fff?text=Screen3"
+          "https://placehold.co/160x100/1ed760/191414?text=Screen1",
+          "https://placehold.co/160x100/232323/1ed760?text=Screen2",
+          "https://placehold.co/160x100/191414/1ed760?text=Screen3"
         ]
       },
       {
@@ -753,7 +839,7 @@
         icon: "✨",
         desc: "Boundless computation. Quantum superposition. Infinite parallelism.",
         maker: "By Eli Chen",
-        img: "https://placehold.co/340x180/fff/fe6a19?text=INFINITY.ENGINE",
+        img: "https://placehold.co/340x180/1ed760/191414?text=INFINITY.ENGINE",
         screenshots: []
       }
     ];
@@ -765,9 +851,9 @@
           icon: "🤖",
           desc: "Last-gen AI suite. Modular, open, clever.",
           maker: "Jane Roe",
-          img: "https://placehold.co/340x180/18181b/fff?text=ALPHA.MIND",
+          img: "https://placehold.co/340x180/232323/1ed760?text=ALPHA.MIND",
           screenshots: [
-            "https://placehold.co/160x100/fe6a19/fff?text=Screen1"
+            "https://placehold.co/160x100/1ed760/191414?text=Screen1"
           ]
         },
         {
@@ -776,7 +862,7 @@
           icon: "🔐",
           desc: "Network security for the modern world.",
           maker: "John Doe",
-          img: "https://placehold.co/340x180/fe6a19/fff?text=SECURENET",
+          img: "https://placehold.co/340x180/232323/1ed760?text=SECURENET",
           screenshots: []
         }
       ],
@@ -787,13 +873,13 @@
           icon: "👁️",
           desc: "Next-level vision tools for every workflow.",
           maker: "Max Lee",
-          img: "https://placehold.co/340x180/ffb992/fff?text=VISIONARY",
+          img: "https://placehold.co/340x180/1ed760/191414?text=VISIONARY",
           screenshots: []
         }
       ]
     ];
 
-    // MODAL logic
+    // Modal logic
     function openModal(drop) {
       document.getElementById('modal-img').src = drop.img;
       document.getElementById('modal-img').alt = drop.title + ' screenshot';
@@ -801,7 +887,6 @@
       document.getElementById('modal-tag').textContent = drop.tag;
       document.getElementById('modal-maker').textContent = drop.maker;
       document.getElementById('modal-desc').innerHTML = drop.desc;
-      // screenshots
       const screenshots = drop.screenshots || [];
       const modalExtra = document.getElementById('modal-extra');
       const screenshotsDiv = document.getElementById('modal-screenshots');
@@ -829,18 +914,15 @@
       document.getElementById('drop-modal-card').focus();
       document.body.style.overflow = 'hidden';
     }
-    // Current drops
     document.querySelectorAll('.drop-card').forEach((el, idx) => {
       el.addEventListener('click', () => openModal(drops[idx]));
+      el.addEventListener('keypress', e => {if(e.key==='Enter'||e.key===' ') openModal(drops[idx]);});
     });
-    // Archive drops
     document.querySelectorAll('.archive-drop').forEach((el) => {
-      el.addEventListener('click', () => {
-        const [week, idx] = el.getAttribute('data-archive').split('-').map(Number);
-        openModal(archiveDrops[week][idx]);
-      });
+      const [week, idx] = el.getAttribute('data-archive').split('-').map(Number);
+      el.addEventListener('click', () => openModal(archiveDrops[week][idx]));
+      el.addEventListener('keypress', e => {if(e.key==='Enter'||e.key===' ') openModal(archiveDrops[week][idx]);});
     });
-    // Close modal
     document.getElementById('modal-close').onclick = () => {
       document.getElementById('drop-modal-bg').classList.remove('active');
       document.body.style.overflow = '';
@@ -858,23 +940,20 @@
       }
     });
 
-    // Countdown logic: Next Friday at noon UTC
-    const nextDrop = new Date();
-    nextDrop.setDate(nextDrop.getDate() + ((5 - nextDrop.getDay() + 7) % 7 || 7));
-    nextDrop.setHours(12,0,0,0);
-    function updateCountdown() {
-      const now = new Date();
-      let diff = nextDrop - now;
-      if (diff < 0) diff = 0;
-      const days = Math.floor(diff / 1000 / 60 / 60 / 24);
-      const hours = Math.floor(diff / 1000 / 60 / 60) % 24;
-      const minutes = Math.floor(diff / 1000 / 60) % 60;
-      document.getElementById('days').textContent = String(days).padStart(2,'0');
-      document.getElementById('hours').textContent = String(hours).padStart(2,'0');
-      document.getElementById('minutes').textContent = String(minutes).padStart(2,'0');
-    }
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
+    // Archive toggle logic
+    document.querySelectorAll('.archive-week-header').forEach((header, i) => {
+      const dropsDiv = document.getElementById('archive-drops-' + i);
+      const toggleIcon = header.querySelector('.archive-week-toggle');
+      function toggle(){
+        const expanded = dropsDiv.classList.contains('expanded');
+        dropsDiv.classList.toggle('expanded', !expanded);
+        dropsDiv.classList.toggle('collapsed', expanded);
+        header.setAttribute('aria-expanded', !expanded);
+        toggleIcon.setAttribute('aria-expanded', !expanded);
+      }
+      header.addEventListener('click', toggle);
+      header.addEventListener('keypress', e => {if(e.key==='Enter'||e.key===' ') toggle();});
+    });
   </script>
 </body>
 </html>
