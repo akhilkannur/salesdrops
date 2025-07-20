@@ -3,483 +3,379 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NEXUS Tools Drop</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+  <title>SalesDrops – Weekly Tool Directory</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;600;700;900&family=Montserrat:wght@700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f6f5f1;
-      --accent: #2121ff;
+      --accent: #fe6a19;
+      --bg: #f8f6f3;
       --text: #18181b;
-      --muted: #868686;
+      --muted: #7c7c7c;
+      --headline: 'Playfair Display', serif;
+      --sans: 'Inter', Arial, sans-serif;
+      --caps: 'Montserrat', Arial, sans-serif;
     }
-    html, body {
+    body {
       margin: 0;
-      padding: 0;
       background: var(--bg);
+      font-family: var(--sans);
       color: var(--text);
-      font-family: 'Montserrat', Arial, sans-serif;
-      font-size: 18px;
-      font-weight: 400;
+      font-size: 19px;
       letter-spacing: 0.01em;
-      line-height: 1.5;
+    }
+    .gradient-bg {
+      position: absolute;
+      top: -180px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 320px;
+      z-index: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse 70% 40% at 50% 30%, #ffb99299 0%, #fff0e3 80%);
+      filter: blur(6px);
+      opacity: 0.7;
     }
     .container {
-      max-width: 1020px;
+      max-width: 560px;
       margin: 0 auto;
-      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
+      padding: 0 1.3rem;
     }
     header {
-      padding-top: 3.5rem;
-      padding-bottom: 2.5rem;
-      text-align: left;
+      text-align: center;
+      padding-top: 4.3rem;
+      padding-bottom: 2.2rem;
+      position: relative;
     }
     .headline {
-      font-size: 3rem;
+      font-family: var(--headline);
+      font-size: 3.1rem;
       font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin: 0 0 0.8em 0;
+      margin-bottom: 0.6em;
+      letter-spacing: -0.01em;
+      line-height: 1.07;
       color: #18181b;
-      line-height: 1.04;
+      text-shadow: 0 2px 24px #ffb99222;
+    }
+    .headline strong {
+      color: var(--accent);
+      font-weight: 900;
+      letter-spacing: -0.02em;
     }
     .desc {
+      font-size: 1.27rem;
       color: var(--muted);
-      font-size: 1.23rem;
+      font-family: var(--sans);
       font-weight: 500;
-      max-width: 540px;
-      margin-bottom: 2.2em;
+      margin-bottom: 2.1em;
+      line-height: 1.6;
+      letter-spacing: 0.01em;
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    .cta-row {
+    .signup-row {
       display: flex;
-      gap: 1.2em;
+      justify-content: center;
+      gap: 0.7em;
       margin-bottom: 1.5em;
     }
-    .cta-btn {
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      border-radius: 36px;
-      font-size: 1.07rem;
-      font-weight: 900;
-      padding: 1em 2.5em;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background .13s;
-    }
-    .cta-btn.secondary {
-      background: transparent;
-      color: var(--accent);
-      border: 2px solid var(--accent);
-    }
-    .cta-btn:hover, .cta-btn:focus {
-      background: #0f0fff;
-      color: #fff;
-    }
-    .cta-btn.secondary:hover, .cta-btn.secondary:focus {
-      background: var(--accent);
-      color: #fff;
-    }
-    .main-grid {
-      display: grid;
-      grid-template-columns: 1fr 300px;
-      gap: 3.2rem;
-      margin-bottom: 4rem;
-    }
-    @media (max-width: 900px) {
-      .main-grid {grid-template-columns: 1fr;}
-    }
-    /* Sidebar */
-    .sidebar-box {
-      background: #fff;
-      border-radius: 1.3rem;
-      border: 1px solid #e7e7e3;
-      padding: 2rem 1.2rem 1.5rem 1.2rem;
-      margin-bottom: 1.6em;
-    }
-    .sidebar-title {
-      font-size: 1.02em;
-      font-weight: 900;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1em;
-      letter-spacing: 0.06em;
-    }
-    .countdown-row {
-      display: flex;
-      gap: 1.6em;
-      margin-bottom: 0.8em;
-    }
-    .countdown-block {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-width: 54px;
-    }
-    .countdown-value {
-      font-size: 1.3rem;
-      font-weight: 900;
-      color: var(--accent);
-    }
-    .countdown-label {
-      font-size: 0.97em;
-      text-transform: uppercase;
-      color: #868686;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-    }
-    .email-form {
-      display: flex;
-      gap: 0.6em;
-      margin: 1.2em 0 0.5em 0;
-    }
     .email-input {
+      font-size: 1.13rem;
+      padding: 0.85em 1.1em;
       border: none;
-      border-bottom: 2px solid #e7e7e3;
+      border-bottom: 2px solid #ffe6d1;
       background: transparent;
-      font-size: 1.07rem;
-      font-family: inherit;
-      width: 170px;
+      border-radius: 0;
+      outline: none;
       color: var(--text);
-      padding: 0.5em 0.2em;
-      transition: border 0.14s;
+      font-family: var(--sans);
+      transition: border 0.12s;
+      letter-spacing: 0.01em;
     }
     .email-input:focus {
-      outline: none;
       border-bottom: 2px solid var(--accent);
+      background: #fffdf8;
     }
-    .email-btn {
+    .signup-btn {
       background: var(--accent);
       color: #fff;
-      padding: 0.6em 1.5em;
-      border-radius: 24px;
-      font-weight: 900;
-      font-size: 1em;
+      font-family: var(--caps);
       border: none;
-      cursor: pointer;
-      transition: background .13s;
-    }
-    .email-btn:hover {
-      background: #0f0fff;
-    }
-    .sponsors-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6em;
-      margin-top: 0.8em;
-    }
-    .sponsor-badge {
-      background: #f6f5f1;
-      border-radius: 0.9em;
+      border-radius: 22px;
       font-weight: 900;
-      color: #868686;
-      font-size: 1em;
-      padding: 0.18em 1.2em;
-      border: 1px solid #e7e7e3;
+      padding: 0.85em 2.1em;
+      font-size: 1.11rem;
+      letter-spacing: 0.14em;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: background 0.15s;
+      box-shadow: 0 2px 14px #ffb99238;
     }
-    .stats-list {
-      margin-top: 0.9em;
-      color: #868686;
-      font-size: 1em;
-      font-weight: 700;
+    .signup-btn:hover {
+      background: #d84a00;
+    }
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 2.6em;
+      font-family: var(--caps);
+      font-size: 1.18rem;
+      margin-bottom: 2.9em;
+      color: var(--accent);
+      letter-spacing: 0.14em;
+    }
+    .countdown span {
+      display: block;
+      font-size: 2.2rem;
+      font-family: var(--headline);
+      font-weight: 900;
+      color: #18181b;
+      letter-spacing: 0.01em;
+      line-height: 1.08;
+    }
+    /* Drops List */
+    .drops-section {
+      margin-top: 2.7rem;
+      margin-bottom: 3.8rem;
+      text-align: center;
+    }
+    .section-title {
+      font-family: var(--caps);
+      font-size: 1.23rem;
+      font-weight: 900;
+      letter-spacing: 0.13em;
+      margin-bottom: 2.5em;
+      color: #18181b;
+      text-transform: uppercase;
+      line-height: 1.18;
+    }
+    .drop-list {
       display: flex;
       flex-direction: column;
-      gap: 0.3em;
+      gap: 1.8em;
+      align-items: stretch;
     }
-    /* Cards */
-    .card-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2.3rem;
-    }
-    @media (max-width: 850px) {
-      .card-list {grid-template-columns: 1fr;}
-    }
-    .tool-card, .archive-card, .founder-card {
+    .drop-card {
       background: #fff;
-      border-radius: 1.05rem;
-      border: 1px solid #e7e7e3;
-      padding: 1.6rem 1.2rem 1.3rem 1.2rem;
-      margin-bottom: 1.25em;
-      box-shadow: none;
-      display: flex;
-      align-items: flex-start;
-      gap: 1.1rem;
-      min-height: 120px;
+      border-radius: 22px;
+      padding: 2.2em 1.5em 1.5em 1.5em;
+      text-align: left;
+      margin: 0 auto;
+      box-shadow: 0 2px 24px #ffb99222;
+      max-width: 430px;
+      transition: transform 0.11s, box-shadow 0.13s;
+      border: none;
     }
-    .tool-icon {
-      width: 46px; height: 46px;
-      border-radius: 0.9rem;
-      background: #f6f5f1;
-      color: var(--accent);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.65rem; font-weight: 900;
-      margin-right: 0.4rem; flex-shrink: 0;
+    .drop-card:hover {
+      transform: translateY(-2px) scale(1.012);
+      box-shadow: 0 8px 32px #fe6a1950;
     }
-    .card-title-row {
+    .drop-head {
       display: flex;
       align-items: center;
-      gap: 0.45em;
-      margin-bottom: 0.15em;
+      gap: 0.7em;
+      margin-bottom: 0.4em;
     }
-    .tool-card h3 {
-      font-size: 1.08rem;
-      font-weight: 900;
-      color: var(--text);
-      text-transform: uppercase;
-      margin: 0;
-    }
-    .tool-badge {
-      background: #f6f5f1;
+    .drop-icon {
+      font-size: 2.1em;
+      border-radius: 13px;
+      background: #fff6f1;
+      padding: 0.18em 0.38em;
       color: var(--accent);
-      border-radius: 0.9em;
-      font-size: 0.93em;
       font-weight: 900;
-      padding: 0.11em 1em;
-      letter-spacing: 0.04em;
-      margin-left: 0.17em;
-      margin-right: 0.17em;
-      border: 1px solid #e7e7e3;
+      box-shadow: 0 1px 8px #ffb99211;
     }
-    .tool-desc {
+    .drop-title {
+      font-size: 1.16em;
+      font-weight: 900;
+      color: #18181b;
+      font-family: var(--headline);
+      letter-spacing: 0.01em;
+      margin-right: 0.4em;
+    }
+    .drop-tag {
+      background: #ffb992;
+      color: #fff;
+      font-size: 0.91em;
+      font-weight: 900;
+      border-radius: 11px;
+      padding: 0.13em 1em;
+      margin-left: 0.3em;
+      font-family: var(--caps);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      box-shadow: 0 1px 6px #ffb99218;
+    }
+    .drop-desc {
       color: var(--muted);
-      font-size: 1.01rem;
-      font-weight: 600;
+      font-size: 1.09em;
       margin-bottom: 0.2em;
-      margin-top: 0.08em;
-      line-height: 1.4;
+      margin-top: 0.1em;
+      line-height: 1.55;
+      font-family: var(--sans);
     }
-    .tool-maker {
-      font-size: 0.97em;
+    .drop-maker {
       color: var(--accent);
+      font-size: 0.98em;
+      font-family: var(--caps);
       font-weight: 900;
       text-transform: uppercase;
-      margin-top: 0.12em;
+      letter-spacing: 0.03em;
+      margin-top: 0.5em;
     }
-    .archive-card strong {
-      color: var(--text);
-      font-size: 1em;
+    .sponsors-section {
+      background: radial-gradient(ellipse 70% 40% at 50% 30%, #ffb99233 0%, #fff0e3 80%);
+      border-radius: 18px;
+      padding: 2.5em 1.2em;
+      margin: 0 auto 3.5em auto;
+      text-align: center;
+      max-width: 410px;
+    }
+    .sponsors-title {
+      font-family: var(--caps);
+      font-size: 1.09em;
       font-weight: 900;
-    }
-    .archive-card ul {
-      margin-top: 0.6em;
-      margin-left: 1em;
+      letter-spacing: 0.08em;
       color: var(--accent);
+      margin-bottom: 1.1em;
+      text-transform: uppercase;
     }
-    .founder-card {
+    .sponsor-badges {
       display: flex;
-      align-items: center;
-      gap: 1.1em;
+      gap: 0.8em;
+      justify-content: center;
+      flex-wrap: wrap;
     }
-    .founder-avatar {
-      width: 38px; height: 38px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 1.5px solid var(--accent);
-      background: #f6f5f1;
-    }
-    .founder-name {
-      font-size: 1.01em;
+    .sponsor-badge {
+      background: #fff;
+      border-radius: 10px;
+      padding: 0.48em 1.22em;
+      color: #fd7d32;
+      font-family: var(--caps);
       font-weight: 900;
-      color: var(--accent);
-      margin-bottom: 0.08em;
-    }
-    .founder-tool {
-      font-size: 0.93em;
-      color: var(--muted);
-      font-weight: 700;
+      font-size: 1em;
+      border: 1.5px solid #ffe6d1;
+      margin-bottom: 0.2em;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
     .footer {
-      padding: 2.8em 0 2em 0;
+      margin-top: 5em;
+      padding: 2.5em 0 2em 0;
       text-align: center;
       color: #b3b3b3;
-      font-size: 1.01em;
-      font-family: 'Montserrat', Arial, sans-serif;
-      background: var(--bg);
-      border-top: 1px solid #e7e7e3;
-      margin-top: 3em;
+      font-size: 1.06em;
+      background: transparent;
+      font-family: var(--sans);
       letter-spacing: 0.05em;
+    }
+    @media (max-width: 700px) {
+      .container {max-width: 100%;}
+      main {border-radius: 0;}
+      .headline {font-size: 2em;}
+      .drop-card {padding: 1.6em 0.8em;}
     }
   </style>
 </head>
 <body>
-  <header class="container">
-    <div class="headline">NEXUS Weekly Drop</div>
-    <div class="desc">
-      The most electrifying tools for digital creators.<br>
-      Curated weekly. Discover game-changers, connect with trailblazers, and stay future-proof.
-    </div>
-    <div class="cta-row">
-      <button class="cta-btn">Get Started Free</button>
-      <button class="cta-btn secondary">Watch Demo</button>
-    </div>
-  </header>
-  <main class="container main-grid">
-    <div>
-      <div class="section-title">This Week's Top 5 Tools</div>
-      <div class="card-list">
-        <div class="tool-card">
-          <div class="tool-icon">⚡</div>
-          <div>
-            <div class="card-title-row">
-              <h3>QUANTUM.AI</h3>
-              <span class="tool-badge">AI Core</span>
-            </div>
-            <div class="tool-desc">Next-gen AI processing unit. 10<sup>12</sup> ops/ns. Quantum entanglement capabilities.</div>
-            <div class="tool-maker">By Dr. Zephyr</div>
-          </div>
+  <div class="gradient-bg"></div>
+  <main class="container">
+    <header>
+      <div class="headline">Discover this week’s<br><strong>Sales Tool Drops</strong></div>
+      <div class="desc">
+        Curated, editorial, friction-free. The best tools for sales pros—delivered weekly.
+      </div>
+      <form class="signup-row" onsubmit="return false;">
+        <input class="email-input" type="email" placeholder="your@email.com" required>
+        <button class="signup-btn" type="submit">Sign Up Free</button>
+      </form>
+      <div class="countdown" id="countdown">
+        <div>
+          <span id="days">--</span>
+          <div style="font-size:0.85em;">DAYS</div>
         </div>
-        <div class="tool-card">
-          <div class="tool-icon">🔮</div>
-          <div>
-            <div class="card-title-row">
-              <h3>NEXUS.VISION</h3>
-              <span class="tool-badge">AR/VR</span>
-            </div>
-            <div class="tool-desc">Holographic interface. Predictive analytics. 4D visualization matrix.</div>
-            <div class="tool-maker">By Sierra Tran</div>
-          </div>
+        <div>
+          <span id="hours">--</span>
+          <div style="font-size:0.85em;">HRS</div>
         </div>
-        <div class="tool-card">
-          <div class="tool-icon">🛡️</div>
-          <div>
-            <div class="card-title-row">
-              <h3>CIPHER.SHIELD</h3>
-              <span class="tool-badge">Security</span>
-            </div>
-            <div class="tool-desc">Quantum encryption. Military-grade QKD. Unbreakable protocols.</div>
-            <div class="tool-maker">By Ava Gupta</div>
-          </div>
-        </div>
-        <div class="tool-card">
-          <div class="tool-icon">🚀</div>
-          <div>
-            <div class="card-title-row">
-              <h3>VELOCITY.CORE</h3>
-              <span class="tool-badge">Speed</span>
-            </div>
-            <div class="tool-desc">Real-time processing. Petabytes, zero latency, hyperspeed protocols.</div>
-            <div class="tool-maker">By Kai Lennox</div>
-          </div>
-        </div>
-        <div class="tool-card">
-          <div class="tool-icon">✨</div>
-          <div>
-            <div class="card-title-row">
-              <h3>INFINITY.ENGINE</h3>
-              <span class="tool-badge">Quantum</span>
-            </div>
-            <div class="tool-desc">Boundless computation. Quantum superposition. Infinite parallelism.</div>
-            <div class="tool-maker">By Eli Chen</div>
-          </div>
+        <div>
+          <span id="minutes">--</span>
+          <div style="font-size:0.85em;">MIN</div>
         </div>
       </div>
-      <div class="section-title">Archive: Previous Drops</div>
-      <div class="archive-card">
-        <strong>Week 28 (July 7 - July 13):</strong>
-        <ul>
-          <li><span class="tool-badge">AI Core</span> <span class="font-bold" style="color:var(--text)">ALPHA.MIND</span> <span class="tool-maker">by Jane Roe</span></li>
-          <li><span class="tool-badge">Security</span> <span class="font-bold" style="color:var(--text)">SECURENET</span> <span class="tool-maker">by John Doe</span></li>
-        </ul>
-      </div>
-      <div class="archive-card">
-        <strong>Week 27 (June 30 - July 6):</strong>
-        <ul>
-          <li><span class="tool-badge">AR/VR</span> <span class="font-bold" style="color:var(--text)">VISIONARY</span> <span class="tool-maker">by Max Lee</span></li>
-        </ul>
-      </div>
-      <div class="section-title">Founders of this Week's Tools</div>
-      <div class="grid md:grid-cols-3 gap-4">
-        <div class="founder-card">
-          <img class="founder-avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Dr. Zephyr" />
-          <div>
-            <div class="founder-name">Dr. Zephyr</div>
-            <div class="founder-tool">QUANTUM.AI</div>
+    </header>
+
+    <section class="drops-section">
+      <div class="section-title">This Week’s Top Drops</div>
+      <div class="drop-list">
+        <div class="drop-card">
+          <div class="drop-head">
+            <span class="drop-icon">⚡</span>
+            <span class="drop-title">QUANTUM.AI</span>
+            <span class="drop-tag">AI Core</span>
           </div>
+          <div class="drop-desc">Next-gen AI processing unit. 10<sup>12</sup> ops/ns. Quantum entanglement capabilities.</div>
+          <div class="drop-maker">By Dr. Zephyr</div>
         </div>
-        <div class="founder-card">
-          <img class="founder-avatar" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sierra Tran" />
-          <div>
-            <div class="founder-name">Sierra Tran</div>
-            <div class="founder-tool">NEXUS.VISION</div>
+        <div class="drop-card">
+          <div class="drop-head">
+            <span class="drop-icon">🔮</span>
+            <span class="drop-title">NEXUS.VISION</span>
+            <span class="drop-tag">AR/VR</span>
           </div>
+          <div class="drop-desc">Holographic interface. Predictive analytics. 4D visualization matrix.</div>
+          <div class="drop-maker">By Sierra Tran</div>
         </div>
-        <div class="founder-card">
-          <img class="founder-avatar" src="https://randomuser.me/api/portraits/women/65.jpg" alt="Ava Gupta" />
-          <div>
-            <div class="founder-name">Ava Gupta</div>
-            <div class="founder-tool">CIPHER.SHIELD</div>
+        <div class="drop-card">
+          <div class="drop-head">
+            <span class="drop-icon">🛡️</span>
+            <span class="drop-title">CIPHER.SHIELD</span>
+            <span class="drop-tag">Security</span>
           </div>
+          <div class="drop-desc">Quantum encryption. Military-grade QKD. Unbreakable protocols.</div>
+          <div class="drop-maker">By Ava Gupta</div>
         </div>
-        <div class="founder-card">
-          <img class="founder-avatar" src="https://randomuser.me/api/portraits/men/74.jpg" alt="Kai Lennox" />
-          <div>
-            <div class="founder-name">Kai Lennox</div>
-            <div class="founder-tool">VELOCITY.CORE</div>
+        <div class="drop-card">
+          <div class="drop-head">
+            <span class="drop-icon">🚀</span>
+            <span class="drop-title">VELOCITY.CORE</span>
+            <span class="drop-tag">Speed</span>
           </div>
+          <div class="drop-desc">Real-time processing. Petabytes, zero latency, hyperspeed protocols.</div>
+          <div class="drop-maker">By Kai Lennox</div>
         </div>
-        <div class="founder-card">
-          <img class="founder-avatar" src="https://randomuser.me/api/portraits/men/82.jpg" alt="Eli Chen" />
-          <div>
-            <div class="founder-name">Eli Chen</div>
-            <div class="founder-tool">INFINITY.ENGINE</div>
+        <div class="drop-card">
+          <div class="drop-head">
+            <span class="drop-icon">✨</span>
+            <span class="drop-title">INFINITY.ENGINE</span>
+            <span class="drop-tag">Quantum</span>
           </div>
-        </div>
-      </div>
-    </div>
-    <aside>
-      <div class="sidebar-box">
-        <div class="sidebar-title">Next Drop In</div>
-        <div class="countdown-row" id="timer">
-          <div class="countdown-block">
-            <div class="countdown-value" id="days">--</div>
-            <div class="countdown-label">Days</div>
-          </div>
-          <div class="countdown-block">
-            <div class="countdown-value" id="hours">--</div>
-            <div class="countdown-label">Hrs</div>
-          </div>
-          <div class="countdown-block">
-            <div class="countdown-value" id="minutes">--</div>
-            <div class="countdown-label">Min</div>
-          </div>
+          <div class="drop-desc">Boundless computation. Quantum superposition. Infinite parallelism.</div>
+          <div class="drop-maker">By Eli Chen</div>
         </div>
       </div>
-      <div class="sidebar-box">
-        <div class="sidebar-title">Get Drop Alerts</div>
-        <form class="email-form" onsubmit="return false;">
-          <input class="email-input" type="email" placeholder="your@email.com" required>
-          <button class="email-btn" type="submit">Sign Up</button>
-        </form>
+    </section>
+    <section class="sponsors-section">
+      <div class="sponsors-title">Our Sponsors</div>
+      <div class="sponsor-badges">
+        <span class="sponsor-badge">Acme Inc.</span>
+        <span class="sponsor-badge">RocketStart</span>
+        <span class="sponsor-badge">PixelSoft</span>
       </div>
-      <div class="sidebar-box">
-        <div class="sidebar-title">Sponsors</div>
-        <div class="sponsors-list">
-          <span class="sponsor-badge">Acme Inc.</span>
-          <span class="sponsor-badge">RocketStart</span>
-          <span class="sponsor-badge">PixelSoft</span>
-        </div>
-      </div>
-      <div class="sidebar-box">
-        <div class="sidebar-title">Platform Stats</div>
-        <div class="stats-list">
-          <div>🛠️ Tools: 5</div>
-          <div>👤 Makers: 5</div>
-          <div>👀 Views: 2,431</div>
-          <div>📦 Drops: 3</div>
-        </div>
-      </div>
-    </aside>
+    </section>
+    <footer class="footer">
+      © 2077 NEXUS CORP • WEEKLY SALES DROP • All Rights Reserved
+    </footer>
   </main>
-  <footer class="footer">
-    © 2077 NEXUS CORP • WEEKLY TOOLS DROP • All Rights Reserved
-  </footer>
   <script>
-    // Next Friday at noon UTC
+    // Countdown logic: Next Friday at noon UTC
     const nextDrop = new Date();
     nextDrop.setDate(nextDrop.getDate() + ((5 - nextDrop.getDay() + 7) % 7 || 7));
     nextDrop.setHours(12,0,0,0);
-    function updateTimer() {
+    function updateCountdown() {
       const now = new Date();
       let diff = nextDrop - now;
       if (diff < 0) diff = 0;
@@ -490,8 +386,8 @@
       document.getElementById('hours').textContent = String(hours).padStart(2,'0');
       document.getElementById('minutes').textContent = String(minutes).padStart(2,'0');
     }
-    setInterval(updateTimer, 1000);
-    updateTimer();
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
   </script>
 </body>
 </html>
