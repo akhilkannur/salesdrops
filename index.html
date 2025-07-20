@@ -8,40 +8,37 @@
   <style>
     :root {
       --accent: #fe6a19;
+      --accent2: #ffb992;
+      --accent3: #ffe6d1;
       --bg: #f8f6f3;
+      --bg-soft: #fff6f1;
       --text: #18181b;
       --muted: #7c7c7c;
       --headline: 'Playfair Display', serif;
       --sans: 'Inter', Arial, sans-serif;
       --caps: 'Montserrat', Arial, sans-serif;
+      --modal-bg: rgba(24,24,27,0.28);
     }
-    body {
+    html, body {
       margin: 0;
       background: var(--bg);
       font-family: var(--sans);
       color: var(--text);
-      font-size: 19px;
-      letter-spacing: 0.01em;
+      font-size: 18px;
+      min-height: 100vh;
     }
-    .gradient-bg {
-      position: absolute;
-      top: -180px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 800px;
-      height: 320px;
-      z-index: 0;
-      pointer-events: none;
-      background: radial-gradient(ellipse 70% 40% at 50% 30%, #ffb99299 0%, #fff0e3 80%);
-      filter: blur(6px);
-      opacity: 0.7;
+    body {
+      background:
+        radial-gradient(ellipse 90% 40% at 50% -8%, var(--accent2) 0%, var(--bg) 80%),
+        radial-gradient(ellipse 90% 40% at 50% 108%, var(--accent3) 0%, var(--bg) 80%);
+      background-repeat: no-repeat;
     }
     .container {
-      max-width: 560px;
+      max-width: 620px;
       margin: 0 auto;
       position: relative;
       z-index: 1;
-      padding: 0 1.3rem;
+      padding: 0 1.5rem;
     }
     header {
       text-align: center;
@@ -51,13 +48,14 @@
     }
     .headline {
       font-family: var(--headline);
-      font-size: 3.1rem;
+      font-size: clamp(2.1rem, 6vw, 3.3rem);
       font-weight: 900;
       margin-bottom: 0.6em;
       letter-spacing: -0.01em;
       line-height: 1.07;
       color: #18181b;
       text-shadow: 0 2px 24px #ffb99222;
+      position: relative;
     }
     .headline strong {
       color: var(--accent);
@@ -65,13 +63,12 @@
       letter-spacing: -0.02em;
     }
     .desc {
-      font-size: 1.27rem;
+      font-size: clamp(1.03rem, 3vw, 1.27rem);
       color: var(--muted);
       font-family: var(--sans);
       font-weight: 500;
       margin-bottom: 2.1em;
       line-height: 1.6;
-      letter-spacing: 0.01em;
       max-width: 420px;
       margin-left: auto;
       margin-right: auto;
@@ -81,6 +78,7 @@
       justify-content: center;
       gap: 0.7em;
       margin-bottom: 1.5em;
+      flex-wrap: wrap;
     }
     .email-input {
       font-size: 1.13rem;
@@ -94,13 +92,16 @@
       font-family: var(--sans);
       transition: border 0.12s;
       letter-spacing: 0.01em;
+      min-width: 180px;
+      width: 52vw;
+      max-width: 320px;
     }
     .email-input:focus {
       border-bottom: 2px solid var(--accent);
       background: #fffdf8;
     }
     .signup-btn {
-      background: var(--accent);
+      background: linear-gradient(92deg, var(--accent) 70%, var(--accent2) 100%);
       color: #fff;
       font-family: var(--caps);
       border: none;
@@ -111,43 +112,51 @@
       letter-spacing: 0.14em;
       cursor: pointer;
       text-transform: uppercase;
-      transition: background 0.15s;
+      transition: background 0.15s, box-shadow 0.15s;
       box-shadow: 0 2px 14px #ffb99238;
+      margin-top: 0.1em;
     }
     .signup-btn:hover {
-      background: #d84a00;
+      background: linear-gradient(92deg, #d84a00 60%, var(--accent2) 100%);
+      box-shadow: 0 4px 20px #fe6a1933;
     }
     .countdown {
       display: flex;
       justify-content: center;
-      gap: 2.6em;
+      gap: 2.1em;
       font-family: var(--caps);
-      font-size: 1.18rem;
+      font-size: 1.12rem;
       margin-bottom: 2.9em;
       color: var(--accent);
       letter-spacing: 0.14em;
     }
     .countdown span {
       display: block;
-      font-size: 2.2rem;
+      font-size: clamp(1.45rem, 6vw, 2.1rem);
       font-family: var(--headline);
       font-weight: 900;
       color: #18181b;
       letter-spacing: 0.01em;
       line-height: 1.08;
+      background: linear-gradient(90deg,var(--accent2) 20%,#fff6f1 100%);
+      box-shadow: 0 2px 12px #fe6a1914;
+      border-radius: 12px;
+      padding: 0.1em 0.45em;
+      min-width: 38px;
+      margin-bottom: 0.2em;
     }
     /* Drops List */
     .drops-section {
-      margin-top: 2.7rem;
-      margin-bottom: 3.8rem;
+      margin-top: 2.1rem;
+      margin-bottom: 3.2rem;
       text-align: center;
     }
     .section-title {
       font-family: var(--caps);
-      font-size: 1.23rem;
+      font-size: clamp(1.03rem,2vw,1.23rem);
       font-weight: 900;
       letter-spacing: 0.13em;
-      margin-bottom: 2.5em;
+      margin-bottom: 2.1em;
       color: #18181b;
       text-transform: uppercase;
       line-height: 1.18;
@@ -155,49 +164,72 @@
     .drop-list {
       display: flex;
       flex-direction: column;
-      gap: 1.8em;
+      gap: 1.2em;
       align-items: stretch;
     }
     .drop-card {
-      background: #fff;
+      background: linear-gradient(135deg,#fff 70%,#fff6f1 100%);
       border-radius: 22px;
-      padding: 2.2em 1.5em 1.5em 1.5em;
+      padding: 2em 1.2em 1.3em 1.2em;
       text-align: left;
       margin: 0 auto;
-      box-shadow: 0 2px 24px #ffb99222;
-      max-width: 430px;
+      box-shadow: 0 2px 24px #ffb99230;
+      max-width: 100%;
       transition: transform 0.11s, box-shadow 0.13s;
-      border: none;
+      border: 1.5px solid #ffe6d1;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      min-width:0;
+    }
+    .drop-card:before {
+      content: '';
+      position: absolute;
+      top: -25px; right: -30px;
+      width: 96px; height: 64px;
+      background: radial-gradient(ellipse 50% 80% at 60% 20%, var(--accent2) 0%, transparent 80%);
+      opacity: 0.55;
+      z-index: 0;
+      pointer-events: none;
     }
     .drop-card:hover {
       transform: translateY(-2px) scale(1.012);
       box-shadow: 0 8px 32px #fe6a1950;
+      border-color: var(--accent2);
     }
     .drop-head {
       display: flex;
       align-items: center;
       gap: 0.7em;
       margin-bottom: 0.4em;
+      position: relative;
+      z-index: 1;
     }
     .drop-icon {
-      font-size: 2.1em;
+      font-size: 2em;
       border-radius: 13px;
       background: #fff6f1;
-      padding: 0.18em 0.38em;
+      padding: 0.13em 0.38em;
       color: var(--accent);
       font-weight: 900;
       box-shadow: 0 1px 8px #ffb99211;
+      margin-right: 0.1em;
     }
     .drop-title {
-      font-size: 1.16em;
+      font-size: 1.13em;
       font-weight: 900;
       color: #18181b;
       font-family: var(--headline);
       letter-spacing: 0.01em;
       margin-right: 0.4em;
+      flex:1;
+      min-width:0;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
     }
     .drop-tag {
-      background: #ffb992;
+      background: var(--accent2);
       color: #fff;
       font-size: 0.91em;
       font-weight: 900;
@@ -208,80 +240,306 @@
       letter-spacing: 0.06em;
       text-transform: uppercase;
       box-shadow: 0 1px 6px #ffb99218;
+      flex-shrink:0;
     }
     .drop-desc {
       color: var(--muted);
-      font-size: 1.09em;
+      font-size: 1.03em;
       margin-bottom: 0.2em;
       margin-top: 0.1em;
-      line-height: 1.55;
+      line-height: 1.5;
       font-family: var(--sans);
     }
     .drop-maker {
       color: var(--accent);
-      font-size: 0.98em;
+      font-size: 0.97em;
       font-family: var(--caps);
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 0.03em;
       margin-top: 0.5em;
     }
-    .sponsors-section {
-      background: radial-gradient(ellipse 70% 40% at 50% 30%, #ffb99233 0%, #fff0e3 80%);
-      border-radius: 18px;
-      padding: 2.5em 1.2em;
-      margin: 0 auto 3.5em auto;
-      text-align: center;
-      max-width: 410px;
+    /* Archive */
+    .archive-section {
+      margin: 3.1em 0 2em 0;
     }
-    .sponsors-title {
+    .archive-title {
       font-family: var(--caps);
-      font-size: 1.09em;
-      font-weight: 900;
-      letter-spacing: 0.08em;
+      font-size: 1.07rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--text);
+      margin-bottom: 2.0em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    .archive-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4em;
+      align-items: stretch;
+    }
+    .archive-week-card {
+      background: linear-gradient(135deg,#fff 80%,#fff6f1 100%);
+      border-radius: 19px;
+      box-shadow: 0 2px 22px #ffb99211;
+      padding: 1.3em 1.1em 1.2em 1.1em;
+      margin: 0 auto;
+      max-width: 100%;
+      border: 1.5px solid #ffe6d1;
+      overflow: hidden;
+    }
+    .archive-week-title {
+      font-family: var(--caps);
       color: var(--accent);
+      font-size: 1.06em;
+      font-weight: 900;
+      letter-spacing: 0.09em;
       margin-bottom: 1.1em;
       text-transform: uppercase;
     }
-    .sponsor-badges {
+    .archive-drops {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7em;
+    }
+    .archive-drop {
+      cursor: pointer;
+      padding: 0.6em 0.6em;
+      border-radius: 13px;
+      transition: background 0.11s;
+      margin-left: -0.3em;
+      margin-right: -0.3em;
+      position: relative;
+      border: none;
+      background: transparent;
+    }
+    .archive-drop:hover {
+      background: #fff6f1;
+    }
+    .archive-drop .drop-head {margin-bottom:0;}
+    /* Sponsors as cards */
+    .sponsors-section {
+      background: radial-gradient(ellipse 70% 40% at 50% 30%, #ffb99233 0%, #fff0e3 80%);
+      border-radius: 18px;
+      padding: 2em 1.2em;
+      margin: 0 auto 2.2em auto;
+      text-align: center;
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.1em;
+    }
+    .sponsors-title {
+      font-family: var(--caps);
+      font-size: 1.04em;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 1em;
+      text-transform: uppercase;
+    }
+    .sponsor-cards {
       display: flex;
       gap: 0.8em;
-      justify-content: center;
       flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
     }
-    .sponsor-badge {
-      background: #fff;
-      border-radius: 10px;
-      padding: 0.48em 1.22em;
+    .sponsor-card {
+      background: linear-gradient(90deg,#fff6f1 0%,#fff 90%);
+      border-radius: 14px;
+      padding: 0.7em 1.1em;
+      min-width: 92px;
+      min-height: 48px;
+      box-shadow: 0 2px 12px #ffb99214;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1.5px solid #ffe6d1;
+      font-family: var(--caps);
       color: #fd7d32;
+      font-weight: 900;
+      letter-spacing: 0.07em;
+      font-size: 1em;
+      gap: 0.25em;
+    }
+    .sponsor-logo {
+      width: 28px;
+      height: 28px;
+      margin-bottom: 0.1em;
+      object-fit: contain;
+      border-radius: 6px;
+      background: #fff6f1;
+      border: 1px solid #ffe6d1;
+      box-shadow: 0 1px 5px #ffb99208;
+    }
+    /* Modal styles */
+    .modal-bg {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--modal-bg);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.25s;
+    }
+    .modal-bg.active {
+      display: flex;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    .modal-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 2.2em 1.2em 1.5em 1.2em;
+      box-shadow: 0 8px 44px #ffb99277, 0 0 0 8px #fff6f1;
+      max-width: 420px;
+      width: 95vw;
+      position: relative;
+      text-align: left;
+      animation: modalPop 0.23s;
+      margin: 2vw;
+      overflow: auto;
+    }
+    @keyframes modalPop {
+      from {transform: translateY(40px) scale(0.95);}
+      to {transform: none;}
+    }
+    .modal-close {
+      position: absolute;
+      top: 14px; right: 16px;
+      font-size: 1.6em;
+      background: none;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
       font-family: var(--caps);
       font-weight: 900;
-      font-size: 1em;
-      border: 1.5px solid #ffe6d1;
-      margin-bottom: 0.2em;
+    }
+    .modal-img {
+      width: 100%;
+      max-width: 340px;
+      border-radius: 18px;
+      margin-bottom: 1.1em;
+      background: #fff6f1;
+      box-shadow: 0 4px 32px #ffb99230;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .modal-title {
+      font-family: var(--headline);
+      font-size: 1.42em;
+      font-weight: 900;
+      margin-bottom: 0.12em;
+      color: #18181b;
+      letter-spacing: 0.01em;
+    }
+    .modal-tag {
+      background: #ffb992;
+      color: #fff;
+      font-size: 0.98em;
+      font-weight: 900;
+      border-radius: 11px;
+      padding: 0.13em 1em;
+      margin-left: 0.3em;
+      font-family: var(--caps);
       letter-spacing: 0.06em;
       text-transform: uppercase;
     }
+    .modal-desc {
+      color: var(--muted);
+      font-size: 1.09em;
+      margin-bottom: 0.5em;
+      margin-top: 0.4em;
+      line-height: 1.55;
+      font-family: var(--sans);
+    }
+    .modal-maker {
+      color: var(--accent);
+      font-size: 1em;
+      font-family: var(--caps);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-top: 0.5em;
+      margin-bottom: 0.6em;
+    }
+    .modal-extra {
+      color: #18181b;
+      font-size: 1.08em;
+      margin-top: 1.2em;
+      border-top: 1.5px solid #ffe6d1;
+      padding-top: 1.1em;
+    }
+    .modal-screenshots {
+      display: flex;
+      gap: 1em;
+      margin-top: 0.6em;
+      overflow-x: auto;
+    }
+    .modal-screenshot-thumb {
+      width: 82px;
+      height: 60px;
+      border-radius: 10px;
+      object-fit: cover;
+      background: #fff6f1;
+      border: 1px solid #ffe6d1;
+      box-shadow: 0 2px 6px #ffb99222;
+      cursor: pointer;
+      opacity: 0.9;
+      transition: opacity 0.13s, border 0.13s;
+    }
+    .modal-screenshot-thumb.active, .modal-screenshot-thumb:hover {
+      opacity: 1;
+      border: 2.5px solid var(--accent);
+    }
     .footer {
-      margin-top: 5em;
-      padding: 2.5em 0 2em 0;
+      margin-top: 3.5em;
+      padding: 2.1em 0 2em 0;
       text-align: center;
       color: #b3b3b3;
-      font-size: 1.06em;
+      font-size: 1.03em;
       background: transparent;
       font-family: var(--sans);
       letter-spacing: 0.05em;
     }
+    /* Section Dividers */
+    .divider {
+      width: 62%;
+      margin: 2.5em auto;
+      height: 9px;
+      border-radius: 5px;
+      background: linear-gradient(90deg,#ffb992 10%,#fff6f1 100%);
+      opacity: 0.34;
+      border: none;
+    }
+    /* Mobile styles */
     @media (max-width: 700px) {
-      .container {max-width: 100%;}
-      main {border-radius: 0;}
-      .headline {font-size: 2em;}
-      .drop-card {padding: 1.6em 0.8em;}
+      .container {max-width: 100%;padding:0 0.3rem;}
+      header {padding-top:2.2rem;}
+      .headline {font-size:2.1rem;}
+      .desc {font-size:1.03rem;}
+      .drop-card,.archive-week-card {padding:1.2em 0.5em;}
+      .modal-card {padding:0.8em 0.2em;}
+      .modal-title {font-size:1.1em;}
+      .modal-img {max-width:100%; border-radius:12px;}
+      .sponsor-cards {gap:0.3em;}
+      .sponsor-card {padding:0.4em 0.7em;}
+    }
+    @media (max-width: 440px) {
+      .modal-card {max-width:100vw;}
+      .sponsor-card {min-width:70px;}
+      .modal-img {border-radius:8px;}
     }
   </style>
 </head>
 <body>
-  <div class="gradient-bg"></div>
   <main class="container">
     <header>
       <div class="headline">Discover this week’s<br><strong>Sales Tool Drops</strong></div>
@@ -311,7 +569,7 @@
     <section class="drops-section">
       <div class="section-title">This Week’s Top Drops</div>
       <div class="drop-list">
-        <div class="drop-card">
+        <div class="drop-card" data-drop="0">
           <div class="drop-head">
             <span class="drop-icon">⚡</span>
             <span class="drop-title">QUANTUM.AI</span>
@@ -320,7 +578,7 @@
           <div class="drop-desc">Next-gen AI processing unit. 10<sup>12</sup> ops/ns. Quantum entanglement capabilities.</div>
           <div class="drop-maker">By Dr. Zephyr</div>
         </div>
-        <div class="drop-card">
+        <div class="drop-card" data-drop="1">
           <div class="drop-head">
             <span class="drop-icon">🔮</span>
             <span class="drop-title">NEXUS.VISION</span>
@@ -329,7 +587,7 @@
           <div class="drop-desc">Holographic interface. Predictive analytics. 4D visualization matrix.</div>
           <div class="drop-maker">By Sierra Tran</div>
         </div>
-        <div class="drop-card">
+        <div class="drop-card" data-drop="2">
           <div class="drop-head">
             <span class="drop-icon">🛡️</span>
             <span class="drop-title">CIPHER.SHIELD</span>
@@ -338,7 +596,7 @@
           <div class="drop-desc">Quantum encryption. Military-grade QKD. Unbreakable protocols.</div>
           <div class="drop-maker">By Ava Gupta</div>
         </div>
-        <div class="drop-card">
+        <div class="drop-card" data-drop="3">
           <div class="drop-head">
             <span class="drop-icon">🚀</span>
             <span class="drop-title">VELOCITY.CORE</span>
@@ -347,7 +605,7 @@
           <div class="drop-desc">Real-time processing. Petabytes, zero latency, hyperspeed protocols.</div>
           <div class="drop-maker">By Kai Lennox</div>
         </div>
-        <div class="drop-card">
+        <div class="drop-card" data-drop="4">
           <div class="drop-head">
             <span class="drop-icon">✨</span>
             <span class="drop-title">INFINITY.ENGINE</span>
@@ -358,19 +616,248 @@
         </div>
       </div>
     </section>
+
+    <hr class="divider">
+
+    <section class="archive-section">
+      <div class="archive-title">Archive: Previous Drops</div>
+      <div class="archive-list">
+        <div class="archive-week-card">
+          <div class="archive-week-title">Week 28 (July 7 - July 13)</div>
+          <div class="archive-drops">
+            <div class="archive-drop" data-archive="0-0">
+              <div class="drop-head">
+                <span class="drop-icon">🤖</span>
+                <span class="drop-title">ALPHA.MIND</span>
+                <span class="drop-tag">AI Core</span>
+              </div>
+              <div class="drop-maker">Jane Roe</div>
+            </div>
+            <div class="archive-drop" data-archive="0-1">
+              <div class="drop-head">
+                <span class="drop-icon">🔐</span>
+                <span class="drop-title">SECURENET</span>
+                <span class="drop-tag">Security</span>
+              </div>
+              <div class="drop-maker">John Doe</div>
+            </div>
+          </div>
+        </div>
+        <div class="archive-week-card">
+          <div class="archive-week-title">Week 27 (June 30 - July 6)</div>
+          <div class="archive-drops">
+            <div class="archive-drop" data-archive="1-0">
+              <div class="drop-head">
+                <span class="drop-icon">👁️</span>
+                <span class="drop-title">VISIONARY</span>
+                <span class="drop-tag">AR/VR</span>
+              </div>
+              <div class="drop-maker">Max Lee</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
     <section class="sponsors-section">
       <div class="sponsors-title">Our Sponsors</div>
-      <div class="sponsor-badges">
-        <span class="sponsor-badge">Acme Inc.</span>
-        <span class="sponsor-badge">RocketStart</span>
-        <span class="sponsor-badge">PixelSoft</span>
+      <div class="sponsor-cards">
+        <div class="sponsor-card">
+          <img class="sponsor-logo" src="https://placehold.co/32x32/orange/white?text=A" alt="Acme Inc."/>
+          <div>Acme Inc.</div>
+        </div>
+        <div class="sponsor-card">
+          <img class="sponsor-logo" src="https://placehold.co/32x32/ffb992/fff?text=R" alt="RocketStart"/>
+          <div>RocketStart</div>
+        </div>
+        <div class="sponsor-card">
+          <img class="sponsor-logo" src="https://placehold.co/32x32/fff6f1/fe6a19?text=P" alt="PixelSoft"/>
+          <div>PixelSoft</div>
+        </div>
       </div>
     </section>
     <footer class="footer">
       © 2077 NEXUS CORP • WEEKLY SALES DROP • All Rights Reserved
     </footer>
   </main>
+
+  <!-- Popup Modal -->
+  <div class="modal-bg" id="drop-modal-bg" tabindex="-1">
+    <div class="modal-card" id="drop-modal-card">
+      <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+      <img class="modal-img" id="modal-img" src="" alt="" />
+      <div class="modal-title" id="modal-title"></div>
+      <span class="modal-tag" id="modal-tag"></span>
+      <div class="modal-maker" id="modal-maker"></div>
+      <div class="modal-desc" id="modal-desc"></div>
+      <div class="modal-extra" id="modal-extra" style="display:none;">
+        <div style="font-weight:700;margin-bottom:0.7em;">Screenshots</div>
+        <div class="modal-screenshots" id="modal-screenshots"></div>
+      </div>
+    </div>
+  </div>
+
   <script>
+    // DATA for current drops and archive drops
+    const drops = [
+      {
+        title: "QUANTUM.AI",
+        tag: "AI Core",
+        icon: "⚡",
+        desc: "Next-gen AI processing unit. 10<sup>12</sup> ops/ns. Quantum entanglement capabilities.",
+        maker: "By Dr. Zephyr",
+        img: "https://placehold.co/340x180/18181b/fff?text=QUANTUM.AI",
+        screenshots: [
+          "https://placehold.co/160x100/fe6a19/fff?text=Screen1",
+          "https://placehold.co/160x100/18181b/fff?text=Screen2"
+        ]
+      },
+      {
+        title: "NEXUS.VISION",
+        tag: "AR/VR",
+        icon: "🔮",
+        desc: "Holographic interface. Predictive analytics. 4D visualization matrix.",
+        maker: "By Sierra Tran",
+        img: "https://placehold.co/340x180/fe6a19/fff?text=NEXUS.VISION",
+        screenshots: [
+          "https://placehold.co/160x100/ffb992/fff?text=Screen1"
+        ]
+      },
+      {
+        title: "CIPHER.SHIELD",
+        tag: "Security",
+        icon: "🛡️",
+        desc: "Quantum encryption. Military-grade QKD. Unbreakable protocols.",
+        maker: "By Ava Gupta",
+        img: "https://placehold.co/340x180/fff6f1/fe6a19?text=CIPHER.SHIELD",
+        screenshots: []
+      },
+      {
+        title: "VELOCITY.CORE",
+        tag: "Speed",
+        icon: "🚀",
+        desc: "Real-time processing. Petabytes, zero latency, hyperspeed protocols.",
+        maker: "By Kai Lennox",
+        img: "https://placehold.co/340x180/ffb992/18181b?text=VELOCITY.CORE",
+        screenshots: [
+          "https://placehold.co/160x100/fe6a19/fff?text=Screen1",
+          "https://placehold.co/160x100/fff6f1/fe6a19?text=Screen2",
+          "https://placehold.co/160x100/18181b/fff?text=Screen3"
+        ]
+      },
+      {
+        title: "INFINITY.ENGINE",
+        tag: "Quantum",
+        icon: "✨",
+        desc: "Boundless computation. Quantum superposition. Infinite parallelism.",
+        maker: "By Eli Chen",
+        img: "https://placehold.co/340x180/fff/fe6a19?text=INFINITY.ENGINE",
+        screenshots: []
+      }
+    ];
+    const archiveDrops = [
+      [ // Week 28 (July 7 - July 13)
+        {
+          title: "ALPHA.MIND",
+          tag: "AI Core",
+          icon: "🤖",
+          desc: "Last-gen AI suite. Modular, open, clever.",
+          maker: "Jane Roe",
+          img: "https://placehold.co/340x180/18181b/fff?text=ALPHA.MIND",
+          screenshots: [
+            "https://placehold.co/160x100/fe6a19/fff?text=Screen1"
+          ]
+        },
+        {
+          title: "SECURENET",
+          tag: "Security",
+          icon: "🔐",
+          desc: "Network security for the modern world.",
+          maker: "John Doe",
+          img: "https://placehold.co/340x180/fe6a19/fff?text=SECURENET",
+          screenshots: []
+        }
+      ],
+      [ // Week 27 (June 30 - July 6)
+        {
+          title: "VISIONARY",
+          tag: "AR/VR",
+          icon: "👁️",
+          desc: "Next-level vision tools for every workflow.",
+          maker: "Max Lee",
+          img: "https://placehold.co/340x180/ffb992/fff?text=VISIONARY",
+          screenshots: []
+        }
+      ]
+    ];
+
+    // MODAL logic
+    function openModal(drop) {
+      document.getElementById('modal-img').src = drop.img;
+      document.getElementById('modal-img').alt = drop.title + ' screenshot';
+      document.getElementById('modal-title').innerHTML = `${drop.icon} ${drop.title}`;
+      document.getElementById('modal-tag').textContent = drop.tag;
+      document.getElementById('modal-maker').textContent = drop.maker;
+      document.getElementById('modal-desc').innerHTML = drop.desc;
+      // screenshots
+      const screenshots = drop.screenshots || [];
+      const modalExtra = document.getElementById('modal-extra');
+      const screenshotsDiv = document.getElementById('modal-screenshots');
+      screenshotsDiv.innerHTML = '';
+      if(screenshots.length > 0) {
+        modalExtra.style.display = '';
+        screenshots.forEach((src, i) => {
+          const img = document.createElement('img');
+          img.src = src;
+          img.className = "modal-screenshot-thumb";
+          img.alt = drop.title + " screenshot " + (i+1);
+          img.onclick = () => {
+            document.getElementById('modal-img').src = src;
+            let all = screenshotsDiv.querySelectorAll('img');
+            all.forEach(el => el.classList.remove('active'));
+            img.classList.add('active');
+          }
+          if(i===0) img.classList.add('active');
+          screenshotsDiv.appendChild(img);
+        });
+      } else {
+        modalExtra.style.display = 'none';
+      }
+      document.getElementById('drop-modal-bg').classList.add('active');
+      document.getElementById('drop-modal-card').focus();
+      document.body.style.overflow = 'hidden';
+    }
+    // Current drops
+    document.querySelectorAll('.drop-card').forEach((el, idx) => {
+      el.addEventListener('click', () => openModal(drops[idx]));
+    });
+    // Archive drops
+    document.querySelectorAll('.archive-drop').forEach((el) => {
+      el.addEventListener('click', () => {
+        const [week, idx] = el.getAttribute('data-archive').split('-').map(Number);
+        openModal(archiveDrops[week][idx]);
+      });
+    });
+    // Close modal
+    document.getElementById('modal-close').onclick = () => {
+      document.getElementById('drop-modal-bg').classList.remove('active');
+      document.body.style.overflow = '';
+    };
+    document.getElementById('drop-modal-bg').onclick = (e) => {
+      if(e.target === document.getElementById('drop-modal-bg')) {
+        document.getElementById('drop-modal-bg').classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    };
+    document.addEventListener('keydown', function(e){
+      if(e.key === "Escape") {
+        document.getElementById('drop-modal-bg').classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
     // Countdown logic: Next Friday at noon UTC
     const nextDrop = new Date();
     nextDrop.setDate(nextDrop.getDate() + ((5 - nextDrop.getDay() + 7) % 7 || 7));
