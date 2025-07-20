@@ -2,193 +2,420 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SalesDrops – Weekly Tool Directory</title>
-  <!-- GT Walsheim alternative for demo: Nunito Sans (Google Fonts) -->
-  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@900;800;700;400&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Sales Drops — Million-Dollar Tools To-Do</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900;700;600;400&display=swap" rel="stylesheet">
   <style>
     :root {
-      --spotify-black: #191414;
-      --spotify-green: #1ed760;
-      --spotify-dark-green: #158a44;
-      --spotify-gray: #282828;
-      --spotify-soft: #232323;
-      --spotify-card: #232323;
-      --spotify-card-dark: #1e1e1e;
-      --bg-gradient: radial-gradient(ellipse at 70% 0%, #222b1d 0%, #191414 100%);
-      --spotify-gray2: #b3b3b3;
-      --spotify-highlight: #25f08a;
-      --spotify-link: #1ed760;
-      --border-radius: 20px;
-      --shadow: 0 4px 32px 0 #121212cc;
+      --bg: #eef2f8;
+      --gradient: linear-gradient(135deg, #f5faff 0%, #e7eeff 100%);
+      --card-gradient: linear-gradient(120deg, #fff 75%, #f1f6ff 100%);
+      --shadow-main: 0 8px 36px 0 #a8b5c61a, 0 1.5px 7px 0 #23272f05;
+      --shadow-hover: 0 18px 42px 0 #abcbff33, 0 2px 24px #a8e6cf40;
+      --radius-xl: 32px;
+      --radius-lg: 22px;
+      --radius-md: 14px;
+      --radius-sm: 10px;
+      --accent1: #6b47ff;
+      --accent2: #1c68f3;
+      --accent3: #18bfa4;
+      --accent4: #fedc60;
+      --accent5: #ff4b4b;
+      --tag-bg: #f1f4fb;
+      --divider: #e9eaf0;
+      --todo-section-bg: rgba(255,255,255,0.66);
+      --todo-section-blur: blur(12px);
+      --todo-check: #e2e6ed;
+      --todo-checked: #6b47ff;
+      --text: #23223b;
+      --text-muted: #8c92a6;
+      --cta-bg: #f2f4f8;
+      --cta-border: #e6e8eb;
+      --glass-light: rgba(255,255,255,0.55);
+      --glass-dark: rgba(150,180,220,0.11);
     }
     html, body {
-      background: var(--bg-gradient);
-      margin: 0; padding: 0;
-      font-family: 'Nunito Sans', Arial, sans-serif;
-      color: #fff;
-      font-size: 18px;
-      line-height: 1.7;
+      background: var(--gradient), var(--bg);
       min-height: 100vh;
+      font-family: 'Inter', Arial, sans-serif;
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      font-size: 17px;
+      position: relative;
     }
-    ::selection { background: var(--spotify-green); color: #191414;}
+    body {
+      -webkit-font-smoothing: antialiased;
+      background: var(--gradient), var(--bg);
+      overflow-x: hidden;
+    }
+    .bg-blobs {
+      pointer-events: none;
+      z-index: 0;
+      position: fixed;
+      inset: 0;
+    }
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.16;
+      filter: blur(36px);
+      z-index: 0;
+      animation: floatblob 16s infinite alternate;
+      mix-blend-mode: lighten;
+    }
+    .blob1 { background: #fedc60; width: 340px; height: 210px; top: -80px; left: -90px; animation-delay: 0s;}
+    .blob2 { background: #6b47ff; width: 290px; height: 150px; bottom: 30px; left: 15vw; animation-delay: 5s;}
+    .blob3 { background: #1c68f3; width: 180px; height: 110px; top: 42vh; right: 14vw; animation-delay: 2s;}
+    .blob4 { background: #18bfa4; width: 210px; height: 130px; bottom: 7vh; right: -60px; animation-delay: 7s;}
+    @keyframes floatblob {
+      0% { transform: translateY(0px) scale(1);}
+      100% { transform: translateY(35px) scale(1.07);}
+    }
     .container {
-      max-width: 700px;
+      max-width: 820px;
       margin: 0 auto;
-      padding: 0 1.2rem;
-    }
-    header {
-      padding-top: 2.7rem;
-      padding-bottom: 2.2rem;
-      text-align: center;
+      padding: 4.5rem 1.5rem 2.5rem 1.5rem;
+      position: relative;
+      z-index: 1;
     }
     .headline {
-      font-family: 'Nunito Sans', Arial, sans-serif;
+      font-family: 'Inter', Arial, sans-serif;
+      font-size: clamp(2.1rem,5vw,2.95rem);
       font-weight: 900;
-      font-size: clamp(2.5rem, 7vw, 3.7rem);
-      color: #fff;
-      letter-spacing: -0.01em;
-      border-radius: 32px;
-      background: none;
-      margin-bottom: 0.3em;
-      line-height: 1.12;
-      display: inline-block;
-      text-shadow: 0 3px 32px #12121290;
-    }
-    .headline .emoji {
-      font-size: 1.12em;
-      vertical-align: -0.17em;
-      margin-right: 0.13em;
+      color: var(--text);
+      margin-bottom: 0.12em;
+      letter-spacing: -0.03em;
+      line-height: 1.07;
+      letter-spacing: -0.04em;
+      text-shadow: 0 3px 40px #6b47ff09, 0 2px 9px #18bfa411;
     }
     .desc {
-      font-size: 1.13rem;
-      color: var(--spotify-gray2);
-      margin-bottom: 2.1em;
-      margin-top: 0.2em;
-      max-width: 470px;
-      margin-left: auto;
-      margin-right: auto;
-      font-weight: 600;
+      color: var(--text-muted);
+      font-size: 1.19rem;
+      max-width: 540px;
+      margin-bottom: 2.2em;
+      margin-top: 0.05em;
+      line-height: 1.62;
+      font-weight: 400;
+      text-shadow: 0 1px 8px #1c68f309;
     }
-    .section-title {
-      font-family: 'Nunito Sans', Arial, sans-serif;
-      font-weight: 900;
-      font-size: 1.32rem;
-      margin: 2.7em 0 1.25em 0;
-      color: var(--spotify-green);
-      letter-spacing: 0.04em;
-      display: flex;
-      align-items: center;
-      gap: 0.4em;
-      text-shadow: 0 2px 24px #0d3d1c77;
-    }
-    .section-title .emoji {
-      font-size: 1.16em;
-    }
-    /* Drop Cards */
-    .drop-list {
+    /* TO-DO LIST */
+    .todo-list-container {
+      background: var(--card-gradient);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-main);
+      padding: 2.4rem 2.2rem 2rem 2.2rem;
+      margin-bottom: 2.5rem;
       display: flex;
       flex-direction: column;
-      gap: 1.4em;
-      align-items: stretch;
-      margin-bottom: 2.7em;
+      gap: 2.2rem;
+      position: relative;
+      border: 1.5px solid var(--divider);
+      backdrop-filter: blur(7px);
+      -webkit-backdrop-filter: blur(7px);
+      overflow: visible;
+    }
+    .todo-section-title {
+      font-size: 1.11em;
+      font-weight: 800;
+      color: var(--accent2);
+      margin-bottom: 0.76em;
+      margin-top: 0.2em;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      display: flex;
+      align-items: center;
+      gap: 0.51em;
+      filter: drop-shadow(0 4px 12px #1c68f321);
+    }
+    .todo-section {
+      background: var(--todo-section-bg);
+      border-radius: var(--radius-lg);
+      padding: 1.2em 1.4em 1.1em 1.4em;
+      margin-bottom: 0.7em;
+      box-shadow: 0 4px 18px #1c68f30d;
+      border: 1.5px solid var(--divider);
+      backdrop-filter: var(--todo-section-blur);
+      -webkit-backdrop-filter: var(--todo-section-blur);
+      position: relative;
+      overflow: visible;
+      transition: box-shadow 0.17s, border 0.16s;
+    }
+    .todo-section:hover {
+      box-shadow: 0 10px 40px #1c68f31a;
+      border: 1.5px solid #b8cdf9;
+    }
+    .todo-tasks {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .todo-task {
+      display: flex;
+      align-items: center;
+      gap: 1.09em;
+      font-size: 1.10em;
+      margin-bottom: 0.7em;
+      background: none;
+      border: none;
+      outline: none;
+      color: var(--text);
+      font-family: inherit;
+      border-radius: 10px;
+      padding: 0.32em 0.2em 0.32em 0em;
+      transition: background 0.13s, box-shadow 0.13s;
+      cursor: pointer;
+      box-shadow: 0 1px 4px #b8cdf90d;
+      position: relative;
+      z-index: 1;
+    }
+    .todo-task:last-child { margin-bottom: 0; }
+    .todo-task:hover, .todo-task:focus { background: #f6f7fb; box-shadow: 0 3px 12px #6b47ff09; }
+    .todo-check {
+      width: 27px;
+      height: 27px;
+      min-width: 27px;
+      min-height: 27px;
+      border-radius: 9px;
+      background: var(--todo-check);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.14s, border 0.14s, box-shadow 0.13s;
+      margin-right: 0.2em;
+      border: 2.5px solid #e2e6ed;
+      box-sizing: border-box;
+      box-shadow: 0 2px 7px #1c68f310;
+      font-size: 1.07em;
+    }
+    .todo-task.checked .todo-check {
+      background: var(--todo-checked);
+      border: 2.5px solid var(--todo-checked);
+      box-shadow: 0 4px 12px #6b47ff44;
+      animation: checkpop 0.25s cubic-bezier(.5,2,0,1) 1;
+    }
+    @keyframes checkpop {
+      0% { transform: scale(0.7);}
+      60% { transform: scale(1.14);}
+      100% { transform: scale(1);}
+    }
+    .todo-checkmark {
+      display: none;
+      color: #fff;
+      font-size: 1.22em;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .todo-task.checked .todo-checkmark { display: block; }
+    .todo-task .todo-text {
+      text-decoration: none;
+      font-weight: 600;
+      color: var(--text);
+      transition: color 0.13s;
+      letter-spacing: -0.01em;
+      font-size: 1.06em;
+    }
+    .todo-task.checked .todo-text {
+      text-decoration: line-through;
+      color: #b7b9d4;
+      font-weight: 500;
+      opacity: 0.79;
+    }
+    .todo-tag {
+      margin-left: auto;
+      background: var(--tag-bg);
+      color: var(--accent2);
+      border-radius: 11px;
+      font-size: 0.93em;
+      padding: 0.14em 1.01em;
+      border: 1.5px solid #e6e8eb;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      transition: background 0.12s, color 0.12s;
+      box-shadow: 0 1px 3px #22223b0a;
+      display: inline-block;
+    }
+    .todo-tag.yellow { color: var(--accent4);}
+    .todo-tag.green { color: var(--accent3);}
+    .todo-tag.purple { color: var(--accent1);}
+    .todo-tag.red { color: var(--accent5);}
+    .todo-tag.blue { color: var(--accent2);}
+    .todo-tag.gold { color: #d6aa2e;}
+    /* CTA Button for new task */
+    .cta-btn {
+      background: linear-gradient(90deg, var(--accent2) 0%, var(--accent1) 100%);
+      color: #fff;
+      font-family: inherit;
+      font-weight: 900;
+      border-radius: 19px;
+      border: none;
+      padding: 0.75em 2em;
+      margin-top: 1.3em;
+      font-size: 1.09em;
+      box-shadow: 0 2px 18px #b2dde734;
+      cursor: pointer;
+      transition: background 0.13s, color 0.13s, box-shadow 0.13s;
+      align-self: flex-end;
+      letter-spacing: 0.06em;
+      outline: none;
+    }
+    .cta-btn:hover, .cta-btn:focus {
+      background: linear-gradient(90deg, var(--accent3) 0%, var(--accent1) 100%);
+      color: #fff;
+      box-shadow: 0 6px 26px #6b47ff33;
+    }
+    /* Sophisticated divider */
+    .soph-divider {
+      width: 93%;
+      margin: 3.7em auto 3.2em auto;
+      height: 2.5px;
+      border-radius: 2px;
+      background: linear-gradient(90deg,#e1e9ff 0%, #f6fafd 100%);
+      border: none;
+      box-shadow: 0 1.5px 7px #b8cdf91a;
+    }
+
+    /* DROPS PANEL (Sales Tools Drops Section) */
+    .drops-panel {
+      background: var(--card-gradient);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-main);
+      padding: 2.1rem 2.1rem 2.1rem 2.1rem;
+      margin-bottom: 2.4rem;
+      border: 1.5px solid var(--divider);
+      backdrop-filter: blur(7px);
+      -webkit-backdrop-filter: blur(7px);
+      position: relative;
+      z-index: 5;
+    }
+    .drops-title {
+      font-size: 1.19em;
+      font-weight: 800;
+      color: var(--accent1);
+      margin-bottom: 1.17em;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      filter: drop-shadow(0 4px 12px #6b47ff15);
+    }
+    .drops-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2em;
     }
     .drop-card {
-      border-radius: var(--border-radius);
-      background: linear-gradient(110deg,#232323 80%, #1ed7600f 100%);
-      box-shadow: var(--shadow);
-      padding: 2.1em 1.6em 1.4em 1.6em;
-      display: flex;
-      flex-direction: column;
-      cursor: pointer;
-      border: none;
-      transition: box-shadow 0.18s, transform 0.15s, background 0.2s;
-      position: relative;
-      min-width: 0;
-      outline: none;
-      will-change: transform;
-      margin-bottom: 0.2em;
-    }
-    .drop-card:hover, .drop-card:focus {
-      box-shadow: 0 14px 48px #1ed76050;
-      background: linear-gradient(110deg,#232323 50%, #1ed76033 100%);
-      transform: translateY(-2px) scale(1.021);
-    }
-    .drop-head {
+      background: var(--todo-section-bg);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 4px 18px #6b47ff11;
+      padding: 1.1em 1.2em 1em 1.2em;
       display: flex;
       align-items: center;
-      gap: 0.7em;
-      margin-bottom: 0.4em;
+      gap: 1.2em;
+      border: 1.5px solid #e6e8eb;
+      transition: box-shadow 0.13s, border 0.13s;
+      cursor: pointer;
+      position: relative;
+    }
+    .drop-card:hover {
+      box-shadow: 0 14px 34px #c3e5f633;
+      border: 1.5px solid var(--accent1);
+      background: #f7f9fc;
     }
     .drop-icon {
       font-size: 2.1em;
-      border-radius: 17px;
-      background: #191414;
-      padding: 0.15em 0.38em;
-      color: var(--spotify-green);
+      border-radius: 13px;
+      background: var(--tag-bg);
+      padding: 0.12em 0.39em;
+      color: var(--accent2);
       font-weight: 900;
-      margin-right: 0.1em;
+      margin-right: 0.03em;
       flex-shrink: 0;
-      box-shadow: 0 1px 6px #1ed76011;
+      box-shadow: 0 1px 6px #6b47ff0a;
+    }
+    .drop-main {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.15em;
+    }
+    .drop-title-row {
+      display: flex;
+      align-items: center;
+      gap: 0.7em;
+      margin-bottom: 0.08em;
     }
     .drop-title {
-      font-size: 1.23em;
+      font-size: 1.16em;
       font-weight: 900;
-      color: #fff;
-      letter-spacing: 0.01em;
-      flex: 1;
+      color: var(--accent2);
+      letter-spacing: -0.01em;
       min-width: 0;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
     .drop-tag {
-      background: var(--spotify-green);
-      color: #191414;
-      font-size: 0.97em;
+      background: var(--tag-bg);
+      color: var(--accent2);
+      font-size: 0.89em;
       font-weight: 900;
-      border-radius: 11px;
-      padding: 0.13em 1em;
-      margin-left: 0.3em;
+      border-radius: 9px;
+      padding: 0.15em 0.92em;
       font-family: inherit;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      box-shadow: 0 1px 6px #1ed76025;
+      border: 1px solid #e6e8eb;
+      margin-left: 0;
       flex-shrink: 0;
+      margin-top: 0.04em;
     }
     .drop-desc {
-      color: #e7ffe4;
-      font-size: 1.10em;
-      margin-bottom: 0.2em;
-      margin-top: 0.1em;
-      line-height: 1.5;
+      color: var(--text-muted);
+      font-size: 1.04em;
+      margin-bottom: 0.22em;
+      margin-top: 0.05em;
+      line-height: 1.42;
+      font-weight: 500;
     }
     .drop-maker {
-      color: var(--spotify-green);
-      font-size: 1em;
+      color: var(--accent3);
+      font-size: 0.99em;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 0.03em;
-      margin-top: 0.5em;
+      margin-top: 0.18em;
     }
-    /* Archive Section */
+
+    /* Archive (collapsible) */
     .archive-section {
-      margin: 2.5em 0 2em 0;
+      background: var(--card-gradient);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-main);
+      margin-bottom: 2.7em;
+      padding: 2.1em 1.3em 0.5em 1.3em;
+      border: 1.5px solid var(--divider);
+      backdrop-filter: blur(7px);
+      -webkit-backdrop-filter: blur(7px);
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
     }
     .archive-title {
-      font-family: 'Nunito Sans', Arial, sans-serif;
+      font-family: 'Inter', Arial, sans-serif;
       font-weight: 900;
-      font-size: 1.16rem;
-      letter-spacing: 0.08em;
-      color: var(--spotify-green);
-      margin-bottom: 1.5em;
+      font-size: 1.09rem;
+      letter-spacing: 0.07em;
+      color: var(--accent1);
+      margin-bottom: 1.2em;
       text-transform: uppercase;
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.3em;
-      text-shadow: 0 2px 24px #0d3d1c65;
+      text-align: left;
     }
     .archive-list {
       display: flex;
@@ -197,15 +424,13 @@
       align-items: stretch;
     }
     .archive-week-card {
-      background: linear-gradient(120deg,#232323 85%, #1ed7601a 100%);
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow);
-      padding: 1.3em 1.1em 1.1em 1.1em;
-      margin: 0 auto 0.5em auto;
-      border: none;
-      outline: none;
-      transition: box-shadow 0.2s;
+      background: var(--todo-section-bg);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 2px 9px #6b47ff0a;
+      margin-bottom: 0.35em;
+      padding: 1.0em 1.1em 1.0em 1.1em;
       position: relative;
+      border: 1.5px solid #e6e8eb;
     }
     .archive-week-header {
       display: flex;
@@ -215,9 +440,9 @@
       user-select: none;
     }
     .archive-week-title {
-      font-family: 'Nunito Sans', Arial, sans-serif;
-      color: var(--spotify-green);
-      font-size: 1.08em;
+      font-family: inherit;
+      color: var(--accent2);
+      font-size: 1.01em;
       font-weight: 900;
       letter-spacing: 0.09em;
       text-transform: uppercase;
@@ -226,8 +451,8 @@
       gap: 0.5em;
     }
     .archive-week-toggle {
-      font-size: 1.55em;
-      color: var(--spotify-green);
+      font-size: 1.45em;
+      color: var(--accent2);
       border: none;
       background: none;
       cursor: pointer;
@@ -260,105 +485,50 @@
       pointer-events: auto;
     }
     .archive-drop {
+      background: var(--panel);
+      border-radius: var(--radius-sm);
+      box-shadow: 0 2px 7px #6b47ff0c;
+      padding: 0.7em 1.2em;
+      margin-bottom: 0.2em;
       cursor: pointer;
-      padding: 0.6em 0.6em;
-      border-radius: 13px;
-      transition: background 0.12s;
-      position: relative;
-      border: none;
-      background: transparent;
       display: flex;
       align-items: center;
-      gap: 0.7em;
+      gap: 0.8em;
+      transition: box-shadow 0.11s, transform 0.12s;
+      border: 1px solid #edeef0;
     }
     .archive-drop:hover {
-      background: #232323;
+      box-shadow: 0 7px 18px #c3f6e673;
+      transform: scale(1.012);
+      border: 1px solid var(--accent2);
     }
-    .archive-drop .drop-head {
-      margin-bottom: 0;
-      gap: 0.6em;
-    }
-    .archive-drop .drop-title {
-      font-size: 1.03em;
-    }
-    /* Sponsors Cards */
-    .sponsors-section {
-      background: linear-gradient(110deg,#232323 80%, #1ed76022 100%);
-      border-radius: var(--border-radius);
-      padding: 2em 1.2em;
-      margin: 0 auto 2.2em auto;
-      text-align: center;
-      max-width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.1em;
-      box-shadow: var(--shadow);
-    }
-    .sponsors-title {
-      font-family: 'Nunito Sans', Arial, sans-serif;
-      font-size: 1.12em;
-      font-weight: 900;
-      letter-spacing: 0.08em;
-      color: var(--spotify-green);
-      margin-bottom: 1em;
-      text-transform: uppercase;
-      text-shadow: 0 2px 24px #1ed76085;
-    }
-    .sponsor-cards {
-      display: flex;
-      gap: 0.85em;
-      flex-wrap: wrap;
-      justify-content: center;
-      width: 100%;
-    }
-    .sponsor-card {
-      background: #191414;
-      border-radius: 14px;
-      padding: 0.8em 1.2em;
-      min-width: 94px;
-      min-height: 48px;
-      box-shadow: 0 2px 12px #19141422;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      border: 1.5px solid #232323;
-      font-family: 'Nunito Sans', Arial, sans-serif;
-      color: var(--spotify-green);
-      font-weight: 900;
-      letter-spacing: 0.07em;
-      font-size: 1em;
-      gap: 0.28em;
-    }
-    .sponsor-logo {
-      width: 28px;
-      height: 28px;
-      margin-bottom: 0.1em;
-      object-fit: contain;
-      border-radius: 50%;
-      background: #121212;
-      border: 1px solid #1ed760;
-      box-shadow: 0 1px 7px #1ed76020;
-    }
+    .archive-drop .drop-icon { font-size: 1.3em; }
+    .archive-drop .drop-title { font-size: 0.97em;}
     /* Founders Section */
     .founders-section {
       margin: 3.3em 0 2.7em 0;
-      background: linear-gradient(110deg,#232323 90%, #1ed7600f 100%);
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow);
+      background: var(--card-gradient);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-main);
       padding: 2em 1.3em 1.2em 1.3em;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+      border: 1.5px solid var(--divider);
+      backdrop-filter: blur(7px);
+      -webkit-backdrop-filter: blur(7px);
     }
     .founders-title {
-      font-family: 'Nunito Sans', Arial, sans-serif;
+      font-family: 'Inter', Arial, sans-serif;
       font-weight: 900;
-      font-size: 1.25rem;
-      margin-bottom: 1.2em;
-      color: var(--spotify-green);
+      font-size: 1.13rem;
+      margin-bottom: 1.18em;
+      color: var(--accent2);
       display: flex;
       align-items: center;
-      gap: 0.5em;
+      gap: 0.49em;
       letter-spacing: 0.04em;
-      text-shadow: 0 2px 24px #1ed76033;
+      text-transform: uppercase;
     }
     .founder-list {
       display: flex;
@@ -366,39 +536,46 @@
       gap: 1em;
     }
     .founder-card {
-      background: #191414;
-      border-radius: 15px;
+      background: var(--todo-section-bg);
+      border-radius: var(--radius-lg);
       padding: 1em 1.2em;
       display: flex;
       align-items: center;
       gap: 1.1em;
-      box-shadow: 0 2px 10px #1ed76018;
+      box-shadow: 0 2px 7px #6b47ff0a;
       position: relative;
+      border: 1px solid #e6e8eb;
+      transition: box-shadow 0.14s, transform 0.13s, border 0.13s;
+    }
+    .founder-card:hover {
+      box-shadow: 0 7px 18px #c3f6e673;
+      border: 1px solid var(--accent2);
+      transform: scale(1.012);
     }
     .founder-avatar {
       width: 44px;
       height: 44px;
       border-radius: 50%;
       object-fit: cover;
-      background: #232323;
-      border: 2.5px solid var(--spotify-green);
+      background: var(--tag-bg);
+      border: 2.5px solid var(--accent2);
     }
     .founder-info {
       flex: 1;
       min-width: 0;
     }
     .founder-name {
-      font-size: 1.09em;
+      font-size: 1.07em;
       font-weight: 900;
-      color: #fff;
-      margin-bottom: 0.10em;
+      color: var(--text);
+      margin-bottom: 0.11em;
       display: flex;
       align-items: center;
       gap: 0.6em;
     }
     .founder-link {
-      color: var(--spotify-green);
-      font-size: 1.16em;
+      color: var(--accent2);
+      font-size: 1.17em;
       vertical-align: middle;
       display: inline-block;
       margin-left: 0.22em;
@@ -406,238 +583,144 @@
       transition: color 0.18s;
     }
     .founder-link:hover {
-      color: #fff;
+      color: var(--accent4);
     }
     .founder-desc {
       font-size: 0.97em;
-      color: var(--spotify-gray2);
+      color: var(--text-muted);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       max-width: 250px;
     }
-    /* Modal styles */
-    .modal-bg {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(25,20,20,0.72);
-      z-index: 999;
-      align-items: center;
-      justify-content: center;
-      animation: fadeIn 0.25s;
-    }
-    .modal-bg.active {
-      display: flex;
-    }
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-    .modal-card {
-      background: linear-gradient(120deg,#232323 90%, #1ed7601a 100%);
-      border-radius: 22px;
-      padding: 2em 1.2em 1.5em 1.2em;
-      box-shadow: 0 8px 44px #1ed76065, 0 0 0 8px #191414;
-      max-width: 420px;
-      width: 95vw;
-      position: relative;
+    /* Sponsors Section */
+    .sponsors-section {
+      background: var(--card-gradient);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-main);
+      padding: 2em 1.2em;
+      margin: 0 auto 3em auto;
       text-align: left;
-      animation: modalPop 0.23s;
-      margin: 2vw;
-      overflow: auto;
+      max-width: 680px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.1em;
+      border: 1.5px solid var(--divider);
+      backdrop-filter: blur(7px);
+      -webkit-backdrop-filter: blur(7px);
     }
-    @keyframes modalPop {
-      from {transform: translateY(40px) scale(0.95);}
-      to {transform: none;}
-    }
-    .modal-close {
-      position: absolute;
-      top: 14px; right: 16px;
-      font-size: 1.6em;
-      background: none;
-      border: none;
-      color: #fff;
-      cursor: pointer;
-      font-family: inherit;
-      font-weight: 900;
-      opacity: 0.7;
-      transition: opacity 0.13s;
-    }
-    .modal-close:hover {
-      opacity: 1;
-    }
-    .modal-img {
-      width: 100%;
-      max-width: 340px;
-      border-radius: 18px;
-      margin-bottom: 1.1em;
-      background: #191414;
-      box-shadow: 0 4px 32px #1ed76030;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .modal-title {
-      font-family: 'Nunito Sans', Arial, sans-serif;
-      font-size: 1.28em;
-      font-weight: 900;
-      margin-bottom: 0.12em;
-      color: #fff;
-      letter-spacing: 0.01em;
-    }
-    .modal-tag {
-      background: var(--spotify-green);
-      color: #191414;
-      font-size: 0.98em;
-      font-weight: 900;
-      border-radius: 11px;
-      padding: 0.13em 1em;
-      margin-left: 0.3em;
-      font-family: inherit;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-    .modal-desc {
-      color: #e7ffe4;
-      font-size: 1.09em;
-      margin-bottom: 0.5em;
-      margin-top: 0.4em;
-      line-height: 1.55;
-      font-family: inherit;
-    }
-    .modal-maker {
-      color: var(--spotify-green);
-      font-size: 1em;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-      margin-top: 0.5em;
-      margin-bottom: 0.6em;
-    }
-    .modal-extra {
-      color: #fff;
+    .sponsors-title {
+      font-family: 'Inter', Arial, sans-serif;
       font-size: 1.08em;
-      margin-top: 1.2em;
-      border-top: 1.5px solid #232323;
-      padding-top: 1.1em;
+      font-weight: 900;
+      letter-spacing: 0.07em;
+      color: var(--accent2);
+      margin-bottom: 1em;
+      text-transform: uppercase;
     }
-    .modal-screenshots {
+    .sponsor-cards {
       display: flex;
       gap: 1em;
-      margin-top: 0.6em;
-      overflow-x: auto;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      width: 100%;
     }
-    .modal-screenshot-thumb {
-      width: 82px;
-      height: 60px;
-      border-radius: 10px;
-      object-fit: cover;
-      background: #232323;
-      border: 1px solid #1ed760;
-      box-shadow: 0 2px 6px #1ed76022;
-      cursor: pointer;
-      opacity: 0.88;
-      transition: opacity 0.13s, border 0.13s;
+    .sponsor-card {
+      background: #f4f6fc;
+      border-radius: 13px;
+      padding: 0.8em 1.2em;
+      min-width: 90px;
+      min-height: 48px;
+      box-shadow: 0 2px 9px #6b47ff13;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid #ececf3;
+      color: var(--accent2);
+      font-weight: 900;
+      letter-spacing: 0.07em;
+      font-size: 1em;
+      gap: 0.28em;
+      transition: box-shadow 0.16s, background 0.17s, border 0.14s;
     }
-    .modal-screenshot-thumb.active, .modal-screenshot-thumb:hover {
-      opacity: 1;
-      border: 2.5px solid var(--spotify-green);
+    .sponsor-card:hover {
+      background: #e7ebfa;
+      box-shadow: 0 2px 18px #7e90e860;
+      border: 1px solid var(--accent2);
+    }
+    .sponsor-logo {
+      width: 28px;
+      height: 28px;
+      margin-bottom: 0.1em;
+      object-fit: contain;
+      border-radius: 50%;
+      background: #f6f7fb;
+      border: 1px solid #e6e8eb;
+      box-shadow: 0 1px 7px #b2dde720;
     }
     .footer {
       margin-top: 3.5em;
       padding: 2.1em 0 2em 0;
       text-align: center;
-      color: #a4a4a4;
+      color: #b0b5c6;
       font-size: 1.08em;
       background: transparent;
       font-family: inherit;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
     }
-    /* Mobile styles */
-    @media (max-width: 700px) {
-      .container {max-width: 100%;padding:0 0.3rem;}
-      header {padding-top:1.7rem;}
-      .headline {font-size:2.2rem;}
-      .desc {font-size:1.05rem;}
-      .drop-card,.archive-week-card {padding:1.2em 0.6em;}
-      .modal-card {padding:0.8em 0.2em;}
-      .modal-title {font-size:1.05em;}
-      .modal-img {max-width:100%; border-radius:12px;}
-      .sponsor-cards {gap:0.3em;}
-      .sponsor-card {padding:0.4em 0.7em;}
-      .founders-section {padding:1.1em 0.5em;}
+    @media (max-width:1000px) {
+      .container {padding:2.3rem 0.8rem;}
+      .todo-list-container, .drops-panel, .archive-section, .founders-section, .sponsors-section {padding-left:1em;padding-right:1em;}
     }
-    @media (max-width: 440px) {
-      .modal-card {max-width:100vw;}
-      .sponsor-card {min-width:70px;}
-      .modal-img {border-radius:8px;}
-      .founder-desc {max-width:120px;}
+    @media (max-width:600px) {
+      .headline {font-size:1.3rem;}
+      .desc {font-size:0.99rem;}
+      .todo-list-container, .drops-panel, .archive-section, .founders-section, .sponsors-section {padding:1.1em 0.2em;}
+      .todo-section {padding:0.8em 0.4em;}
+      .cta-btn {width:100%;}
     }
   </style>
 </head>
 <body>
-  <main class="container">
-    <header>
-      <div class="headline"><span class="emoji">🎵</span> Sales Tool Drops</div>
-      <div class="desc">
-        Weekly, friendly, creative. The most playful directory of sales tools, bright ideas, and the minds behind them.
-      </div>
-    </header>
+  <div class="bg-blobs">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+    <div class="blob blob4"></div>
+  </div>
+  <div class="container">
+    <div class="headline">Sales Tools — Million-Dollar To-Do</div>
+    <div class="desc">
+      Effortlessly track, review, and discover top sales tools in a UI polished to perfection.
+    </div>
 
-    <section class="drops-section">
-      <div class="section-title"><span class="emoji">🌈</span> This Week’s Top Drops</div>
-      <div class="drop-list">
-        <div class="drop-card" data-drop="0" tabindex="0">
-          <div class="drop-head">
-            <span class="drop-icon">⚡</span>
-            <span class="drop-title">QUANTUM.AI</span>
-            <span class="drop-tag">AI Core</span>
-          </div>
-          <div class="drop-desc">Next-gen AI processing unit. 10<sup>12</sup> ops/ns. Quantum entanglement capabilities.</div>
-          <div class="drop-maker">By Dr. Zephyr</div>
-        </div>
-        <div class="drop-card" data-drop="1" tabindex="0">
-          <div class="drop-head">
-            <span class="drop-icon">🔮</span>
-            <span class="drop-title">NEXUS.VISION</span>
-            <span class="drop-tag">AR/VR</span>
-          </div>
-          <div class="drop-desc">Holographic interface. Predictive analytics. 4D visualization matrix.</div>
-          <div class="drop-maker">By Sierra Tran</div>
-        </div>
-        <div class="drop-card" data-drop="2" tabindex="0">
-          <div class="drop-head">
-            <span class="drop-icon">🛡️</span>
-            <span class="drop-title">CIPHER.SHIELD</span>
-            <span class="drop-tag">Security</span>
-          </div>
-          <div class="drop-desc">Quantum encryption. Military-grade QKD. Unbreakable protocols.</div>
-          <div class="drop-maker">By Ava Gupta</div>
-        </div>
-        <div class="drop-card" data-drop="3" tabindex="0">
-          <div class="drop-head">
-            <span class="drop-icon">🚀</span>
-            <span class="drop-title">VELOCITY.CORE</span>
-            <span class="drop-tag">Speed</span>
-          </div>
-          <div class="drop-desc">Real-time processing. Petabytes, zero latency, hyperspeed protocols.</div>
-          <div class="drop-maker">By Kai Lennox</div>
-        </div>
-        <div class="drop-card" data-drop="4" tabindex="0">
-          <div class="drop-head">
-            <span class="drop-icon">✨</span>
-            <span class="drop-title">INFINITY.ENGINE</span>
-            <span class="drop-tag">Quantum</span>
-          </div>
-          <div class="drop-desc">Boundless computation. Quantum superposition. Infinite parallelism.</div>
-          <div class="drop-maker">By Eli Chen</div>
-        </div>
+    <!-- TOP DROPS / FEATURED SALES TOOLS -->
+    <div class="drops-panel">
+      <div class="drops-title">This Week’s Top Drops</div>
+      <div class="drops-list" id="drops-list">
+        <!-- Drops (JS) -->
       </div>
-    </section>
+    </div>
 
+    <!-- TO-DO LIST -->
+    <div class="todo-list-container" id="todo-list-container">
+      <div class="todo-section">
+        <div class="todo-section-title">Today’s Focus</div>
+        <ul class="todo-tasks" id="todo-tasks-today"></ul>
+      </div>
+      <div class="todo-section">
+        <div class="todo-section-title">Upcoming Opportunities</div>
+        <ul class="todo-tasks" id="todo-tasks-upcoming"></ul>
+      </div>
+      <button class="cta-btn" onclick="addTask()">+ Add Tool</button>
+    </div>
+
+    <hr class="soph-divider">
+
+    <!-- ARCHIVE SECTION -->
     <section class="archive-section">
-      <div class="archive-title"><span class="emoji">📚</span> Archive</div>
+      <div class="archive-title">Archive</div>
       <div class="archive-list">
         <div class="archive-week-card">
           <div class="archive-week-header" tabindex="0" aria-expanded="false">
@@ -646,20 +729,16 @@
           </div>
           <div class="archive-drops collapsed" id="archive-drops-0">
             <div class="archive-drop" data-archive="0-0">
-              <div class="drop-head">
-                <span class="drop-icon">🤖</span>
-                <span class="drop-title">ALPHA.MIND</span>
-                <span class="drop-tag">AI Core</span>
-              </div>
-              <div class="drop-maker">Jane Roe</div>
+              <span class="drop-icon" style="font-size:1.1em;">🤖</span>
+              <span class="drop-title">ALPHA.MIND</span>
+              <span class="drop-tag blue">AI Core</span>
+              <span class="drop-maker" style="margin-left:auto;">Jane Roe</span>
             </div>
             <div class="archive-drop" data-archive="0-1">
-              <div class="drop-head">
-                <span class="drop-icon">🔐</span>
-                <span class="drop-title">SECURENET</span>
-                <span class="drop-tag">Security</span>
-              </div>
-              <div class="drop-maker">John Doe</div>
+              <span class="drop-icon" style="font-size:1.1em;">🔐</span>
+              <span class="drop-title">SECURENET</span>
+              <span class="drop-tag green">Security</span>
+              <span class="drop-maker" style="margin-left:auto;">John Doe</span>
             </div>
           </div>
         </div>
@@ -670,20 +749,19 @@
           </div>
           <div class="archive-drops collapsed" id="archive-drops-1">
             <div class="archive-drop" data-archive="1-0">
-              <div class="drop-head">
-                <span class="drop-icon">👁️</span>
-                <span class="drop-title">VISIONARY</span>
-                <span class="drop-tag">AR/VR</span>
-              </div>
-              <div class="drop-maker">Max Lee</div>
+              <span class="drop-icon" style="font-size:1.1em;">👁️</span>
+              <span class="drop-title">VISIONARY</span>
+              <span class="drop-tag yellow">AR/VR</span>
+              <span class="drop-maker" style="margin-left:auto;">Max Lee</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- FOUNDERS SECTION -->
     <section class="founders-section">
-      <div class="founders-title"><span class="emoji">🧑‍🎤</span> Featured Founders</div>
+      <div class="founders-title"><span style="font-size:1.13em;">🧑‍🚀</span> Featured Founders</div>
       <div class="founder-list">
         <div class="founder-card">
           <img class="founder-avatar" src="https://api.dicebear.com/8.x/notionists-neutral/svg?seed=Jaisal" alt="Jaisal Rathee"/>
@@ -691,7 +769,7 @@
             <div class="founder-name">
               Jaisal Rathee
               <a class="founder-link" href="https://twitter.com/jaisalrathee" target="_blank" title="Visit profile">
-                <svg width="1.15em" height="1.15em" viewBox="0 0 20 20" fill="none"><path d="M7 13L13 7M13 7H8M13 7V12" stroke="#1ed760" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg width="1.07em" height="1.07em" viewBox="0 0 20 20" fill="none"><path d="M7 13L13 7M13 7H8M13 7V12" stroke="#1c68f3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
             </div>
             <div class="founder-desc">10x exits. Building a portfolio of tiny startups. Helping founders launch…</div>
@@ -703,7 +781,7 @@
             <div class="founder-name">
               Anthony Castrio
               <a class="founder-link" href="https://applyall.com/" target="_blank" title="Visit profile">
-                <svg width="1.15em" height="1.15em" viewBox="0 0 20 20" fill="none"><path d="M7 13L13 7M13 7H8M13 7V12" stroke="#1ed760" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg width="1.07em" height="1.07em" viewBox="0 0 20 20" fill="none"><path d="M7 13L13 7M13 7H8M13 7V12" stroke="#1c68f3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
             </div>
             <div class="founder-desc">Co-founder @ ApplyAll.com | Growing vegetables @ Fractal Garden</div>
@@ -715,7 +793,7 @@
             <div class="founder-name">
               Matt Farley
               <a class="founder-link" href="https://twitter.com/mattfarley" target="_blank" title="Visit profile">
-                <svg width="1.15em" height="1.15em" viewBox="0 0 20 20" fill="none"><path d="M7 13L13 7M13 7H8M13 7V12" stroke="#1ed760" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg width="1.07em" height="1.07em" viewBox="0 0 20 20" fill="none"><path d="M7 13L13 7M13 7H8M13 7V12" stroke="#1c68f3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
             </div>
             <div class="founder-desc">Self-taught product designer with 14 years of web experience. Bootstrapped…</div>
@@ -727,7 +805,7 @@
             <div class="founder-name">
               Dobrian Dobrev
               <a class="founder-link" href="https://toddlr.com/" target="_blank" title="Visit profile">
-                <svg width="1.15em" height="1.15em" viewBox="0 0 20 20" fill="none"><path d="M7 13L13 7M13 7H8M13 7V12" stroke="#1ed760" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg width="1.07em" height="1.07em" viewBox="0 0 20 20" fill="none"><path d="M7 13L13 7M13 7H8M13 7V12" stroke="#1c68f3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
             </div>
             <div class="founder-desc">Founder of Toddlr | Award-winning UX Designer | Ex-Coca-Cola/VMware…</div>
@@ -739,7 +817,7 @@
             <div class="founder-name">
               Martina Sartor
               <a class="founder-link" href="https://linkedin.com/in/martinasartor" target="_blank" title="Visit profile">
-                <svg width="1.15em" height="1.15em" viewBox="0 0 20 20" fill="none"><path d="M7 13L13 7M13 7H8M13 7V12" stroke="#1ed760" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg width="1.07em" height="1.07em" viewBox="0 0 20 20" fill="none"><path d="M7 13L13 7M13 7H8M13 7V12" stroke="#1c68f3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
             </div>
             <div class="founder-desc">Startup growth strategist, indie founder, community builder…</div>
@@ -748,197 +826,138 @@
       </div>
     </section>
 
+    <!-- SPONSORS -->
     <section class="sponsors-section">
       <div class="sponsors-title">Our Sponsors</div>
       <div class="sponsor-cards">
         <div class="sponsor-card">
-          <img class="sponsor-logo" src="https://placehold.co/32x32/1ed760/191414?text=A" alt="Acme Inc."/>
+          <img class="sponsor-logo" src="https://placehold.co/32x32/735cff/fff?text=A" alt="Acme Inc."/>
           <div>Acme Inc.</div>
         </div>
         <div class="sponsor-card">
-          <img class="sponsor-logo" src="https://placehold.co/32x32/232323/1ed760?text=R" alt="RocketStart"/>
+          <img class="sponsor-logo" src="https://placehold.co/32x32/1c68f3/fff?text=R" alt="RocketStart"/>
           <div>RocketStart</div>
         </div>
         <div class="sponsor-card">
-          <img class="sponsor-logo" src="https://placehold.co/32x32/121212/1ed760?text=P" alt="PixelSoft"/>
+          <img class="sponsor-logo" src="https://placehold.co/32x32/18bfa4/fff?text=P" alt="PixelSoft"/>
           <div>PixelSoft</div>
         </div>
       </div>
     </section>
+
     <footer class="footer">
       © 2077 NEXUS CORP • WEEKLY SALES DROP • All Rights Reserved
     </footer>
-  </main>
-
-  <!-- Popup Modal -->
-  <div class="modal-bg" id="drop-modal-bg" tabindex="-1">
-    <div class="modal-card" id="drop-modal-card">
-      <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
-      <img class="modal-img" id="modal-img" src="" alt="" />
-      <div class="modal-title" id="modal-title"></div>
-      <span class="modal-tag" id="modal-tag"></span>
-      <div class="modal-maker" id="modal-maker"></div>
-      <div class="modal-desc" id="modal-desc"></div>
-      <div class="modal-extra" id="modal-extra" style="display:none;">
-        <div style="font-weight:700;margin-bottom:0.7em;">Screenshots</div>
-        <div class="modal-screenshots" id="modal-screenshots"></div>
-      </div>
-    </div>
   </div>
   <script>
-    // Drop and archive data
+    // DROPS DATA
     const drops = [
       {
+        icon: "⚡",
         title: "QUANTUM.AI",
         tag: "AI Core",
-        icon: "⚡",
+        tagClass: "blue",
         desc: "Next-gen AI processing unit. 10<sup>12</sup> ops/ns. Quantum entanglement capabilities.",
-        maker: "By Dr. Zephyr",
-        img: "https://placehold.co/340x180/191414/1ed760?text=QUANTUM.AI",
-        screenshots: [
-          "https://placehold.co/160x100/1ed760/191414?text=Screen1",
-          "https://placehold.co/160x100/191414/1ed760?text=Screen2"
-        ]
+        maker: "By Dr. Zephyr"
       },
       {
+        icon: "🔮",
         title: "NEXUS.VISION",
         tag: "AR/VR",
-        icon: "🔮",
+        tagClass: "yellow",
         desc: "Holographic interface. Predictive analytics. 4D visualization matrix.",
-        maker: "By Sierra Tran",
-        img: "https://placehold.co/340x180/1ed760/191414?text=NEXUS.VISION",
-        screenshots: [
-          "https://placehold.co/160x100/232323/1ed760?text=Screen1"
-        ]
+        maker: "By Sierra Tran"
       },
       {
+        icon: "🛡️",
         title: "CIPHER.SHIELD",
         tag: "Security",
-        icon: "🛡️",
+        tagClass: "green",
         desc: "Quantum encryption. Military-grade QKD. Unbreakable protocols.",
-        maker: "By Ava Gupta",
-        img: "https://placehold.co/340x180/232323/1ed760?text=CIPHER.SHIELD",
-        screenshots: []
+        maker: "By Ava Gupta"
       },
       {
+        icon: "🚀",
         title: "VELOCITY.CORE",
         tag: "Speed",
-        icon: "🚀",
+        tagClass: "purple",
         desc: "Real-time processing. Petabytes, zero latency, hyperspeed protocols.",
-        maker: "By Kai Lennox",
-        img: "https://placehold.co/340x180/121212/1ed760?text=VELOCITY.CORE",
-        screenshots: [
-          "https://placehold.co/160x100/1ed760/191414?text=Screen1",
-          "https://placehold.co/160x100/232323/1ed760?text=Screen2",
-          "https://placehold.co/160x100/191414/1ed760?text=Screen3"
-        ]
+        maker: "By Kai Lennox"
       },
       {
+        icon: "✨",
         title: "INFINITY.ENGINE",
         tag: "Quantum",
-        icon: "✨",
+        tagClass: "blue",
         desc: "Boundless computation. Quantum superposition. Infinite parallelism.",
-        maker: "By Eli Chen",
-        img: "https://placehold.co/340x180/1ed760/191414?text=INFINITY.ENGINE",
-        screenshots: []
+        maker: "By Eli Chen"
       }
-    ];
-    const archiveDrops = [
-      [ // Week 28 (July 7 - July 13)
-        {
-          title: "ALPHA.MIND",
-          tag: "AI Core",
-          icon: "🤖",
-          desc: "Last-gen AI suite. Modular, open, clever.",
-          maker: "Jane Roe",
-          img: "https://placehold.co/340x180/232323/1ed760?text=ALPHA.MIND",
-          screenshots: [
-            "https://placehold.co/160x100/1ed760/191414?text=Screen1"
-          ]
-        },
-        {
-          title: "SECURENET",
-          tag: "Security",
-          icon: "🔐",
-          desc: "Network security for the modern world.",
-          maker: "John Doe",
-          img: "https://placehold.co/340x180/232323/1ed760?text=SECURENET",
-          screenshots: []
-        }
-      ],
-      [ // Week 27 (June 30 - July 6)
-        {
-          title: "VISIONARY",
-          tag: "AR/VR",
-          icon: "👁️",
-          desc: "Next-level vision tools for every workflow.",
-          maker: "Max Lee",
-          img: "https://placehold.co/340x180/1ed760/191414?text=VISIONARY",
-          screenshots: []
-        }
-      ]
     ];
 
-    // Modal logic
-    function openModal(drop) {
-      document.getElementById('modal-img').src = drop.img;
-      document.getElementById('modal-img').alt = drop.title + ' screenshot';
-      document.getElementById('modal-title').innerHTML = `${drop.icon} ${drop.title}`;
-      document.getElementById('modal-tag').textContent = drop.tag;
-      document.getElementById('modal-maker').textContent = drop.maker;
-      document.getElementById('modal-desc').innerHTML = drop.desc;
-      const screenshots = drop.screenshots || [];
-      const modalExtra = document.getElementById('modal-extra');
-      const screenshotsDiv = document.getElementById('modal-screenshots');
-      screenshotsDiv.innerHTML = '';
-      if(screenshots.length > 0) {
-        modalExtra.style.display = '';
-        screenshots.forEach((src, i) => {
-          const img = document.createElement('img');
-          img.src = src;
-          img.className = "modal-screenshot-thumb";
-          img.alt = drop.title + " screenshot " + (i+1);
-          img.onclick = () => {
-            document.getElementById('modal-img').src = src;
-            let all = screenshotsDiv.querySelectorAll('img');
-            all.forEach(el => el.classList.remove('active'));
-            img.classList.add('active');
-          }
-          if(i===0) img.classList.add('active');
-          screenshotsDiv.appendChild(img);
-        });
-      } else {
-        modalExtra.style.display = 'none';
-      }
-      document.getElementById('drop-modal-bg').classList.add('active');
-      document.getElementById('drop-modal-card').focus();
-      document.body.style.overflow = 'hidden';
+    function renderDrops() {
+      const dropsDiv = document.getElementById("drops-list");
+      dropsDiv.innerHTML = '';
+      drops.forEach(drop => {
+        const card = document.createElement("div");
+        card.className = "drop-card";
+        card.tabIndex = 0;
+        card.innerHTML = `
+          <span class="drop-icon">${drop.icon}</span>
+          <div class="drop-main">
+            <div class="drop-title-row">
+              <span class="drop-title">${drop.title}</span>
+              <span class="drop-tag ${drop.tagClass}">${drop.tag}</span>
+            </div>
+            <div class="drop-desc">${drop.desc}</div>
+            <div class="drop-maker">${drop.maker}</div>
+          </div>
+        `;
+        dropsDiv.appendChild(card);
+      });
     }
-    document.querySelectorAll('.drop-card').forEach((el, idx) => {
-      el.addEventListener('click', () => openModal(drops[idx]));
-      el.addEventListener('keypress', e => {if(e.key==='Enter'||e.key===' ') openModal(drops[idx]);});
-    });
-    document.querySelectorAll('.archive-drop').forEach((el) => {
-      const [week, idx] = el.getAttribute('data-archive').split('-').map(Number);
-      el.addEventListener('click', () => openModal(archiveDrops[week][idx]));
-      el.addEventListener('keypress', e => {if(e.key==='Enter'||e.key===' ') openModal(archiveDrops[week][idx]);});
-    });
-    document.getElementById('modal-close').onclick = () => {
-      document.getElementById('drop-modal-bg').classList.remove('active');
-      document.body.style.overflow = '';
-    };
-    document.getElementById('drop-modal-bg').onclick = (e) => {
-      if(e.target === document.getElementById('drop-modal-bg')) {
-        document.getElementById('drop-modal-bg').classList.remove('active');
-        document.body.style.overflow = '';
+    renderDrops();
+
+    // TO-DO DATA
+    const todayTasks = [
+      { text: "Explore QUANTUM.AI’s new dashboard", tag: "AI CORE", tagClass: "blue", checked: false },
+      { text: "Review NEXUS.VISION’s AR update", tag: "AR/VR", tagClass: "yellow", checked: false },
+      { text: "Run security test on CIPHER.SHIELD", tag: "SECURITY", tagClass: "green", checked: false }
+    ];
+    const upcomingTasks = [
+      { text: "Speed benchmark VELOCITY.CORE", tag: "SPEED", tagClass: "purple", checked: false },
+      { text: "Schedule INFINITY.ENGINE demo", tag: "QUANTUM", tagClass: "blue", checked: false },
+      { text: "Evaluate FREEMIUM CRM", tag: "CRM", tagClass: "gold", checked: false }
+    ];
+
+    function renderTasks(tasks, elId) {
+      const ul = document.getElementById(elId);
+      ul.innerHTML = '';
+      tasks.forEach((task, idx) => {
+        const li = document.createElement('li');
+        li.className = "todo-task" + (task.checked ? " checked" : "");
+        li.tabIndex = 0;
+        li.onclick = () => { task.checked = !task.checked; renderTasks(tasks, elId); };
+        li.onkeypress = e => { if(e.key === " " || e.key === "Enter") { task.checked = !task.checked; renderTasks(tasks, elId); }};
+
+        li.innerHTML = `
+          <span class="todo-check">${task.checked ? '<span class="todo-checkmark">&#10003;</span>' : ''}</span>
+          <span class="todo-text">${task.text}</span>
+          <span class="todo-tag ${task.tagClass}">${task.tag}</span>
+        `;
+        ul.appendChild(li);
+      });
+    }
+
+    function addTask() {
+      const text = prompt('Add a new tool or task:');
+      if(text && text.trim().length > 0) {
+        upcomingTasks.push({ text: text.trim(), tag: "NEW", tagClass: "blue", checked: false });
+        renderTasks(upcomingTasks, "todo-tasks-upcoming");
       }
-    };
-    document.addEventListener('keydown', function(e){
-      if(e.key === "Escape") {
-        document.getElementById('drop-modal-bg').classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    });
+    }
+
+    renderTasks(todayTasks, "todo-tasks-today");
+    renderTasks(upcomingTasks, "todo-tasks-upcoming");
 
     // Archive toggle logic
     document.querySelectorAll('.archive-week-header').forEach((header, i) => {
